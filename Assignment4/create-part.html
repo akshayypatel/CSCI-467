@@ -43,13 +43,8 @@
 
 		<div class="top">
 			<label for="part-number">Part Number: </label>
-			<textarea readonly class="part-number">123456</textarea>
-			<svg class="barcode"
-			  jsbarcode-format="upc"
-			  jsbarcode-value="123456789012"
-			  jsbarcode-textmargin="0"
-			  jsbarcode-fontoptions="bold">
-			</svg>
+			<p class="part-number">123456</p>
+			<svg id="barcode"></svg>
 		</div>
 
 		<div class="part-info">
@@ -87,7 +82,14 @@
 		<script src="js/gnmenu.js"></script>
 		<script>
 			new gnMenu( document.getElementById( 'gn-menu' ) );
-			JsBarcode(".barcode").init();
+			JsBarcode("#barcode", "123456", {
+			  format: "pharmacode",
+			  lineColor: "#000",
+			  width: 4,
+			  height: 40,
+			  displayValue: false,
+			  background: "transparent"
+			});
 		</script>
 	</body>
 </html>

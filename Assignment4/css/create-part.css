@@ -13,7 +13,7 @@
 	text-align: center;
 }
 
-.top .barcode {
+#barcode {
 	display: inline-block;
 }
 

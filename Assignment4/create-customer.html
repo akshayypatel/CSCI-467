@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>RFQ System</title>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFQ System</title>
     <meta name="author-1" content="Akshay Patel">
     <meta name="author-2" content="Gonzalo Pantoja">
     <meta name="description" content="RFQ System for CSCI 467 at NIU">
     <meta name="keywords" content="CSCI467, NIU, RFQ-System">
-        <link rel="shortcut icon" href="../favicon.ico">
-        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="css/component.css" />
-        <script src="js/modernizr.custom.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <ul id="gn-menu" class="gn-menu-main">
-                <li class="gn-trigger">
-                    <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
-                    <nav class="gn-menu-wrapper">
-                        <div class="gn-scroller">
-                            <ul class="gn-menu">
-                                <li class="gn-search-item">
-                                    <input placeholder="Search" type="search" class="gn-search">
-                                    <a class="gn-icon gn-icon-search"><span>Search</span></a>
-                                </li>
-                                <li><a class="gn-icon gn-icon-download" href="create-customer.html">Create New Customer</a></li>
-                                <li><a class="gn-icon gn-icon-cog" href="create-part.html">Create New Part</a></li>
-                                <li><a class="gn-icon gn-icon-help" href="request-quote.html">Request For Quote</a></li>
-                            </ul>
-                        </div><!-- /gn-scroller -->
-                    </nav>
-                </li>
-                <li><a href="index.html">Home</a></li>
-            </ul>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="css/create-customer.css" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <script src="js/modernizr.custom.js"></script>
+</head>
 
-        </div><!-- /container -->
-        <script src="js/classie.js"></script>
-        <script src="js/gnmenu.js"></script>
-        <script>
-            new gnMenu( document.getElementById( 'gn-menu' ) );
-        </script>
+<body>
+    <!-- Nav -->
+    <div class="container">
+        <ul id="gn-menu" class="gn-menu-main">
+            <li class="gn-trigger">
+                <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+                <nav class="gn-menu-wrapper">
+                    <div class="gn-scroller">
+                        <ul class="gn-menu">
+                            <li class="gn-search-item">
+                                <input placeholder="Search" type="search" class="gn-search">
+                                <a class="gn-icon gn-icon-search"><span>Search</span></a>
+                            </li>
+                            <li><a class="gn-icon gn-icon-download" href="create-customer.html">Create New Customer</a></li>
+                            <li><a class="gn-icon gn-icon-cog" href="create-part.html">Create New Part</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="request-quote.html">Request For Quote</a></li>
+                        </ul>
+                    </div><!-- /gn-scroller -->
+                </nav>
+            </li>
+            <li><a href="index.html">Home</a></li>
+        </ul>
 
-        <div class="conatiner-fluid center">
-        <div class="container center">
+    </div>
+    <!-- Form -->
+    <div class="container-fluid">
+        <div class="container-customer-page">
             <form method="POST" action="/page.php">
                 <!-- First row -->
-                <div class="row">
-                    <div class="left">
-                        <label for="name">Company Name</label>
-                        <input id="name" type="text" name="company_name" />
+                <div class="row center">
+                    <div class="col">
+                        <label for="CompanyName">Company Name</label>
+                        <input id="CompanyName" type="text" name="company_name" />
                     </div>
-                    <div class="right">
+                    <div class="col">
                         <label for="quote_type">Quote Type</label>
                         <input type="radio" name="auto" value="auto" checked>Auto
                         <input type="radio" name="manual" value="manual">Manual
@@ -61,7 +61,8 @@
                 </div>
                 <!-- Address -->
                 <div class="row">
-                    <div class="left">
+                    <div class="col">
+                        <!-- Billing address -->
                         <p>Billing Address</p>
                         <div class="billing-address">
                             <label for="street">Street:</label>
@@ -69,24 +70,276 @@
                             <br />
                             <label for="city">City:</label>
                             <input id="city" type="text" name="city" />
+                            <br />
+                            <label for="state">State:</label>
+                            <select name="states">
+                                <option value="AL">AL</option>
+                                <option value="AK">AK</option>
+                                <option value="AZ">AZ</option>
+                                <option value="AR">AR</option>
+                                <option value="CA">CA</option>
+                                <option value="CO">CO</option>
+                                <option value="CT">CT</option>
+                                <option value="DE">DE</option>
+                                <option value="FL">FL</option>
+                                <option value="GA">GA</option>
+                                <option value="HI">HI</option>
+                                <option value="ID">ID</option>
+                                <option value="IL">IL</option>
+                                <option value="IN">IN</option>
+                                <option value="IA">IA</option>
+                                <option value="KS">KS</option>
+                                <option value="KY">KY</option>
+                                <option value="LA">LA</option>
+                                <option value="ME">ME</option>
+                                <option value="MD">MD</option>
+                                <option value="MA">MA</option>
+                                <option value="MI">MI</option>
+                                <option value="MN">MN</option>
+                                <option value="MS">MS</option>
+                                <option value="MO">MO</option>
+                                <option value="MT">MT</option>
+                                <option value="NE">NE</option>
+                                <option value="NV">NV</option>
+                                <option value="NH">NH</option>
+                                <option value="NJ">NJ</option>
+                                <option value="NM">NM</option>
+                                <option value="NY">NY</option>
+                                <option value="NC">NC</option>
+                                <option value="ND">ND</option>
+                                <option value="OH">OH</option>
+                                <option value="OK">OK</option>
+                                <option value="OR">OR</option>
+                                <option value="PA">PA</option>
+                                <option value="RI">RI</option>
+                                <option value="SC">SC</option>
+                                <option value="SD">SD</option>
+                                <option value="TN">TN</option>
+                                <option value="TX">TX</option>
+                                <option value="UT">UT</option>
+                                <option value="VT">VT</option>
+                                <option value="VA">VA</option>
+                                <option value="WA">WA</option>
+                                <option value="WV">WV</option>
+                                <option value="WI">WI</option>
+                                <option value="WY">WY</option>
+                                <option value="AL">AL</option>
+                                <option value="AK">AK</option>
+                                <option value="AZ">AZ</option>
+                                <option value="AR">AR</option>
+                                <option value="CA">CA</option>
+                                <option value="CO">CO</option>
+                                <option value="CT">CT</option>
+                                <option value="DE">DE</option>
+                                <option value="FL">FL</option>
+                                <option value="GA">GA</option>
+                                <option value="HI">HI</option>
+                                <option value="ID">ID</option>
+                                <option value="IL">IL</option>
+                                <option value="IN">IN</option>
+                                <option value="IA">IA</option>
+                                <option value="KS">KS</option>
+                                <option value="KY">KY</option>
+                                <option value="LA">LA</option>
+                                <option value="ME">ME</option>
+                                <option value="MD">MD</option>
+                                <option value="MA">MA</option>
+                                <option value="MI">MI</option>
+                                <option value="MN">MN</option>
+                                <option value="MS">MS</option>
+                                <option value="MO">MO</option>
+                                <option value="MT">MT</option>
+                                <option value="NE">NE</option>
+                                <option value="NV">NV</option>
+                                <option value="NH">NH</option>
+                                <option value="NJ">NJ</option>
+                                <option value="NM">NM</option>
+                                <option value="NY">NY</option>
+                                <option value="NC">NC</option>
+                                <option value="ND">ND</option>
+                                <option value="OH">OH</option>
+                                <option value="OK">OK</option>
+                                <option value="OR">OR</option>
+                                <option value="PA">PA</option>
+                                <option value="RI">RI</option>
+                                <option value="SC">SC</option>
+                                <option value="SD">SD</option>
+                                <option value="TN">TN</option>
+                                <option value="TX">TX</option>
+                                <option value="UT">UT</option>
+                                <option value="VT">VT</option>
+                                <option value="VA">VA</option>
+                                <option value="WA">WA</option>
+                                <option value="WV">WV</option>
+                                <option value="WI">WI</option>
+                                <option value="WY">WY</option>
+                            </select>
+                            <label for="zip">Zip Code:</label>
+                            <input id="zip" type="text" name="zip" />
                         </div>
                     </div>
-                    <div class="right">
-
+                    <div class="col">
+                        <!-- Shipping address -->
+                        <p>Shipping Address</p>
+                        <div class="shipping-address">
+                            <input type="checkbox" name="sameAsBilling" value="true">Same as Billing<br>
+                            <label for="street">Street:</label>
+                            <input id="street" type="text" name="street" />
+                            <br />
+                            <label for="city">City:</label>
+                            <input id="city" type="text" name="city" />
+                            <br />
+                            <label for="state">State:</label>
+                            <select name="states">
+                                <option value="AL">AL</option>
+                                <option value="AK">AK</option>
+                                <option value="AZ">AZ</option>
+                                <option value="AR">AR</option>
+                                <option value="CA">CA</option>
+                                <option value="CO">CO</option>
+                                <option value="CT">CT</option>
+                                <option value="DE">DE</option>
+                                <option value="FL">FL</option>
+                                <option value="GA">GA</option>
+                                <option value="HI">HI</option>
+                                <option value="ID">ID</option>
+                                <option value="IL">IL</option>
+                                <option value="IN">IN</option>
+                                <option value="IA">IA</option>
+                                <option value="KS">KS</option>
+                                <option value="KY">KY</option>
+                                <option value="LA">LA</option>
+                                <option value="ME">ME</option>
+                                <option value="MD">MD</option>
+                                <option value="MA">MA</option>
+                                <option value="MI">MI</option>
+                                <option value="MN">MN</option>
+                                <option value="MS">MS</option>
+                                <option value="MO">MO</option>
+                                <option value="MT">MT</option>
+                                <option value="NE">NE</option>
+                                <option value="NV">NV</option>
+                                <option value="NH">NH</option>
+                                <option value="NJ">NJ</option>
+                                <option value="NM">NM</option>
+                                <option value="NY">NY</option>
+                                <option value="NC">NC</option>
+                                <option value="ND">ND</option>
+                                <option value="OH">OH</option>
+                                <option value="OK">OK</option>
+                                <option value="OR">OR</option>
+                                <option value="PA">PA</option>
+                                <option value="RI">RI</option>
+                                <option value="SC">SC</option>
+                                <option value="SD">SD</option>
+                                <option value="TN">TN</option>
+                                <option value="TX">TX</option>
+                                <option value="UT">UT</option>
+                                <option value="VT">VT</option>
+                                <option value="VA">VA</option>
+                                <option value="WA">WA</option>
+                                <option value="WV">WV</option>
+                                <option value="WI">WI</option>
+                                <option value="WY">WY</option>
+                                <option value="AL">AL</option>
+                                <option value="AK">AK</option>
+                                <option value="AZ">AZ</option>
+                                <option value="AR">AR</option>
+                                <option value="CA">CA</option>
+                                <option value="CO">CO</option>
+                                <option value="CT">CT</option>
+                                <option value="DE">DE</option>
+                                <option value="FL">FL</option>
+                                <option value="GA">GA</option>
+                                <option value="HI">HI</option>
+                                <option value="ID">ID</option>
+                                <option value="IL">IL</option>
+                                <option value="IN">IN</option>
+                                <option value="IA">IA</option>
+                                <option value="KS">KS</option>
+                                <option value="KY">KY</option>
+                                <option value="LA">LA</option>
+                                <option value="ME">ME</option>
+                                <option value="MD">MD</option>
+                                <option value="MA">MA</option>
+                                <option value="MI">MI</option>
+                                <option value="MN">MN</option>
+                                <option value="MS">MS</option>
+                                <option value="MO">MO</option>
+                                <option value="MT">MT</option>
+                                <option value="NE">NE</option>
+                                <option value="NV">NV</option>
+                                <option value="NH">NH</option>
+                                <option value="NJ">NJ</option>
+                                <option value="NM">NM</option>
+                                <option value="NY">NY</option>
+                                <option value="NC">NC</option>
+                                <option value="ND">ND</option>
+                                <option value="OH">OH</option>
+                                <option value="OK">OK</option>
+                                <option value="OR">OR</option>
+                                <option value="PA">PA</option>
+                                <option value="RI">RI</option>
+                                <option value="SC">SC</option>
+                                <option value="SD">SD</option>
+                                <option value="TN">TN</option>
+                                <option value="TX">TX</option>
+                                <option value="UT">UT</option>
+                                <option value="VT">VT</option>
+                                <option value="VA">VA</option>
+                                <option value="WA">WA</option>
+                                <option value="WV">WV</option>
+                                <option value="WI">WI</option>
+                                <option value="WY">WY</option>
+                            </select>
+                            <label for="zip">Zip Code:</label>
+                            <input id="zip" type="text" name="zip" />
+                        </div>
+                    </div>
+                </div>
+                <!-- Representative -->
+                <div class="row">
+                    <div class="representative">
+                        <div class="col">
+                            <label for="firstName">First Name:</label>
+                            <input id="firstName" type="text" name="firstName" />
+                            <br>
+                            <label for="lastName">Last Name:</label>
+                            <input id="lastName" type="text" name="lastName" />
+                        </div>
+                        <div class="col">
+                            <label for="email">Email:</label>
+                            <input id="email" type="text" name="email" />
+                            <br>
+                            <label for="phone">Phone:</label>
+                            <input id="phone" type="text" name="phone" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="comments">
+                        <label for="comments">Comments:</label>
+                        <textarea rows="4" cols="50" name="comment" form="usrform"></textarea>
                     </div>
                 </div>
                 <!-- Buttons -->
                 <div class="row">
-                    <div class="left">
+                    <div class="col">
                         <input type="submit" value="Create" />
                     </div>
-                    <div class="right">
+                    <div class="col">
                         <input type="reset" value="Reset" />
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    
-    </body>
+    <!-- Scripts -->
+    <script src="js/classie.js"></script>
+    <script src="js/gnmenu.js"></script>
+    <script>
+        new gnMenu(document.getElementById('gn-menu'));
+    </script>
+</body>
+
 </html>

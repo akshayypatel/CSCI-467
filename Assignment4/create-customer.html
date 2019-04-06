@@ -11,6 +11,18 @@
     <meta name="description" content="RFQ System for CSCI 467 at NIU">
     <meta name="keywords" content="CSCI467, NIU, RFQ-System">
     <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="vendor/noui/nouislider.min.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="css/create-customer.css" />
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
@@ -43,303 +55,211 @@
         </ul>
 
     </div>
-    <!-- Form -->
-    <div class="container-fluid">
-        <div class="container-customer-page">
-            <form method="POST" action="/page.php">
-                <!-- First row -->
-                <div class="row center">
-                    <div class="col">
-                        <label for="CompanyName">Company Name</label>
-                        <input id="CompanyName" type="text" name="company_name" />
-                    </div>
-                    <div class="col">
-                        <label for="quote_type">Quote Type</label>
-                        <input type="radio" name="quote-type" value="auto" />Auto
-                        <input type="radio" name="quote-type" value="manual" />Manual
-                    </div>
+
+    <div class="container-contact100">
+        <div class="wrap-contact100">
+            <form class="contact100-form validate-form">
+                
+                <span class="contact100-form-title">
+                    Create New Customer
+                </span>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Company Name</span>
+                    <input class="input100" type="text" name="name" placeholder="Enter Company Name">
                 </div>
-                <!-- Address -->
-                <div class="row">
-                    <div class="col">
-                        <!-- Billing address -->
-                        <div class="billing-address">
-                            <p>Billing Address</p>
-                            <label for="street">Street:</label>
-                            <input id="street" type="text" name="street" />
-                            <br />
-                            <label for="city">City:</label>
-                            <input id="city" type="text" name="city" />
-                            <br />
-                            <label for="state">State:</label>
-                            <select name="states">
-                                <option value="AL">AL</option>
-                                <option value="AK">AK</option>
-                                <option value="AZ">AZ</option>
-                                <option value="AR">AR</option>
-                                <option value="CA">CA</option>
-                                <option value="CO">CO</option>
-                                <option value="CT">CT</option>
-                                <option value="DE">DE</option>
-                                <option value="FL">FL</option>
-                                <option value="GA">GA</option>
-                                <option value="HI">HI</option>
-                                <option value="ID">ID</option>
-                                <option value="IL">IL</option>
-                                <option value="IN">IN</option>
-                                <option value="IA">IA</option>
-                                <option value="KS">KS</option>
-                                <option value="KY">KY</option>
-                                <option value="LA">LA</option>
-                                <option value="ME">ME</option>
-                                <option value="MD">MD</option>
-                                <option value="MA">MA</option>
-                                <option value="MI">MI</option>
-                                <option value="MN">MN</option>
-                                <option value="MS">MS</option>
-                                <option value="MO">MO</option>
-                                <option value="MT">MT</option>
-                                <option value="NE">NE</option>
-                                <option value="NV">NV</option>
-                                <option value="NH">NH</option>
-                                <option value="NJ">NJ</option>
-                                <option value="NM">NM</option>
-                                <option value="NY">NY</option>
-                                <option value="NC">NC</option>
-                                <option value="ND">ND</option>
-                                <option value="OH">OH</option>
-                                <option value="OK">OK</option>
-                                <option value="OR">OR</option>
-                                <option value="PA">PA</option>
-                                <option value="RI">RI</option>
-                                <option value="SC">SC</option>
-                                <option value="SD">SD</option>
-                                <option value="TN">TN</option>
-                                <option value="TX">TX</option>
-                                <option value="UT">UT</option>
-                                <option value="VT">VT</option>
-                                <option value="VA">VA</option>
-                                <option value="WA">WA</option>
-                                <option value="WV">WV</option>
-                                <option value="WI">WI</option>
-                                <option value="WY">WY</option>
-                                <option value="AL">AL</option>
-                                <option value="AK">AK</option>
-                                <option value="AZ">AZ</option>
-                                <option value="AR">AR</option>
-                                <option value="CA">CA</option>
-                                <option value="CO">CO</option>
-                                <option value="CT">CT</option>
-                                <option value="DE">DE</option>
-                                <option value="FL">FL</option>
-                                <option value="GA">GA</option>
-                                <option value="HI">HI</option>
-                                <option value="ID">ID</option>
-                                <option value="IL">IL</option>
-                                <option value="IN">IN</option>
-                                <option value="IA">IA</option>
-                                <option value="KS">KS</option>
-                                <option value="KY">KY</option>
-                                <option value="LA">LA</option>
-                                <option value="ME">ME</option>
-                                <option value="MD">MD</option>
-                                <option value="MA">MA</option>
-                                <option value="MI">MI</option>
-                                <option value="MN">MN</option>
-                                <option value="MS">MS</option>
-                                <option value="MO">MO</option>
-                                <option value="MT">MT</option>
-                                <option value="NE">NE</option>
-                                <option value="NV">NV</option>
-                                <option value="NH">NH</option>
-                                <option value="NJ">NJ</option>
-                                <option value="NM">NM</option>
-                                <option value="NY">NY</option>
-                                <option value="NC">NC</option>
-                                <option value="ND">ND</option>
-                                <option value="OH">OH</option>
-                                <option value="OK">OK</option>
-                                <option value="OR">OR</option>
-                                <option value="PA">PA</option>
-                                <option value="RI">RI</option>
-                                <option value="SC">SC</option>
-                                <option value="SD">SD</option>
-                                <option value="TN">TN</option>
-                                <option value="TX">TX</option>
-                                <option value="UT">UT</option>
-                                <option value="VT">VT</option>
-                                <option value="VA">VA</option>
-                                <option value="WA">WA</option>
-                                <option value="WV">WV</option>
-                                <option value="WI">WI</option>
-                                <option value="WY">WY</option>
-                            </select>
-                            <label for="zip">Zip Code:</label>
-                            <input id="zip" type="text" name="zip" />
+
+                <div class="w-full js-show-service rs1-wrap-input100">
+                    <div class="wrap-contact100-form-radio">
+                        <div class="contact100-form-radio m-t-15">
+                            <input class="input-radio100" id="radio1" type="radio" name="type-product" value="physical" checked="checked">
+                            <label class="label-radio100" for="radio1">
+                                Auto Quote
+                            </label>
                         </div>
-                    </div>
-                    <div class="col">
-                        <!-- Shipping address -->
-                        <div class="shipping-address">
-                            <p>Shipping Address</p>
-                            <input type="checkbox" name="sameAsBilling" value="true">Same as Billing<br>
-                            <label for="street">Street:</label>
-                            <input id="street" type="text" name="street" />
-                            <br />
-                            <label for="city">City:</label>
-                            <input id="city" type="text" name="city" />
-                            <br />
-                            <label for="state">State:</label>
-                            <select name="states">
-                                <option value="AL">AL</option>
-                                <option value="AK">AK</option>
-                                <option value="AZ">AZ</option>
-                                <option value="AR">AR</option>
-                                <option value="CA">CA</option>
-                                <option value="CO">CO</option>
-                                <option value="CT">CT</option>
-                                <option value="DE">DE</option>
-                                <option value="FL">FL</option>
-                                <option value="GA">GA</option>
-                                <option value="HI">HI</option>
-                                <option value="ID">ID</option>
-                                <option value="IL">IL</option>
-                                <option value="IN">IN</option>
-                                <option value="IA">IA</option>
-                                <option value="KS">KS</option>
-                                <option value="KY">KY</option>
-                                <option value="LA">LA</option>
-                                <option value="ME">ME</option>
-                                <option value="MD">MD</option>
-                                <option value="MA">MA</option>
-                                <option value="MI">MI</option>
-                                <option value="MN">MN</option>
-                                <option value="MS">MS</option>
-                                <option value="MO">MO</option>
-                                <option value="MT">MT</option>
-                                <option value="NE">NE</option>
-                                <option value="NV">NV</option>
-                                <option value="NH">NH</option>
-                                <option value="NJ">NJ</option>
-                                <option value="NM">NM</option>
-                                <option value="NY">NY</option>
-                                <option value="NC">NC</option>
-                                <option value="ND">ND</option>
-                                <option value="OH">OH</option>
-                                <option value="OK">OK</option>
-                                <option value="OR">OR</option>
-                                <option value="PA">PA</option>
-                                <option value="RI">RI</option>
-                                <option value="SC">SC</option>
-                                <option value="SD">SD</option>
-                                <option value="TN">TN</option>
-                                <option value="TX">TX</option>
-                                <option value="UT">UT</option>
-                                <option value="VT">VT</option>
-                                <option value="VA">VA</option>
-                                <option value="WA">WA</option>
-                                <option value="WV">WV</option>
-                                <option value="WI">WI</option>
-                                <option value="WY">WY</option>
-                                <option value="AL">AL</option>
-                                <option value="AK">AK</option>
-                                <option value="AZ">AZ</option>
-                                <option value="AR">AR</option>
-                                <option value="CA">CA</option>
-                                <option value="CO">CO</option>
-                                <option value="CT">CT</option>
-                                <option value="DE">DE</option>
-                                <option value="FL">FL</option>
-                                <option value="GA">GA</option>
-                                <option value="HI">HI</option>
-                                <option value="ID">ID</option>
-                                <option value="IL">IL</option>
-                                <option value="IN">IN</option>
-                                <option value="IA">IA</option>
-                                <option value="KS">KS</option>
-                                <option value="KY">KY</option>
-                                <option value="LA">LA</option>
-                                <option value="ME">ME</option>
-                                <option value="MD">MD</option>
-                                <option value="MA">MA</option>
-                                <option value="MI">MI</option>
-                                <option value="MN">MN</option>
-                                <option value="MS">MS</option>
-                                <option value="MO">MO</option>
-                                <option value="MT">MT</option>
-                                <option value="NE">NE</option>
-                                <option value="NV">NV</option>
-                                <option value="NH">NH</option>
-                                <option value="NJ">NJ</option>
-                                <option value="NM">NM</option>
-                                <option value="NY">NY</option>
-                                <option value="NC">NC</option>
-                                <option value="ND">ND</option>
-                                <option value="OH">OH</option>
-                                <option value="OK">OK</option>
-                                <option value="OR">OR</option>
-                                <option value="PA">PA</option>
-                                <option value="RI">RI</option>
-                                <option value="SC">SC</option>
-                                <option value="SD">SD</option>
-                                <option value="TN">TN</option>
-                                <option value="TX">TX</option>
-                                <option value="UT">UT</option>
-                                <option value="VT">VT</option>
-                                <option value="VA">VA</option>
-                                <option value="WA">WA</option>
-                                <option value="WV">WV</option>
-                                <option value="WI">WI</option>
-                                <option value="WY">WY</option>
-                            </select>
-                            <label for="zip">Zip Code:</label>
-                            <input id="zip" type="text" name="zip" />
+                        <div class="contact100-form-radio m-t-15">
+                            <input class="input-radio100" id="radio2" type="radio" name="type-product" value="digital">
+                            <label class="label-radio100" for="radio2">
+                                Manual Quote
+                            </label>
                         </div>
                     </div>
                 </div>
-                <!-- Representative -->
-                <div class="row">
-                    <div class="representative">
-                        <p>Representative Information</p>
-                        <div class="inline">
-                            <label for="firstName">First Name:</label>
-                            <input id="firstName" type="text" name="firstName" />
-                            <label for="lastName">Last Name:</label>
-                            <input id="lastName" type="text" name="lastName" />
-                        </div>
-                        <br>
-                        <div class="inline">
-                            <label for="email">Email:</label>
-                            <input id="email" type="text" name="email" />
-                            <label for="phone">Phone:</label>
-                            <input id="phone" type="text" name="phone" />
-                        </div>
+
+                <div class="line-break">
+                    <span class="line-break-label">Billing Information</span>
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Street</span>
+                    <input class="input100" type="text" name="billing-street" placeholder="Enter Street Address">
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">City</span>
+                    <input class="input100" type="text" name="billing-city" placeholder="Enter City">
+                </div>
+
+                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+                    <span class="label-input100">State</span>
+                    <div>
+                        <select class="js-select2" name="billing-state">
+                            <option disabled selected value></option>
+                            <option>ID</option>
+                            <option>IL</option>
+                            <option>IN</option>
+                            <option>IO</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="comments">
-                        <label for="comments">Comments:</label>
-                        <textarea rows="4" cols="50" name="comment" form="usrform"></textarea>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Zip Code</span>
+                    <input class="input100" type="number" name="billing-zip" placeholder="Enter Zip Code">
+                </div>
+
+                <div class="line-break">
+                    <span class="line-break-label">Shipping Information</span>
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Street</span>
+                    <input class="input100" type="text" name="shipping-street" placeholder="Enter Street Address">
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">City</span>
+                    <input class="input100" type="text" name="shipping-city" placeholder="Enter City">
+                </div>
+
+                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+                    <span class="label-input100">State</span>
+                    <div>
+                        <select class="js-select2" name="shipping-state">
+                            <option disabled selected value></option>
+                            <option>ID</option>
+                            <option>IL</option>
+                            <option>IN</option>
+                            <option>IO</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
                     </div>
                 </div>
-                <!-- Buttons -->
-                <div class="row">
-                    <div class="col">
-                        <input type="submit" value="Create" />
-                    </div>
-                    <div class="col">
-                        <input type="reset" value="Reset" />
-                    </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Zip Code</span>
+                    <input class="input100" type="number" name="shipping-zip" placeholder="Enter Zip Code">
+                </div>
+
+                <div class="line-break">
+                    <span class="line-break-label">Representative</span>
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">First Name</span>
+                    <input class="input100" type="text" name="representative-first-name" placeholder="Enter First Name">
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Last Name</span>
+                    <input class="input100" type="text" name="representative-last-name" placeholder="Enter Last Name">
+                </div>
+
+                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email (e@a.x)">
+                    <span class="label-input100">Email *</span>
+                    <input class="input100" type="text" name="email" placeholder="Enter Email ">
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Phone</span>
+                    <input class="input100" type="text" name="phone" placeholder="Enter Phone Number">
+                </div>
+
+                <div class="wrap-input100 bg1">
+                    <span class="label-input100">Comments</span>
+                    <textarea class="input100" name="comments" placeholder="Enter Comments"></textarea>
+                </div>
+
+                <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn">
+                        <span>
+                            Clear
+                        </span>
+                    </button>
+                    <button class="contact100-form-btn">
+                        <span>
+                            Create
+                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                        </span>
+                    </button>
                 </div>
             </form>
         </div>
     </div>
+
+    
     <!-- Scripts -->
     <script src="js/classie.js"></script>
     <script src="js/gnmenu.js"></script>
     <script>
         new gnMenu(document.getElementById('gn-menu'));
     </script>
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script>
+        $(".js-select2").each(function(){
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+
+
+            $(".js-select2").each(function(){
+                $(this).on('select2:close', function (e){
+                    if($(this).val() == "Please chooses") {
+                        $('.js-show-service').slideUp();
+                    }
+                    else {
+                        $('.js-show-service').slideUp();
+                        $('.js-show-service').slideDown();
+                    }
+                });
+            });
+        })
+    </script>
+
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <script src="vendor/noui/nouislider.min.js"></script>
+    <script>
+        var filterBar = document.getElementById('filter-bar');
+
+        noUiSlider.create(filterBar, {
+            start: [ 1500, 3900 ],
+            connect: true,
+            range: {
+                'min': 1500,
+                'max': 7500
+            }
+        });
+
+        var skipValues = [
+        document.getElementById('value-lower'),
+        document.getElementById('value-upper')
+        ];
+
+        filterBar.noUiSlider.on('update', function( values, handle ) {
+            skipValues[handle].innerHTML = Math.round(values[handle]);
+            $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
+            $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
+        });
+    </script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RFQ System</title>
+    <meta name="author-1" content="Akshay Patel">
+    <meta name="author-2" content="Gonzalo Pantoja">
+    <meta name="description" content="RFQ System for CSCI 467 at NIU">
+    <meta name="keywords" content="CSCI467, NIU, RFQ-System">
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="create-customer.css" type="text/css">
+</head>
+
+<body>
+    <div class="conatiner-fluid center">
+        <div class="container center">
+            <form method="POST" action="/page.php">
+                <!-- First row -->
+                <div class="row">
+                    <div class="left">
+                        <label for="name">Company Name</label>
+                        <input id="name" type="text" name="company_name" />
+                    </div>
+                    <div class="right">
+                        <label for="quote_type">Quote Type</label>
+                        <input type="radio" name="auto" value="auto" checked>Auto
+                        <input type="radio" name="manual" value="manual">Manual
+                    </div>
+                </div>
+                <!-- Address -->
+                <div class="row">
+                    <div class="left">
+                        <p>Billing Address</p>
+                        <div class="billing-address">
+                            <label for="street">Street:</label>
+                            <input id="street" type="text" name="street" />
+                            <br />
+                            <label for="city">City:</label>
+                            <input id="city" type="text" name="city" />
+                        </div>
+                    </div>
+                    <div class="right">
+
+                    </div>
+                </div>
+                <!-- Buttons -->
+                <div class="row">
+                    <div class="left">
+                        <input type="submit" value="Create" />
+                    </div>
+                    <div class="right">
+                        <input type="reset" value="Reset" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</body>
+
+</html>

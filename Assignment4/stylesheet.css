@@ -2,3 +2,41 @@ body {
 	width: 100vw;
 	height: 100vh;
 }
+
+.center {
+	justify-content: center;
+	align-items: center;
+}
+
+.container-fluid {
+	display: flex;
+	flex-direction: column;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.row {
+	flex: 1;
+	display: flex;
+}
+
+.left {
+	flex: 1;
+}
+
+.right {
+	flex: 1;
+}
+
+/* Form styles */
+.billing-address {
+	padding: 5px;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+}

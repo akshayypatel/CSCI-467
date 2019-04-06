@@ -10,3 +10,11 @@
 	border-color: black;
 	border-width: 1px;
 }
+
+#street, #city, #firstName, #lastName, #email {
+	margin: 5px 0px;
+}
+
+select {
+	margin: 5px 0px;
+}

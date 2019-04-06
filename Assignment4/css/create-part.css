@@ -16,3 +16,11 @@
 .top .barcode {
 	display: inline-block;
 }
+
+.images {
+	height: 50px;
+	width: 50px;
+	display: inline-block;
+	margin: 0px 5px;
+	background-color: black;
+}

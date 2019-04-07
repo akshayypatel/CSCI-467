@@ -15,6 +15,18 @@ CREATE TABLE customer_account(
 	PRIMARY KEY (customerID)
 );
 
+DESCRIBE customer_account;
+-- +---------------------+----------+------+-----+---------+----------------+
+-- | Field               | Type     | Null | Key | Default | Extra          |
+-- +---------------------+----------+------+-----+---------+----------------+
+-- | customerID          | int(6)   | NO   | PRI | NULL    | auto_increment |
+-- | companyName         | tinytext | NO   |     | NULL    |                |
+-- | quoteType           | tinytext | NO   |     | NULL    |                |
+-- | managerEmailAddress | tinytext | NO   |     | NULL    |                |
+-- | managerPhoneNumber  | tinytext | NO   |     | NULL    |                |
+-- | password            | tinytext | NO   |     | NULL    |                |
+-- +---------------------+----------+------+-----+---------+----------------+
+
 CREATE TABLE address(
 	addressID int(6) NOT NULL AUTO_INCREMENT,
 	customerID int(6) NOT NULL,
@@ -27,6 +39,19 @@ CREATE TABLE address(
 	FOREIGN KEY (customerID) REFERENCES customer_account(customerID)
 );
 
+DESCRIBE address;
+-- +-------------+----------+------+-----+---------+----------------+
+-- | Field       | Type     | Null | Key | Default | Extra          |
+-- +-------------+----------+------+-----+---------+----------------+
+-- | addressID   | int(6)   | NO   | PRI | NULL    | auto_increment |
+-- | customerID  | int(6)   | NO   | PRI | NULL    |                |
+-- | addressType | tinytext | NO   |     | NULL    |                |
+-- | street      | tinytext | NO   |     | NULL    |                |
+-- | city        | tinytext | NO   |     | NULL    |                |
+-- | state       | tinytext | NO   |     | NULL    |                |
+-- | zipCode     | tinytext | NO   |     | NULL    |                |
+-- +-------------+----------+------+-----+---------+----------------+
+
 CREATE TABLE customer_representative (
 	repID INT(6) NOT NULL AUTO_INCREMENT,
 	phoneNumber TEXT(12) NOT NULL,
@@ -37,6 +62,18 @@ CREATE TABLE customer_representative (
 	PRIMARY KEY (repID, customerID),
 	FOREIGN KEY (customerID) REFERENCES customer_account(customerID));
 );
+
+DESCRIBE customer_representative;
+-- +-------------+----------+------+-----+---------+----------------+
+-- | Field       | Type     | Null | Key | Default | Extra          |
+-- +-------------+----------+------+-----+---------+----------------+
+-- | repID       | int(6)   | NO   | PRI | NULL    | auto_increment |
+-- | phoneNumber | tinytext | NO   |     | NULL    |                |
+-- | firstName   | tinytext | NO   |     | NULL    |                |
+-- | lastName    | tinytext | NO   |     | NULL    |                |
+-- | email       | tinytext | NO   |     | NULL    |                |
+-- | customerID  | int(6)   | NO   | PRI | NULL    |                |
+-- +-------------+----------+------+-----+---------+----------------+
 
 CREATE TABLE inventory_part (
 	partID INT(12) NOT NULL AUTO_INCREMENT,
@@ -50,3 +87,17 @@ CREATE TABLE inventory_part (
 );
 
 ALTER TABLE inventory_part AUTO_INCREMENT = 1001;
+
+DESCRIBE inventory_part;
+
+-- +-------------------+----------+------+-----+---------+----------------+
+-- | Field             | Type     | Null | Key | Default | Extra          |
+-- +-------------------+----------+------+-----+---------+----------------+
+-- | partID            | int(12)  | NO   | PRI | NULL    | auto_increment |
+-- | partName          | tinytext | NO   |     | NULL    |                |
+-- | partDescription   | tinytext | NO   |     | NULL    |                |
+-- | quantity          | int(6)   | NO   |     | NULL    |                |
+-- | listingPrice      | int(6)   | NO   |     | NULL    |                |
+-- | manufacturer_name | tinytext | NO   |     | NULL    |                |
+-- | comments          | tinytext | NO   |     | NULL    |                |
+-- +-------------------+----------+------+-----+---------+----------------+

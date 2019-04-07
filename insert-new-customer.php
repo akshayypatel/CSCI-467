@@ -6,14 +6,14 @@
 	$customer_password = date("h:i:sa");
 
     // Insert new account
-	$result = $pdo->prepare("INSERT INTO customer_account (companyName, quoteType, managerEmailAddress, managerPhoneNumber, password) VALUES (?, ?, ?, ?, ?);");
+	$result = $pdo->prepare("INSERT INTO customer_account (companyName, quoteType, managerEmailAddress, managerPhoneNumber, password, comments) VALUES (?, ?, ?, ?, ?, ?);");
 	
 	$managerEmailAddress = "apate29@niu.edu";
 	$managerPhoneNumber = "8159314345";
 	
-	if (isset( $_POST['company-name'], $_POST['quote-type']))
+	if (isset( $_POST['company-name'], $_POST['quote-type'], $_POST['comments']))
 	{	
-		$result->execute(array($_POST['company-name'], $_POST['quote-type'], $managerEmailAddress, $managerPhoneNumber, $customer_password));
+		$result->execute(array($_POST['company-name'], $_POST['quote-type'], $managerEmailAddress, $managerPhoneNumber, $customer_password, $_POST['comments']));
     } 
     else {
 		header("Location: error.html");
@@ -48,6 +48,7 @@
 	if (isset( $_POST['phone'], $_POST['representative-first-name'], $_POST['representative-last-name'], $_POST['email'] ))
 	{	
 		$result->execute(array( $_POST['phone'], $_POST['representative-first-name'], $_POST['representative-last-name'], $_POST['email'] ));
+		header("Location: create-customer.html");
     } 
     else {
 		header("Location: error.html");

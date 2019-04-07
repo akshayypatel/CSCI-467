@@ -7,5 +7,5 @@
 		$results->execute(array($_POST['part-name'], $_POST['part-description'], $_POST['quantity'], $_POST['listing-price'], $_POST['manufacturer'] ));
     }
     // Redirect to success page
-	header("Location: successful.html");
+	header("Location: create-part.php");
 ?>

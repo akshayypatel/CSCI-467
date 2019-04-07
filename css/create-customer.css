@@ -53,3 +53,31 @@ select {
 .select2-container .select2-selection--single .select2-selection__rendered {
 	color: #555555;
 }
+
+.addShipping, .removeShipping {
+	cursor: pointer;
+}
+
+input[type=checkbox] {
+	display: none;
+}
+
+input[type=checkbox] ~ .removeShipping {
+	display: none;
+}
+
+input[type=checkbox] ~ .view {
+	display: none;
+}
+
+input[type=checkbox]:checked ~ .view {
+	display: block;
+}
+
+input[type=checkbox]:checked ~ .removeShipping {
+	display: block;
+}
+
+input[type=checkbox]:checked ~ .addShipping {
+	display: none;
+}

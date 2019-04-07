@@ -1,5 +1,7 @@
 <?php
-	include('secret.php');		// Import sql credentials
+	$dsn = "mysql:host=courses;dbname=z1785771";
+	$username = "z1785771";
+	$password = "1995Jan10";
 	$pdo = new PDO($dsn, $username, $password);
 	
 	// Save current time as temp password
@@ -31,15 +33,32 @@
 		header("Location: error.html");
 	}
 
-	//insert shipping address
-	$result = $pdo->prepare("INSERT INTO address (customerID, addressType, street, city, state, zipCode) VALUES ((SELECT MAX(customerID) FROM customer_account), ?, ?, ?, ?, ?);");
+	if (isset($_POST['shipping']))
+	{
+		//insert shipping address
+		$result = $pdo->prepare("INSERT INTO address (customerID, addressType, street, city, state, zipCode) VALUES ((SELECT MAX(customerID) FROM customer_account), ?, ?, ?, ?, ?);");
 
-	if (isset( $_POST['shipping-street'], $_POST['shipping-city'], $_POST['shipping-state'], $_POST['shipping-zip']))
-	{	
-		$result->execute(array("Shipping", $_POST['shipping-street'], $_POST['shipping-city'], $_POST['shipping-state'], $_POST['shipping-zip'] ));
-    } 
-    else {
-		header("Location: error.html");
+		if (isset( $_POST['shipping-street'], $_POST['shipping-city'], $_POST['shipping-state'], $_POST['shipping-zip']))
+		{	
+			$result->execute(array("Shipping", $_POST['shipping-street'], $_POST['shipping-city'], $_POST['shipping-state'], $_POST['shipping-zip'] ));
+	    } 
+	    else {
+			header("Location: error.html");
+		}
+	
+	} else {
+
+		$result = $pdo->prepare("INSERT INTO address (customerID, addressType, street, city, state, zipCode) VALUES ((SELECT MAX(customerID) FROM customer_account), ?, ?, ?, ?, ?);");
+
+		if (isset( $_POST['billing-street'], $_POST['billing-city'], $_POST['billing-state'], $_POST['billing-zip']))
+		{	
+			$result->execute(array("Shipping", $_POST['billing-street'], $_POST['billing-city'], $_POST['billing-state'], $_POST['billing-zip'] ));
+
+	    } 
+	    else {
+			header("Location: error.html");
+		}
+
 	}
 
 	//insert representative

@@ -101,3 +101,6 @@ DESCRIBE inventory_part;
 -- | manufacturer_name | tinytext | NO   |     | NULL    |                |
 -- | comments          | tinytext | NO   |     | NULL    |                |
 -- +-------------------+----------+------+-----+---------+----------------+
+
+
+INSERT INTO inventory_part (partName, partDescription, quantity, listingPrice, manufacturer_name, comments) VALUES ("testing part one", "just a test", 10, 2, "Amazon", "Big commpany");

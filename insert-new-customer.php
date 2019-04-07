@@ -1,7 +1,5 @@
 <?php
-	$dsn = "mysql:host=courses;dbname=z1785771";
-	$username = "z1785771";
-	$password = "1995Jan10";
+	include('secret.php');		// Import sql credentials
 	$pdo = new PDO($dsn, $username, $password);
 	
 	// Save current time
@@ -16,8 +14,8 @@
 	}
 
 	// select * from customer_account where password = "10:16:25pm";
-	$results = $pdo->prepare("SELECT * FROM customer_account WHERE password = ?");
-	$results->execute(array($date));
+	// $results = $pdo->prepare("SELECT customerID FROM customer_account WHERE password = ?");
+	// $results->execute(array($date));
 
 
     // insert new address

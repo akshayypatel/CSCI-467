@@ -53,7 +53,7 @@
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form class="contact100-form validate-form" method="POST" action="insert-new-part.php">
 				<span class="contact100-form-title">
 					Create New Part
 				</span>
@@ -76,7 +76,7 @@
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Part Name</span>
-					<input class="input100" type="text" name="part-number" placeholder="Enter Part Number">
+					<input class="input100" type="text" name="part-name" placeholder="Enter Part Name">
 				</div>
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
@@ -117,8 +117,8 @@
 	</div>
 
 	<div class="buttons">
-		<button>Cancel</button>
-		<button>Create</button>
+		<button type="reset" value="Reset">Reset</button>
+		<button type="submit" value="Submit">Submit</button>
 	</div>
 
 	<script src="js/classie.js"></script>

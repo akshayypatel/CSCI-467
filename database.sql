@@ -27,6 +27,8 @@ DESCRIBE customer_account;
 -- | password            | tinytext | NO   |     | NULL    |                |
 -- +---------------------+----------+------+-----+---------+----------------+
 
+INSERT INTO customer_account (companyName, quoteType, managerEmailAddress, managerPhoneNumber, password) VALUES ("amazon", "auto", "gonzalo@gmail.com", "1234561105", "password");
+
 CREATE TABLE address(
 	addressID int(6) NOT NULL AUTO_INCREMENT,
 	customerID int(6) NOT NULL,
@@ -82,7 +84,6 @@ CREATE TABLE inventory_part (
 	quantity INT(6) NOT NULL,
 	listingPrice INT(6) NOT NULL,
 	manufacturer_name TEXT(50) NOT NULL,
-	comments TEXT(250) NOT NULL,
 	PRIMARY KEY (partID)
 );
 
@@ -99,5 +100,7 @@ DESCRIBE inventory_part;
 -- | quantity          | int(6)   | NO   |     | NULL    |                |
 -- | listingPrice      | int(6)   | NO   |     | NULL    |                |
 -- | manufacturer_name | tinytext | NO   |     | NULL    |                |
--- | comments          | tinytext | NO   |     | NULL    |                |
 -- +-------------------+----------+------+-----+---------+----------------+
+
+
+INSERT INTO inventory_part (partName, partDescription, quantity, listingPrice, manufacturer_name) VALUES ("testing part one", "just a test", 10, 2, "Amazon");

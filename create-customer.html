@@ -53,27 +53,28 @@
     <div class="container-contact100">
         <div class="wrap-contact100">
             <form class="contact100-form validate-form">
-                
+
                 <span class="contact100-form-title">
                     Create New Customer
                 </span>
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100">
                     <span class="label-input100">Company Name</span>
-                    <input class="input100" type="text" name="name" placeholder="Enter Company Name">
+                    <input class="input100" type="text" name="company-name" placeholder="Enter Company Name">
                 </div>
 
                 <div class="w-full js-show-service rs1-wrap-input100">
                     <div class="wrap-contact100-form-radio">
                         <div class="contact100-form-radio m-t-15">
-                            <input class="input-radio100" id="radio1" type="radio" name="type-product" value="physical" checked="checked">
-                            <label class="label-radio100" for="radio1">
+                            <input class="input-radio100" id="radio1" type="radio" name="type-product" value="physical"
+                                checked="checked">
+                            <label class="label-radio100" for="radio1" name="quote-type" value="auto">
                                 Auto Quote
                             </label>
                         </div>
                         <div class="contact100-form-radio m-t-15">
                             <input class="input-radio100" id="radio2" type="radio" name="type-product" value="digital">
-                            <label class="label-radio100" for="radio2">
+                            <label class="label-radio100" for="radio2" name="quote-type" value="manual">
                                 Manual Quote
                             </label>
                         </div>
@@ -255,7 +256,7 @@
                     <input class="input100" type="text" name="representative-last-name" placeholder="Enter Last Name">
                 </div>
 
-                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email (e@a.x)">
+                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate="Enter Your Email (e@a.x)">
                     <span class="label-input100">Email *</span>
                     <input class="input100" type="text" name="email" placeholder="Enter Email ">
                 </div>
@@ -287,7 +288,7 @@
         </div>
     </div>
 
-    
+
     <!-- Scripts -->
     <script src="js/classie.js"></script>
     <script src="js/gnmenu.js"></script>
@@ -297,7 +298,7 @@
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="vendor/select2/select2.min.js"></script>
     <script>
-        $(".js-select2").each(function(){
+        $(".js-select2").each(function () {
             $(this).select2({
                 minimumResultsForSearch: 20,
                 dropdownParent: $(this).next('.dropDownSelect2')

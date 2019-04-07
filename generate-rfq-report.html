@@ -10,8 +10,6 @@
     <meta name="author-2" content="Gonzalo Pantoja">
     <meta name="description" content="RFQ System for CSCI 467 at NIU">
     <meta name="keywords" content="CSCI467, NIU, RFQ-System">
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
@@ -128,14 +126,14 @@
                 </div>
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes">
-                    <input type="checkbox" id="part-number" name="part-number">
-                    <label class="line-break-label" for="part-number">Date Required</label>
+                    <input type="checkbox" id="date-required" name="date-required">
+                    <label class="line-break-label" for="date-required">Date Required</label>
                     <br>
-                    <input type="checkbox" id="part-number" name="part-description">
-                    <label class="line-break-label" for="part-description">Date Generated</label>
+                    <input type="checkbox" id="date-generated" name="date-generated">
+                    <label class="line-break-label" for="date-generated">Date Generated</label>
                     <br>
-                    <input type="checkbox" id="part-number" name="part-price">
-                    <label class="line-break-label" for="part-price">Comments</label>
+                    <input type="checkbox" id="comments" name="comments">
+                    <label class="line-break-label" for="comments">Comments</label>
                     <br>
                     <div class="sort-by">
                         <select class="js-select2" name="sort-by">
@@ -173,9 +171,6 @@
         new gnMenu(document.getElementById('gn-menu'));
     </script>
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="vendor/animsition/js/animsition.min.js"></script>
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendor/select2/select2.min.js"></script>
     <script>
         $(".js-select2").each(function(){

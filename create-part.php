@@ -73,11 +73,7 @@
 				</div>
 
 				<div class="w-full js-show-service rs1-wrap-input100">
-					<div class="wrap-contact100-form-radio">
-						<div class="contact100-form-radio m-t-15">
-							<svg id="barcode"></svg>
-						</div>
-					</div>
+					<svg id="barcode"></svg>
 				</div>
 
 				<div class="line-break">
@@ -138,8 +134,8 @@
 		JsBarcode("#barcode", "123456", {
 			format: "pharmacode",
 			lineColor: "#000",
-			width: 4,
-			height: 40,
+			width: 6,
+			height: 60,
 			displayValue: false,
 			background: "transparent"
 		});

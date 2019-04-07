@@ -12,6 +12,7 @@ CREATE TABLE customer_account(
 	managerEmailAddress TEXT(50) NOT NULL,
 	managerPhoneNumber TEXT(12) NOT NULL,
 	password TEXT(99) NOT NULL,
+	comments TEXT(300),
 	PRIMARY KEY (customerID)
 );
 
@@ -26,8 +27,6 @@ DESCRIBE customer_account;
 -- | managerPhoneNumber  | tinytext | NO   |     | NULL    |                |
 -- | password            | tinytext | NO   |     | NULL    |                |
 -- +---------------------+----------+------+-----+---------+----------------+
-
-INSERT INTO customer_account (companyName, quoteType, managerEmailAddress, managerPhoneNumber, password) VALUES ("amazon", "auto", "gonzalo@gmail.com", "1234561105", "password");
 
 CREATE TABLE address(
 	addressID int(6) NOT NULL AUTO_INCREMENT,
@@ -101,6 +100,3 @@ DESCRIBE inventory_part;
 -- | listingPrice      | int(6)   | NO   |     | NULL    |                |
 -- | manufacturer_name | tinytext | NO   |     | NULL    |                |
 -- +-------------------+----------+------+-----+---------+----------------+
-
-
-INSERT INTO inventory_part (partName, partDescription, quantity, listingPrice, manufacturer_name) VALUES ("testing part one", "just a test", 10, 2, "Amazon");

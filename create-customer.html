@@ -55,9 +55,8 @@
 
     <div class="container-contact100">
         <div class="wrap-contact100">
-            <form class="contact100-form validate-form">
-
-                <span class="contact100-form-title">
+            <form class="contact100-form validate-form" method="POST" action="insert-new-customer.php">
+                <span class=" contact100-form-title">
                     Create New Customer
                 </span>
 
@@ -69,14 +68,14 @@
                 <div class="w-full js-show-service rs1-wrap-input100">
                     <div class="wrap-contact100-form-radio">
                         <div class="contact100-form-radio m-t-15">
-                            <input class="input-radio100" id="radio1" type="radio" name="type-product" value="physical"
+                            <input class="input-radio100" id="radio1" type="radio" name="quote-type" value="auto"
                                 checked="checked">
                             <label class="label-radio100" for="radio1" name="quote-type" value="auto">
                                 Auto Quote
                             </label>
                         </div>
                         <div class="contact100-form-radio m-t-15">
-                            <input class="input-radio100" id="radio2" type="radio" name="type-product" value="digital">
+                            <input class="input-radio100" id="radio2" type="radio" name="quote-type" value="manual">
                             <label class="label-radio100" for="radio2" name="quote-type" value="manual">
                                 Manual Quote
                             </label>
@@ -275,12 +274,12 @@
                 </div>
 
                 <div class="container-contact100-form-btn">
-                    <button class="contact100-form-btn">
+                    <button class="contact100-form-btn" type="reset" value="Reset">
                         <span>
                             Clear
                         </span>
                     </button>
-                    <button class="contact100-form-btn">
+                    <button class="contact100-form-btn" type="submit" value="Submit">
                         <span>
                             Create
                             <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>

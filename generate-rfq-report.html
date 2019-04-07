@@ -109,94 +109,43 @@
                     <input class="input100" type="text" name="name" placeholder="50205" readonly>
                 </div>
 
-                <div class="line-break">
-                    <span class="line-break-label">Billing Information</span>
+                <div class="line-break center">
+                    <span class="line-break-label">Columns to be included</span>
                 </div>
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
-                    <span class="label-input100">Street</span>
-                    <input class="input100" type="text" name="billing-street" placeholder="Enter Street Address">
+                <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes">
+                    <input type="checkbox" id="part-number" name="part-number">
+                    <label class="line-break-label" for="part-number">Part Number</label>
+                    <br>
+                    <input type="checkbox" id="part-number" name="part-description">
+                    <label class="line-break-label" for="part-description">Part Description</label>
+                    <br>
+                    <input type="checkbox" id="part-number" name="part-price">
+                    <label class="line-break-label" for="part-price">Part Price</label>
+                    <br>
+                    <input type="checkbox" id="part-number" name="part-quantity">
+                    <label class="line-break-label" for="part-quantity">Part Quantity</label>
                 </div>
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
-                    <span class="label-input100">City</span>
-                    <input class="input100" type="text" name="billing-city" placeholder="Enter City">
-                </div>
-
-                
-
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
-                    <span class="label-input100">Zip Code</span>
-                    <input class="input100" type="number" name="billing-zip" placeholder="Enter Zip Code">
-                </div>
-
-                <div class="line-break">
-                    <input type="checkbox" id="ossm" name="ossm">
-                    <label class="line-break-label" for="ossm">Shipping Information -- check box if different</label>
-                </div>
-
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
-                    <span class="label-input100">Street</span>
-                    <input class="input100" type="text" name="shipping-street" placeholder="Enter Street Address">
-                </div>
-
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
-                    <span class="label-input100">City</span>
-                    <input class="input100" type="text" name="shipping-city" placeholder="Enter City">
-                </div>
-
-                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
-                    <span class="label-input100">State</span>
-                    <div>
-                        <select class="js-select2" name="shipping-state">
-                            <option disabled selected value>Type or Select State</option>
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="CA">California</option>
-                            <option value="CO">Colorado</option>
-                            <option value="CT">Connecticut</option>
-                            <option value="DE">Delaware</option>
-                            <option value="DC">District Of Columbia</option>
-                            <option value="FL">Florida</option>
+                <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes">
+                    <input type="checkbox" id="part-number" name="part-number">
+                    <label class="line-break-label" for="part-number">Date Required</label>
+                    <br>
+                    <input type="checkbox" id="part-number" name="part-description">
+                    <label class="line-break-label" for="part-description">Date Generated</label>
+                    <br>
+                    <input type="checkbox" id="part-number" name="part-price">
+                    <label class="line-break-label" for="part-price">Comments</label>
+                    <br>
+                    <div class="sort-by">
+                        <select class="js-select2" name="sort-by">
+                            <option disabled selected>Sort By</option>
+                            <option value="Quote Requested">Part Number</option>
+                            <option value="Quote Sent">Part Name</option>
+                            <option value="Order Received">Manufacturer</option>
                         </select>
                         <div class="dropDownSelect2"></div>
                     </div>
-                </div>
-
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
-                    <span class="label-input100">Zip Code</span>
-                    <input class="input100" type="number" name="shipping-zip" placeholder="Enter Zip Code">
-                </div>
-
-                <div class="line-break">
-                    <span class="line-break-label">Representative</span>
-                </div>
-
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
-                    <span class="label-input100">First Name</span>
-                    <input class="input100" type="text" name="representative-first-name" placeholder="Enter First Name">
-                </div>
-
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
-                    <span class="label-input100">Last Name</span>
-                    <input class="input100" type="text" name="representative-last-name" placeholder="Enter Last Name">
-                </div>
-
-                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email (e@a.x)">
-                    <span class="label-input100">Email *</span>
-                    <input class="input100" type="text" name="email" placeholder="Enter Email ">
-                </div>
-
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
-                    <span class="label-input100">Phone</span>
-                    <input class="input100" type="text" name="phone" placeholder="Enter Phone Number">
-                </div>
-
-                <div class="wrap-input100 bg1">
-                    <span class="label-input100">Comments</span>
-                    <textarea class="input100" name="comments" placeholder="Enter Comments"></textarea>
                 </div>
 
                 <div class="container-contact100-form-btn">
@@ -207,7 +156,7 @@
                     </button>
                     <button class="contact100-form-btn">
                         <span>
-                            Create
+                            Generate
                             <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
                         </span>
                     </button>

@@ -1,10 +1,3 @@
-/*!
- * Select2 4.0.3
- * https://select2.github.io
- *
- * Released under the MIT license
- * https://github.com/select2/select2/blob/master/LICENSE.md
- */
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -43,11 +36,7 @@
   }
 var S2;(function () { if (!S2 || !S2.requirejs) {
 if (!S2) { S2 = {}; } else { require = S2; }
-/**
- * @license almond 0.3.1 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
- * Available via the MIT or new BSD license.
- * see: http://github.com/jrburke/almond for details
- */
+
 //Going sloppy to avoid 'use strict' string cost, but strict practices should
 //be followed.
 /*jslint sloppy: true */
@@ -423,12 +412,6 @@ var requirejs, require, define;
         if (forceSync) {
             main(undef, deps, callback, relName);
         } else {
-            //Using a non-zero value because of concern for what old browsers
-            //do, and latest browsers "upgrade" to 4 if lower value is used:
-            //http://www.whatwg.org/specs/web-apps/current-work/multipage/timers.html#dom-windowtimers-settimeout:
-            //If want a value immediately, use require('id') instead -- something
-            //that works in almond on the global level, but not guaranteed and
-            //unlikely to work in other AMD implementations.
             setTimeout(function () {
                 main(undef, deps, callback, relName);
             }, 4);

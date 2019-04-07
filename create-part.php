@@ -24,6 +24,13 @@
 	<link rel="stylesheet" type="text/css" href="css/create-part.css" />
 	<script src="js/modernizr.custom.js"></script>
 	<script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
+	<?php
+		require ("secret.php");
+		$query = $pdo->query("SELECT partID FROM inventory_part WHERE partID = (SELECT MAX(partID) FROM inventory_part)");
+		$row = $query->fetch(PDO::FETCH_ASSOC);
+		$partID = $row['partID'];
+		$partID = $partID + 1;
+	?>
 </head>
 
 <body>
@@ -39,7 +46,7 @@
 								<a class="gn-icon gn-icon-search"><span>Search</span></a>
 							</li>
 							<li><a class="gn-icon gn-icon-download" href="create-customer.html">Create New Customer</a></li>
-							<li><a class="gn-icon gn-icon-cog" href="create-part.html">Create New Part</a></li>
+							<li><a class="gn-icon gn-icon-cog" href="create-part.phpl">Create New Part</a></li>
 							<li><a class="gn-icon gn-icon-help" href="request-quote.html">Request For Quote</a></li>
 							<li><a class="gn-icon gn-icon-help" href="generate-rfq-report.html">Generate RFQ Report</a></li>
 						</ul>
@@ -59,7 +66,10 @@
 				</span>
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Part Number:</span>
-					<input class="input100" type="text" name="name" placeholder="123456789" readonly>
+					<?php
+						echo '<input class="input100" type="text" name="name" placeholder="'.$partID.'" readonly>';
+				    ?>
+					
 				</div>
 
 				<div class="w-full js-show-service rs1-wrap-input100">

@@ -1,8 +1,5 @@
 <?php
-	$dsn = "mysql:host=courses;dbname=z1785771";
-	$username = "z1785771";
-	$password = "1995Jan10";
-	$pdo = new PDO($dsn, $username, $password);
+	require("secret.php");
 	
 	// Save current time as temp password
 	$customer_password = date("h:i:sa");

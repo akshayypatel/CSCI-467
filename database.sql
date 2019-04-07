@@ -27,6 +27,8 @@ DESCRIBE customer_account;
 -- | password            | tinytext | NO   |     | NULL    |                |
 -- +---------------------+----------+------+-----+---------+----------------+
 
+INSERT INTO customer_account (companyName, quoteType, managerEmailAddress, managerPhoneNumber, password) VALUES ("amazon", "auto", "gonzalo@gmail.com", "1234561105", "password");
+
 CREATE TABLE address(
 	addressID int(6) NOT NULL AUTO_INCREMENT,
 	customerID int(6) NOT NULL,

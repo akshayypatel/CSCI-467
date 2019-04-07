@@ -1,7 +1,5 @@
 <?php
-	$dsn = "mysql:host=courses;dbname=z1785771";
-	$username = "z1785771";
-	$password = "1995Jan10";
+	include('secret.php');		// Import sql credentials
 	$pdo = new PDO($dsn, $username, $password);
 				
 	$results = $pdo->prepare("INSERT INTO inventory_part (partName, partDescription, quantity, listingPrice, manufacturer_name) VALUES (?, ?, ?, ?, ?);");

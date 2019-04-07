@@ -17,10 +17,10 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="stylesheet.css" />
-    <link rel="stylesheet" type="text/css" href="css/create-customer.css" />
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <link rel="stylesheet" type="text/css" href="css/create-customer.css" />
     <script src="js/modernizr.custom.js"></script>
 </head>
 
@@ -160,22 +160,27 @@
                     <input class="input100" type="number" name="billing-zip" placeholder="Enter Zip Code">
                 </div>
 
-                <div class="line-break">
-                    <input type="checkbox" id="ossm" name="ossm">
-                    <label class="line-break-label" for="ossm">Shipping Information -- check box if different</label>
+                <div class="line-break"></div>
+
+                <input type="checkbox" id="shipping" name="shipping" class="shipping" value="true">
+                <label class="line-break-label addShipping" for="shipping">-------------------Click Here if Shipping Address is Different-------------------</label>
+                <label class="line-break-label removeShipping" for="shipping">-------------------Click Here if Shipping Address is the Same-------------------</label>
+
+                <div class="line-break view">
+                    <span class="line-break-label">Shipping Information</span>
                 </div>
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                <div class="wrap-input100 bg1 rs1-wrap-input100 view">
                     <span class="label-input100">Street</span>
                     <input class="input100" type="text" name="shipping-street" placeholder="Enter Street Address">
                 </div>
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                <div class="wrap-input100 bg1 rs1-wrap-input100 view">
                     <span class="label-input100">City</span>
                     <input class="input100" type="text" name="shipping-city" placeholder="Enter City">
                 </div>
 
-                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 view">
                     <span class="label-input100">State</span>
                     <div>
                         <select class="js-select2" name="shipping-state">
@@ -236,7 +241,7 @@
                     </div>
                 </div>
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                <div class="wrap-input100 bg1 rs1-wrap-input100 view">
                     <span class="label-input100">Zip Code</span>
                     <input class="input100" type="number" name="shipping-zip" placeholder="Enter Zip Code">
                 </div>

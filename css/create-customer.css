@@ -55,7 +55,9 @@ select {
 }
 
 .addShipping, .removeShipping {
+	width: 75vw;
 	cursor: pointer;
+	text-align: center;
 }
 
 input[type=checkbox] {

@@ -48,7 +48,6 @@
                     </div><!-- /gn-scroller -->
                 </nav>
             </li>
-            <li><a href="inventory-parts.php">Inventory Parts Database</a></li>
             <li><a href="../index.html">Home</a></li>
         </ul>
 

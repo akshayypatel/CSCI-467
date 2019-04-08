@@ -61,7 +61,7 @@ CREATE TABLE customer_representative (
 	email TEXT(50) NOT NULL,
 	customerID INT(6) NOT NULL,
 	PRIMARY KEY (repID, customerID),
-	FOREIGN KEY (customerID) REFERENCES customer_account(customerID));
+	FOREIGN KEY (customerID) REFERENCES customer_account(customerID)
 );
 
 DESCRIBE customer_representative;
@@ -100,3 +100,28 @@ DESCRIBE inventory_part;
 -- | listingPrice      | int(6)   | NO   |     | NULL    |                |
 -- | manufacturer_name | tinytext | NO   |     | NULL    |                |
 -- +-------------------+----------+------+-----+---------+----------------+
+
+CREATE TABLE request_for_quote (
+	rfqID INT(6) NOT NULL AUTO_INCREMENT,
+	requiredDate DATE NOT NULL,
+	quantity INT(6) NOT NULL,
+	partID int(12) NOT NULL,
+	customerID INT(6) NOT NULL,
+	PRIMARY KEY (rfqID, partID, customerID),
+	FOREIGN KEY (customerID) REFERENCES customer_account(customerID),
+	FOREIGN KEY (partID) REFERENCES inventory_part(partID)
+);
+
+DESCRIBE request_for_quote;
+
+-- +--------------+---------+------+-----+---------+----------------+
+-- | Field        | Type    | Null | Key | Default | Extra          |
+-- +--------------+---------+------+-----+---------+----------------+
+-- | rfqID        | int(6)  | NO   | PRI | NULL    | auto_increment |
+-- | requiredDate | date    | NO   |     | NULL    |                |
+-- | quantity     | int(6)  | NO   |     | NULL    |                |
+-- | partID       | int(12) | NO   | PRI | NULL    |                |
+-- | customerID   | int(6)  | NO   | PRI | NULL    |                |
+-- +--------------+---------+------+-----+---------+----------------+
+
+

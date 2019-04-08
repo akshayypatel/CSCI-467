@@ -1,5 +1,5 @@
 <?php
-	require("secret.php");
+	require("connect.php");
 	
 	// Save current time as temp password
 	$customer_password = date("h:i:sa");
@@ -15,7 +15,7 @@
 		$result->execute(array($_POST['company-name'], $_POST['quote-type'], $managerEmailAddress, $managerPhoneNumber, $customer_password, $_POST['comments']));
     } 
     else {
-		header("Location: error.html");
+		header("Location: ../pages/error.html");
 	}
 
 	//insert billing address
@@ -27,7 +27,7 @@
 
     } 
     else {
-		header("Location: error.html");
+		header("Location: ../pages/error.html");
 	}
 
 	if (isset($_POST['shipping']))
@@ -40,7 +40,7 @@
 			$result->execute(array("Shipping", $_POST['shipping-street'], $_POST['shipping-city'], $_POST['shipping-state'], $_POST['shipping-zip'] ));
 	    } 
 	    else {
-			header("Location: error.html");
+			header("Location: ../pages/error.html");
 		}
 	
 	} else {
@@ -53,7 +53,7 @@
 
 	    } 
 	    else {
-			header("Location: error.html");
+			header("Location: ../pages/error.html");
 		}
 
 	}
@@ -64,10 +64,10 @@
 	if (isset( $_POST['phone'], $_POST['representative-first-name'], $_POST['representative-last-name'], $_POST['email'] ))
 	{	
 		$result->execute(array( $_POST['phone'], $_POST['representative-first-name'], $_POST['representative-last-name'], $_POST['email'] ));
-		header("Location: create-customer.html");
+		header("Location: ../pages/create-customer.html");
     } 
     else {
-		header("Location: error.html");
+		header("Location: ../pages/error.html");
 	}
 
 ?>

@@ -24,10 +24,10 @@
     <script src="../js/modernizr.custom.js"></script>
     <?php
 		require ("../php-actions/connect.php");
-		$query = $pdo->query("SELECT partID FROM inventory_part WHERE partID = (SELECT MAX(partID) FROM inventory_part)");
+		$query = $pdo->query("SELECT rfqID FROM request_for_quote WHERE rfqID = (SELECT MAX(rfqID) FROM request_for_quote)");
 		$row = $query->fetch(PDO::FETCH_ASSOC);
-		$partID = $row['partID'];
-		$partID = $partID + 1;
+		$rfqID = $row['rfqID'];
+		$rfqID = $rfqID + 1;
 	?>
 </head>
 
@@ -67,90 +67,35 @@
 
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">RFQ ID</span>
-                    <div>
-                        <select class="js-select2" name="rfq-id">
-                            <option disabled selected>Select RFQ ID</option>
-                            <option value="101">101</option>
-                            <option value="102">102</option>
-                            <option value="103">103</option>
-                            <option value="104">104</option>
-                            <option value="105">105</option>
-                            <option value="106">106</option>
-                            <option value="107">107</option>
-                            <option value="108">108</option>
-                            <option value="109">109</option>
-                            <option value="110">110</option>
-                            <option value="111">111</option>
-                            <option value="112">112</option>
-                            <option value="113">113</option>
-                            <option value="114">114</option>
-                            <option value="115">115</option>
-                            <option value="116">116</option>
-                            <option value="117">117</option>
-                            <option value="118">118</option>
-                            <option value="119">119</option>
-                            <option value="120">120</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
-                    </div>
+                    <?php
+						echo '<input class="input100" type="text" name="name" placeholder="'.$rfqID.'" readonly>';
+				    ?>
                 </div>
 
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
-                    <span class="label-input100">Status</span>
-                    <div>
-                        <select class="js-select2" name="rfq-id">
-                            <option disabled selected>Current Status</option>
-                            <option value="Quote Requested">Quote Requested</option>
-                            <option value="Quote Sent">Quote Sent</option>
-                            <option value="Order Received">Order Received</option>
-                            <option value="Order Fulfilled">Order Fulfilled</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
-                    </div>
+                    <span class="label-input100">Quote Type</span>
+                    <input class="input100" type="text" name="name" placeholder="AUTO" readonly>
                 </div>
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
-                    <span class="label-input100">Customer ID</span>
-                    <input class="input100" type="text" name="name" placeholder="50205" readonly>
+                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                    <span class="label-input100">Customer ID: Company</span>
+                    <div>
+	                    <select class="js-select2" name="customerID">
+							<?php
+								$query = $pdo->query("SELECT companyName, customerID FROM customer_account");
+								echo '<option disabled selected>Select Company</option>';
+					    		while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
+					    		{
+					    			echo '<option value="' . $row['customerID'] . ' ' . $row['companyName'] . '" > ' . $row['customerID'] . ' : ' . $row['companyName'] .'</option>';
+					    		}
+				    		?>
+						</select>
+						<div class="dropDownSelect2"></div>
+					</div>
                 </div>
 
                 <div class="line-break center">
-                    <span class="line-break-label">Columns to be included</span>
-                </div>
-
-                <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes">
-                    <input type="checkbox" id="part-number" name="part-number">
-                    <label class="line-break-label" for="part-number">Part Number</label>
-                    <br>
-                    <input type="checkbox" id="part-number" name="part-description">
-                    <label class="line-break-label" for="part-description">Part Description</label>
-                    <br>
-                    <input type="checkbox" id="part-number" name="part-price">
-                    <label class="line-break-label" for="part-price">Part Price</label>
-                    <br>
-                    <input type="checkbox" id="part-number" name="part-quantity">
-                    <label class="line-break-label" for="part-quantity">Part Quantity</label>
-                </div>
-
-                <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes">
-                    <input type="checkbox" id="date-required" name="date-required">
-                    <label class="line-break-label" for="date-required">Date Required</label>
-                    <br>
-                    <input type="checkbox" id="date-generated" name="date-generated">
-                    <label class="line-break-label" for="date-generated">Date Generated</label>
-                    <br>
-                    <input type="checkbox" id="comments" name="comments">
-                    <label class="line-break-label" for="comments">Comments</label>
-                    <br>
-                    <div class="sort-by">
-                        <select class="js-select2" name="sort-by">
-                            <option disabled selected>Sort By</option>
-                            <option value="Quote Requested">Part Number</option>
-                            <option value="Quote Sent">Part Name</option>
-                            <option value="Order Received">Manufacturer</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
-                    </div>
+                    <span class="line-break-label">Part Information</span>
                 </div>
 
                 <div class="container-contact100-form-btn">
@@ -161,7 +106,7 @@
                     </button>
                     <button class="contact100-form-btn">
                         <span>
-                            Generate
+                            Request
                             <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
                         </span>
                     </button>
@@ -182,7 +127,7 @@
     <script>
         $(".js-select2").each(function(){
             $(this).select2({
-                minimumResultsForSearch: 20,
+                minimumResultsForSearch: 2,
                 dropdownParent: $(this).next('.dropDownSelect2')
             });
         })

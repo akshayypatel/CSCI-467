@@ -43,7 +43,7 @@
                             <li><a class="gn-icon gn-icon-download" href="../pages/create-customer.html">Create New Customer</a></li>
                             <li><a class="gn-icon gn-icon-cog" href="../pages/create-part.php">Create New Part</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../pages/create-rfq.php">Request For Quote</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="generate-rfq-report.php">Generate RFQ Report</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../pages/generate-rfq-report.php">Generate RFQ Report</a></li>
                             <li><a class="gn-icon gn-icon-help" href="customer-accounts.php">Customer Account Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="inventory-parts.php">Inventory Parts Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="inventory-parts.php">RFQ Database</a></li>

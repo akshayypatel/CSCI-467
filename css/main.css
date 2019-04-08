@@ -727,3 +727,19 @@ textarea.input100 {
   border-radius: 10px;
   overflow: hidden;
 }
+
+.flexbox {
+  display: flex;
+}
+
+.inputResized {
+  width: 85%;
+}
+
+.noMarginTop {
+  margin-top: 0px;
+}
+
+.noMarginRight {
+  margin-right: 0px;
+}

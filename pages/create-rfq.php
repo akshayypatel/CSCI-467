@@ -23,6 +23,8 @@
     <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
     <?php
+        $loopUntil = intval($_GET['numberOfParts']);
+        
 		require ("../php-actions/connect.php");
 		$query = $pdo->query("SELECT rfqID FROM request_for_quote WHERE rfqID = (SELECT MAX(rfqID) FROM request_for_quote)");
 		$row = $query->fetch(PDO::FETCH_ASSOC);
@@ -58,7 +60,14 @@
     </div>
 
     <div class="container-contact100">
-        <div class="wrap-contact100">
+        <?php
+            if($loopUntil < 1)
+            {
+                echo '<div class="wrap-contact100 noMarginTop">';
+            } else {
+                echo '<div class="wrap-contact100">';
+            }
+        ?>
             <form class="contact100-form validate-form">
                 
                 <span class="contact100-form-title">
@@ -68,13 +77,13 @@
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">RFQ ID</span>
                     <?php
-						echo '<input class="input100" type="text" name="name" placeholder="'.$rfqID.'" readonly>';
+						echo '<input class="input100" type="text" placeholder="'.$rfqID.'" readonly>';
 				    ?>
                 </div>
 
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">Quote Type</span>
-                    <input class="input100" type="text" name="name" placeholder="AUTO" readonly>
+                    <input class="input100" type="text" placeholder="AUTO" readonly>
                 </div>
 
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
@@ -98,48 +107,68 @@
                     <span class="line-break-label">Part Information</span>
                 </div>
 
-                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
-                    <span class="label-input100">Part</span>
-                    <div>
-	                    <select class="js-select2" name="customerID">
-							<?php
-								$query = $pdo->query("SELECT partName, partID, manufacturer_name, listingPrice FROM inventory_part");
-								echo '<option disabled selected>Select Part</option>';
-					    		while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
-					    		{
-					    			echo '<option value="'.$row['partID'].'" > ' . $row['manufacturer_name'] . ' : ' . $row['partName'] .' : $' . $row['listingPrice'] .'</option>';
-					    		}
-				    		?>
-						</select>
-						<div class="dropDownSelect2"></div>
-					</div>
-                </div>
+                <?php
+                    if ($loopUntil < 1)
+                    {
+                        echo '<form class="contact100-form validate-form" method="POST" action="">
+                            <div class="wrap-input100 bg1">
+                                <span class="label-input100">How many parts do you want to add?</span>
+                                <div class = "flexbox">
+                                    <input class="input100 inputResized" type="number" name="numberOfParts" placeholder="Enter Number">
+                                    <input class="contact100-form-btn noMarginRight" type="submit" value="Insert Parts">
+                                </div>
+                            </div>
+                        </form>';
+                    }      
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
-                    <span class="label-input100">Quantity</span>
-                    <input class="input100" type="number" name="quantity" placeholder="Enter Quantity">
-                </div>
+                    for($i=1; $i<=$loopUntil; $i++) {
+                        echo '<div class="wrap-input100 justifyContent">
+                            <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 inline-block">
+                                <span class="label-input100">Part</span>
+                                <div>
+                                    <select class="js-select2" name="part'; echo $i; echo 'id">';
+                                        $query = $pdo->query("SELECT partName, partID, manufacturer_name, listingPrice FROM inventory_part");
+                                        echo '<option disabled selected>Select Part</option>';
+                                        while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
+                                        {
+                                            echo '<option value="'.$row['partID'].'" > ' . $row['manufacturer_name'] . ' : ' . $row['partName'] .' : $' . $row['listingPrice'] .'</option>';
+                                        }
+                                        
+                                    echo '</select>
+                                    <div class="dropDownSelect2"></div>
+                                </div>
+                            </div>
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
-                    <span class="label-input100">Required Date</span>
-				    <div class="form-row show-inputbtns">
-				        <input type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
-				    </div>
-                </div>
+                            <div class="wrap-input100 bg1 rs1-wrap-input100 w250 inline-block">
+                                <span class="label-input100">Quantity</span>
+                                <input class="input100" type="number" name="part'; echo $i; echo 'quantity" placeholder="Enter Quantity">
+                            </div>
 
-                <div class="container-contact100-form-btn">
-                    <button class="contact100-form-btn">
-                        <span>
-                            Cancel
-                        </span>
-                    </button>
-                    <button class="contact100-form-btn">
-                        <span>
-                            Request
-                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-                        </span>
-                    </button>
-                </div>
+                            <div class="wrap-input100 bg1 rs1-wrap-input100 w250 inline-block">
+                                <span class="label-input100">Required Date</span>
+                                <div class="form-row show-inputbtns">
+                                    <input type="date" data-date-inline-picker="false" data-date-open-on-focus="true" name="part'; echo $i; echo 'date"/>
+                                </div>
+                            </div>
+                        </div>';
+                    }
+
+                    if ($loopUntil >= 1) {
+                        echo '<div class="container-contact100-form-btn">
+                            <button class="contact100-form-btn">
+                                <span>
+                                    Cancel
+                                </span>
+                            </button>
+                            <button class="contact100-form-btn">
+                                <span>
+                                    Request
+                                    <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                                </span>
+                            </button>
+                        </div>';
+                    }
+                ?>
             </form>
         </div>
     </div>
@@ -161,6 +190,15 @@
             });
         })
     </script>
+    <!-- <script>
+        var index = 0;
+        function duplicate() {
+            $("#part1").clone().attr('id', 'part1' + index).appendTo("#parts");
+            $("#part2").clone().attr('id', 'part2' + index).appendTo("#parts");
+            $("#part3").clone().attr('id', 'part3' + index).appendTo("#parts");
+            index++;
+        };
+    </script> -->
     <script src="../js/main.js"></script>
 </body>
 

@@ -22,8 +22,8 @@
     <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
     <?php
-        require("../php-actions/connect.php");
-        // If connection fail return error
+        require ("../php-actions/connect.php");
+        $query = $pdo->query("SELECT * FROM inventory_part");
     ?>
 </head>
 
@@ -65,21 +65,27 @@
             <div class="wrap-input100 bg1">
                 <table class="table">
                     <tr>
-                        <th>Part Number</th>
-                        <th>Description</th>
-                        <th>Price</th>
+                        <th>Part ID</th>
+                        <th>Name</th>
+                        <th>Manufacturer</th>
                         <th>Quantity</th>
-                        <th>Required Date</th>
-                        <th>Comments</th>
+                        <th>Listing Price</th>
+                        <th>Description</th>
                     </tr>
-                    <tr>
-                        <td>123456</td>
-                        <td>description here</td>
-                        <td>$4.60</td>
-                        <td>90</td>
-                        <td>10/20/19</td>
-                        <td>Comments here</td>
-                    </tr>
+                    <?php
+                        // Loop through the query results, outputing the options one by one
+                        while($row = $query->fetch(PDO::FETCH_ASSOC))
+                        {
+                            echo '<tr>';
+                            echo '<td>' .$row['partID'].'</td>';
+                            echo '<td>' .$row['partName'].'</td>';
+                            echo '<td>' .$row['manufacturer_name'].'</td>';
+                            echo '<td>' .$row['quantity'].'</td>';
+                            echo '<td>' .$row['listingPrice'].'</td>';
+                            echo '<td>' .$row['partDescription'].'</td>';
+                            echo '</tr>';
+                        }
+                    ?>
                 </table>
             </div>
         </div>

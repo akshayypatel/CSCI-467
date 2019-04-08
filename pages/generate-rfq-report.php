@@ -17,11 +17,15 @@
     <link rel="stylesheet" type="text/css" href="../css/util.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
-    <link rel="stylesheet" type="text/css" href="../css/create-customer.css" />
     <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="../css/demo.css" />
     <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
+    <?php
+        require ("../php-actions/connect.php");
+        $query = $pdo->query("SELECT rfqID, customerID FROM request_for_quote");
+        $customerID = 0;
+    ?>
 </head>
 
 <body>
@@ -40,7 +44,7 @@
                             <li><a class="gn-icon gn-icon-download" href="create-customer.html">Create New Customer</a></li>
                             <li><a class="gn-icon gn-icon-cog" href="create-part.php">Create New Part</a></li>
                             <li><a class="gn-icon gn-icon-help" href="create-rfq.php">Request For Quote</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="generate-rfq-report.html">Generate RFQ Report</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="generate-rfq-report.php">Generate RFQ Report</a></li>
                         </ul>
                     </div><!-- /gn-scroller -->
                 </nav>
@@ -61,28 +65,14 @@
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">RFQ ID</span>
                     <div>
-                        <select class="js-select2" name="rfq-id">
-                            <option disabled selected>Select RFQ ID</option>
-                            <option value="101">101</option>
-                            <option value="102">102</option>
-                            <option value="103">103</option>
-                            <option value="104">104</option>
-                            <option value="105">105</option>
-                            <option value="106">106</option>
-                            <option value="107">107</option>
-                            <option value="108">108</option>
-                            <option value="109">109</option>
-                            <option value="110">110</option>
-                            <option value="111">111</option>
-                            <option value="112">112</option>
-                            <option value="113">113</option>
-                            <option value="114">114</option>
-                            <option value="115">115</option>
-                            <option value="116">116</option>
-                            <option value="117">117</option>
-                            <option value="118">118</option>
-                            <option value="119">119</option>
-                            <option value="120">120</option>
+                        <select class="js-select2" name="rfqID">
+                            <?php
+                                echo '<option disabled selected>Select RFQ ID</option>';
+                                while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
+                                {
+                                    echo '<option value="'.$row['rfqID'].'" > ' . $row['rfqID'] . '</option>';
+                                }
+                            ?>
                         </select>
                         <div class="dropDownSelect2"></div>
                     </div>
@@ -115,13 +105,13 @@
                     <input type="checkbox" id="part-number" name="part-number">
                     <label class="line-break-label" for="part-number">Part Number</label>
                     <br>
-                    <input type="checkbox" id="part-number" name="part-description">
+                    <input type="checkbox" id="part-description" name="part-description">
                     <label class="line-break-label" for="part-description">Part Description</label>
                     <br>
-                    <input type="checkbox" id="part-number" name="part-price">
+                    <input type="checkbox" id="part-price" name="part-price">
                     <label class="line-break-label" for="part-price">Part Price</label>
                     <br>
-                    <input type="checkbox" id="part-number" name="part-quantity">
+                    <input type="checkbox" id="part-quantity" name="part-quantity">
                     <label class="line-break-label" for="part-quantity">Part Quantity</label>
                 </div>
 

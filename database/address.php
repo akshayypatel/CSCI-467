@@ -23,7 +23,7 @@
     <script src="../js/modernizr.custom.js"></script>
     <?php
         require ("../php-actions/connect.php");
-        $query = $pdo->query("SELECT * FROM inventory_part");
+        $query = $pdo->query("SELECT * FROM address");
     ?>
 </head>
 

@@ -86,7 +86,7 @@
 								echo '<option disabled selected>Select Company</option>';
 					    		while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
 					    		{
-					    			echo '<option value="' . $row['customerID'] . ' ' . $row['companyName'] . '" > ' . $row['customerID'] . ' : ' . $row['companyName'] .'</option>';
+					    			echo '<option value="'.$row['customerID'].'" > ' . $row['customerID'] . ' : ' . $row['companyName'] .'</option>';
 					    		}
 				    		?>
 						</select>
@@ -98,10 +98,37 @@
                     <span class="line-break-label">Part Information</span>
                 </div>
 
+                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                    <span class="label-input100">Part</span>
+                    <div>
+	                    <select class="js-select2" name="customerID">
+							<?php
+								$query = $pdo->query("SELECT partName, partID, manufacturer_name, listingPrice FROM inventory_part");
+								echo '<option disabled selected>Select Part</option>';
+					    		while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
+					    		{
+					    			echo '<option value="'.$row['partID'].'" > ' . $row['manufacturer_name'] . ' : ' . $row['partName'] .' : $' . $row['listingPrice'] .'</option>';
+					    		}
+				    		?>
+						</select>
+						<div class="dropDownSelect2"></div>
+					</div>
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
+                    <span class="label-input100">Quantity</span>
+                    <input class="input100" type="number" name="quantity" placeholder="Enter Quantity">
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
+                    <span class="label-input100">Quantity</span>
+                    <input class="input100" type="number" name="quantity" placeholder="Enter Quantity">
+                </div>
+
                 <div class="container-contact100-form-btn">
                     <button class="contact100-form-btn">
                         <span>
-                            Clear
+                            Cancel
                         </span>
                     </button>
                     <button class="contact100-form-btn">

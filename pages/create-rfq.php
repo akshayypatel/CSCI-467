@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="../css/util.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
-    <link rel="stylesheet" type="text/css" href="../css/create-customer.css" />
+    <link rel="stylesheet" type="text/css" href="../css/create-rfq.css" />
     <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="../css/demo.css" />
     <link rel="stylesheet" type="text/css" href="../css/component.css" />
@@ -86,7 +86,7 @@
 								echo '<option disabled selected>Select Company</option>';
 					    		while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
 					    		{
-					    			echo '<option value="' . $row['customerID'] . ' ' . $row['companyName'] . '" > ' . $row['customerID'] . ' : ' . $row['companyName'] .'</option>';
+					    			echo '<option value="'.$row['customerID'].'" > ' . $row['customerID'] . ' : ' . $row['companyName'] .'</option>';
 					    		}
 				    		?>
 						</select>
@@ -94,14 +94,43 @@
 					</div>
                 </div>
 
-                <div class="line-break center">
+                <div class="line-break">
                     <span class="line-break-label">Part Information</span>
+                </div>
+
+                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                    <span class="label-input100">Part</span>
+                    <div>
+	                    <select class="js-select2" name="customerID">
+							<?php
+								$query = $pdo->query("SELECT partName, partID, manufacturer_name, listingPrice FROM inventory_part");
+								echo '<option disabled selected>Select Part</option>';
+					    		while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
+					    		{
+					    			echo '<option value="'.$row['partID'].'" > ' . $row['manufacturer_name'] . ' : ' . $row['partName'] .' : $' . $row['listingPrice'] .'</option>';
+					    		}
+				    		?>
+						</select>
+						<div class="dropDownSelect2"></div>
+					</div>
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
+                    <span class="label-input100">Quantity</span>
+                    <input class="input100" type="number" name="quantity" placeholder="Enter Quantity">
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
+                    <span class="label-input100">Required Date</span>
+				    <div class="form-row show-inputbtns">
+				        <input type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
+				    </div>
                 </div>
 
                 <div class="container-contact100-form-btn">
                     <button class="contact100-form-btn">
                         <span>
-                            Clear
+                            Cancel
                         </span>
                     </button>
                     <button class="contact100-form-btn">

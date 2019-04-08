@@ -133,7 +133,8 @@ iframe {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  padding: 62px 55px 90px 55px;
+  padding: 62px 55px 50px 55px;
+  margin-top: 5%;
 }
 
 
@@ -264,7 +265,7 @@ textarea.input100 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 50px;
   width: 100%;
 }
 

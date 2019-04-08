@@ -1,0 +1,12 @@
+.form-row {
+    margin: 5px 0;
+}
+
+.form-row input {
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+.form-row input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}

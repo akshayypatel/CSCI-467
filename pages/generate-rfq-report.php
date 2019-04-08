@@ -45,6 +45,10 @@
                             <li><a class="gn-icon gn-icon-cog" href="create-part.php">Create New Part</a></li>
                             <li><a class="gn-icon gn-icon-help" href="create-rfq.php">Request For Quote</a></li>
                             <li><a class="gn-icon gn-icon-help" href="generate-rfq-report.php">Generate RFQ Report</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/inventory-parts.php">Customer Account Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/inventory-parts.php">Inventory Parts Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/inventory-parts.php">RFQ Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/inventory-parts.php">RFQ Parts List Database</a></li>
                         </ul>
                     </div><!-- /gn-scroller -->
                 </nav>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Parts</title>
+    <title>Customer Accounts</title>
     <meta name="author-1" content="Akshay Patel">
     <meta name="author-2" content="Gonzalo Pantoja">
     <meta name="description" content="RFQ System for CSCI 467 at NIU">
@@ -23,7 +23,7 @@
     <script src="../js/modernizr.custom.js"></script>
     <?php
         require ("../php-actions/connect.php");
-        $query = $pdo->query("SELECT * FROM inventory_part");
+        $query = $pdo->query("SELECT * FROM customer_account");
     ?>
 </head>
 
@@ -59,30 +59,32 @@
     <div class="container-contact100">
         <div class="wrap-contact100">   
             <span class="contact100-form-title">
-                Inventory Parts
+                Customer Accounts
             </span>
 
             <div class="wrap-input100 bg1">
                 <table class="table">
                     <tr>
-                        <th>Part ID</th>
-                        <th>Name</th>
-                        <th>Manufacturer</th>
-                        <th>Quantity</th>
-                        <th>Listing Price</th>
-                        <th>Description</th>
+                        <th>Customer ID</th>
+                        <th>Company Name</th>
+                        <th>Quote Type</th>
+                        <th>Manager Email Address</th>
+                        <th>Manager Phone Number</th>
+                        <th>Password</th>
+                        <th>Comments</th>
                     </tr>
                     <?php
                         // Loop through the query results, outputing the options one by one
                         while($row = $query->fetch(PDO::FETCH_ASSOC))
                         {
                             echo '<tr>';
-                            echo '<td>' .$row['partID'].'</td>';
-                            echo '<td>' .$row['partName'].'</td>';
-                            echo '<td>' .$row['manufacturer_name'].'</td>';
-                            echo '<td>' .$row['quantity'].'</td>';
-                            echo '<td>' .$row['listingPrice'].'</td>';
-                            echo '<td>' .$row['partDescription'].'</td>';
+                            echo '<td>' .$row['customerID'].'</td>';
+                            echo '<td>' .$row['companyName'].'</td>';
+                            echo '<td>' .$row['quoteType'].'</td>';
+                            echo '<td>' .$row['managerEmailAddress'].'</td>';
+                            echo '<td>' .$row['managerPhoneNumber'].'</td>';
+                            echo '<td>' .$row['password'].'</td>';
+                            echo '<td>' .$row['comments'].'</td>';
                             echo '</tr>';
                         }
                     ?>

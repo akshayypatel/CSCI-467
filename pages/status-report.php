@@ -69,7 +69,7 @@
                             // Display RFQ ID
                             	if (isset( $_POST['rfqID']))
                                 {	
-                                    echo '<input class="input100" type="text" name="rfqID" placehodler="1111" readonly>';
+                                    echo '<input class="input100" type="text" name="rfqID" placeholder="'; echo $_POST['rfqID']; echo '" readonly>';
                                 } 
                                 // else {
                                 //     // header("Location: ../pages/error.html");
@@ -84,18 +84,23 @@
                         // Display customer ID
                             if (isset( $_POST['customerID']))
                             {	
-                                echo 'customer ID here';
+                                echo '<input class="input100" type="text" name="name" placeholder="'; echo $_POST['customerID']; echo '" readonly>';
                             } 
                             // else {
                             //     // header("Location: ../pages/error.html");
                             // }
                         ?>
-                        <input class="input100" type="text" name="name" placeholder="50205" readonly>
+                        <!-- <input class="input100" type="text" name="name" placeholder="50205" readonly> -->
                     </div>
 
                     <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
-                        <span class="label-input100">Date</span>
-                        <input class="input100" type="text" name="date" placeholder="50205" readonly>
+                        <span class="label-input100">Date Generated</span>
+                        <?php
+                        // Display date
+                            $date = date("m/d/y");	
+                            echo '<input class="input100" type="text" name="date" placeholder="'; echo $date; echo '" readonly>';
+                        ?>
+                        <!-- <input class="input100" type="text" name="date" placeholder="50205" readonly> -->
                     </div>
 
                     <div class="line-break center">
@@ -121,20 +126,6 @@
                             <td>Comments here</td>
                         </tr>
                     </table>
-                    </div>
-
-                    <div class="container-contact100-form-btn">
-                        <button class="contact100-form-btn">
-                            <span>
-                                Clear
-                            </span>
-                        </button>
-                        <button class="contact100-form-btn">
-                            <span>
-                                Generate
-                                <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-                            </span>
-                        </button>
                     </div>
                 </form>
             </div>

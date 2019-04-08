@@ -60,7 +60,7 @@
 
     <div class="container-contact100">
         <div class="wrap-contact100">
-            <form class="contact100-form validate-form" action="status-report.php">
+            <form class="contact100-form validate-form" action="status-report.php" method="POST">
                 
                 <span class="contact100-form-title">
                     Generate RFQ Report
@@ -146,12 +146,7 @@
                             Clear
                         </span>
                     </button>
-                    <button class="contact100-form-btn">
-                        <span>
-                            Generate
-                            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-                        </span>
-                    </button>
+                    <input type="submit" value="Generate" class="contact100-form-btn">
                 </div>
             </form>
         </div>

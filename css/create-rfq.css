@@ -10,3 +10,18 @@
 .form-row input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+
+.inline-block {
+	/*display: inline-block;*/
+}
+
+.justifyContent {
+	display: flex;
+	justify-content: space-between;
+	border: none;
+	margin-bottom: 10px;
+}
+
+#parts {
+	border: none;
+}

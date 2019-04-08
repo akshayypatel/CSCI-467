@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="../css/util.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
-    <link rel="stylesheet" type="text/css" href="../css/create-customer.css" />
+    <link rel="stylesheet" type="text/css" href="../css/create-rfq.css" />
     <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="../css/demo.css" />
     <link rel="stylesheet" type="text/css" href="../css/component.css" />
@@ -94,7 +94,7 @@
 					</div>
                 </div>
 
-                <div class="line-break center">
+                <div class="line-break">
                     <span class="line-break-label">Part Information</span>
                 </div>
 
@@ -121,8 +121,10 @@
                 </div>
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
-                    <span class="label-input100">Quantity</span>
-                    <input class="input100" type="number" name="quantity" placeholder="Enter Quantity">
+                    <span class="label-input100">Required Date</span>
+				    <div class="form-row show-inputbtns">
+				        <input type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
+				    </div>
                 </div>
 
                 <div class="container-contact100-form-btn">

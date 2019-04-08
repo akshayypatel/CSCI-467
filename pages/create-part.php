@@ -11,21 +11,21 @@
 	<meta name="description" content="RFQ System for CSCI 467 at NIU">
 	<meta name="keywords" content="CSCI467, NIU, RFQ-System">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="stylesheet.css" />
-	<link rel="stylesheet" type="text/css" href="css/create-customer.css" />
-	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-	<link rel="stylesheet" type="text/css" href="css/demo.css" />
-	<link rel="stylesheet" type="text/css" href="css/component.css" />
-	<link rel="stylesheet" type="text/css" href="css/create-part.css" />
-	<script src="js/modernizr.custom.js"></script>
+	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/util.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheet.css" />
+	<link rel="stylesheet" type="text/css" href="../css/create-customer.css" />
+	<link rel="stylesheet" type="text/css" href="../css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="../css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="../css/component.css" />
+	<link rel="stylesheet" type="text/css" href="../css/create-part.css" />
+	<script src="../js/modernizr.custom.js"></script>
 	<script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
 	<?php
-		require ("secret.php");
+		require ("../php-actions/connect.php");
 		$query = $pdo->query("SELECT partID FROM inventory_part WHERE partID = (SELECT MAX(partID) FROM inventory_part)");
 		$row = $query->fetch(PDO::FETCH_ASSOC);
 		$partID = $row['partID'];
@@ -46,21 +46,21 @@
 								<a class="gn-icon gn-icon-search"><span>Search</span></a>
 							</li>
 							<li><a class="gn-icon gn-icon-download" href="create-customer.html">Create New Customer</a></li>
-							<li><a class="gn-icon gn-icon-cog" href="create-part.phpl">Create New Part</a></li>
-							<li><a class="gn-icon gn-icon-help" href="request-quote.html">Request For Quote</a></li>
+							<li><a class="gn-icon gn-icon-cog" href="create-part.php">Create New Part</a></li>
+							<li><a class="gn-icon gn-icon-help" href="create-rfq.php">Request For Quote</a></li>
 							<li><a class="gn-icon gn-icon-help" href="generate-rfq-report.html">Generate RFQ Report</a></li>
 						</ul>
 					</div><!-- /gn-scroller -->
 				</nav>
 			</li>
-			<li><a href="index.html">Home</a></li>
+			<li><a href="../index.html">Home</a></li>
 		</ul>
 
 	</div><!-- /container -->
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" method="POST" action="insert-new-part.php">
+			<form class="contact100-form validate-form" method="POST" action="../php-actions/insert-new-part.php">
 				<span class="contact100-form-title">
 					Create New Part
 				</span>
@@ -127,8 +127,8 @@
 		<button type="submit" value="Submit">Submit</button>
 	</div>
 
-	<script src="js/classie.js"></script>
-	<script src="js/gnmenu.js"></script>
+	<script src="../js/classie.js"></script>
+	<script src="../js/gnmenu.js"></script>
 	<script>
 		new gnMenu(document.getElementById('gn-menu'));
 		JsBarcode("#barcode", "123456", {

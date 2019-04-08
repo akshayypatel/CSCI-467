@@ -45,9 +45,10 @@
                             <li><a class="gn-icon gn-icon-help" href="../pages/create-rfq.php">Request For Quote</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../pages/generate-rfq-report.php">Generate RFQ Report</a></li>
                             <li><a class="gn-icon gn-icon-help" href="customer-accounts.php">Customer Account Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="address.php">Address Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="inventory-parts.php">Inventory Parts Database</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="inventory-parts.php">RFQ Database</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="inventory-parts.php">RFQ Parts List Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="request-for-quote.php">RFQ Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="rfq-part-list.php">RFQ Parts List Database</a></li>
                         </ul>
                     </div><!-- /gn-scroller -->
                 </nav>
@@ -59,7 +60,7 @@
     <div class="container-contact100">
         <div class="wrap-contact100">   
             <span class="contact100-form-title">
-                Customer Accounts
+                Customer Accounts Database
             </span>
 
             <div class="wrap-input100 bg1">

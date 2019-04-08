@@ -60,30 +60,32 @@
     <div class="container-contact100">
         <div class="wrap-contact100">   
             <span class="contact100-form-title">
-                Inventory Parts Database
+                Address Database
             </span>
 
             <div class="wrap-input100 bg1">
                 <table class="table">
                     <tr>
-                        <th>Part ID</th>
-                        <th>Name</th>
-                        <th>Manufacturer</th>
-                        <th>Quantity</th>
-                        <th>Listing Price</th>
-                        <th>Description</th>
+                        <th>Address ID</th>
+                        <th>Customer ID</th>
+                        <th>Address Type</th>
+                        <th>Street</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip Code</th>
                     </tr>
                     <?php
                         // Loop through the query results, outputing the options one by one
                         while($row = $query->fetch(PDO::FETCH_ASSOC))
                         {
                             echo '<tr>';
-                            echo '<td>' .$row['partID'].'</td>';
-                            echo '<td>' .$row['partName'].'</td>';
-                            echo '<td>' .$row['manufacturer_name'].'</td>';
-                            echo '<td>' .$row['quantity'].'</td>';
-                            echo '<td>' .$row['listingPrice'].'</td>';
-                            echo '<td>' .$row['partDescription'].'</td>';
+                            echo '<td>' .$row['addressID'].'</td>';
+                            echo '<td>' .$row['customerID'].'</td>';
+                            echo '<td>' .$row['addressType'].'</td>';
+                            echo '<td>' .$row['street'].'</td>';
+                            echo '<td>' .$row['city'].'</td>';
+                            echo '<td>' .$row['state'].'</td>';
+                            echo '<td>' .$row['zipCode'].'</td>';
                             echo '</tr>';
                         }
                     ?>

@@ -134,10 +134,10 @@
                                 }
                             } else {
                                 // If summary report type is selected
-                                echo '<th>RFQ ID</th>';
+                                echo '<th>Company Name</th>';
                                 echo '<th>Part Name</th>';
-                                echo '<th>Price</th>';
                                 echo '<th>Quantity</th>';
+                                echo '<th>Price</th>';
                                 echo "<th>Required Date</th>";
                             }
                             echo '</tr>';
@@ -175,6 +175,12 @@
                                     {
                                         echo '<td>' .$row['dateGenerated'].'</td>';
                                     }
+                                } else {
+                                    echo '<td>' .$row['companyName'].'</td>';
+                                    echo '<td>' .$row['partName'].'</td>';
+                                    echo '<td>' .$row['quantity'].'</td>';
+                                    echo '<td>' .$row['listingPrice'].'</td>';
+                                    echo '<td>' .$row['requiredDate'].'</td>';
                                 }
                                 echo '</tr>';
                             }

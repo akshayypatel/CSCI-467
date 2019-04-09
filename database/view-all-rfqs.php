@@ -23,7 +23,12 @@
     <script src="../js/modernizr.custom.js"></script>
     <?php
         require ("../php-actions/connect.php");
-        $query = $pdo->query("SELECT * FROM request_for_quote");
+        $query = $pdo->query("SELECT rfq.rfqID, companyName, partName, pl.quantity, requiredDate
+                                FROM rfq_part_list pl
+                                INNER JOIN request_for_quote rfq ON pl.rfqID = rfq.rfqID
+                                INNER JOIN customer_account ca ON rfq.customerID = ca.customerID
+                                INNER JOIN inventory_part ip ON pl.partID = ip.partID
+                                ORDER BY rfq.rfqID;");
     ?>
 </head>
 
@@ -47,8 +52,6 @@
                             <li><a class="gn-icon gn-icon-help" href="customer-accounts.php">Customer Account Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="address.php">Address Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="inventory-parts.php">Inventory Parts Database</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="request-for-quote.php">RFQ Database</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="rfq-part-list.php">RFQ Parts List Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="view-company-directory.php">View Company Directory</a></li>
                             <li><a class="gn-icon gn-icon-help" href="view-all-rfqs.php">View All RFQs</a></li>
                         </ul>
@@ -62,14 +65,17 @@
     <div class="container-contact100">
         <div class="wrap-contact100 width90">   
             <span class="contact100-form-title">
-                Request For Quote Database
+                View All Request For Quotes
             </span>
 
             <div class="wrap-input100 bg1">
                 <table class="table">
                     <tr>
                         <th>RFQ ID</th>
-                        <th>Customer ID</th>
+                        <th>Company Name</th>
+                        <th>Part Name</th>
+                        <th>Quantity Requested</th>
+                        <th>Date Required</th>
                     </tr>
                     <?php
                         // Loop through the query results, outputing the options one by one
@@ -77,7 +83,10 @@
                         {
                             echo '<tr>';
                             echo '<td>' .$row['rfqID'].'</td>';
-                            echo '<td>' .$row['customerID'].'</td>';
+                            echo '<td>' .$row['companyName'].'</td>';
+                            echo '<td>' .$row['partName'].'</td>';
+                            echo '<td>' .$row['quantity'].'</td>';
+                            echo '<td>' .$row['requiredDate'].'</td>';
                             echo '</tr>';
                         }
                     ?>

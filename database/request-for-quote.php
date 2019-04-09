@@ -70,6 +70,7 @@
                     <tr>
                         <th>RFQ ID</th>
                         <th>Customer ID</th>
+                        <th>Date Generated</th>
                     </tr>
                     <?php
                         // Loop through the query results, outputing the options one by one
@@ -78,6 +79,7 @@
                             echo '<tr>';
                             echo '<td>' .$row['rfqID'].'</td>';
                             echo '<td>' .$row['customerID'].'</td>';
+                            echo '<td>' .$row['dateGenerated'].'</td>';
                             echo '</tr>';
                         }
                     ?>

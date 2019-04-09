@@ -1,18 +1,15 @@
 <?php
 	$loopUntil = $_GET['loopUntil'];
-	//part i id
-	//part i quantity
-	//part i date
-	//rfqID
-	//customerID
 
 	require("connect.php");
+
+	$date = date("Y-m-d");
 				
-	$results = $pdo->prepare("INSERT INTO request_for_quote (customerID) VALUES (?);");
+	$results = $pdo->prepare("INSERT INTO request_for_quote (customerID, dateGenerated) VALUES (?, ?);");
 	if (isset($_POST['customerID']))
 	{	
 		$customerID = $_POST['customerID'];
-		$results->execute(array($_POST['customerID']));
+		$results->execute(array($_POST['customerID'], $date));
     } else {
     	header("Location: ../pages/error.html");
     }

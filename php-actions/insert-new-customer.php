@@ -1,18 +1,15 @@
 <?php
 	require("connect.php");
-	
-	// Save current time as temp password
-	$customer_password = date("h:i:sa");
 
     // Insert new account
-	$result = $pdo->prepare("INSERT INTO customer_account (companyName, quoteType, managerEmailAddress, managerPhoneNumber, password, comments) VALUES (?, ?, ?, ?, ?, ?);");
+	$result = $pdo->prepare("INSERT INTO customer_account (companyName, quoteType, managerEmailAddress, managerPhoneNumber, username, password, comments) VALUES (?, ?, ?, ?, ?, ?, ?);");
 	
 	$managerEmailAddress = "apate29@niu.edu";
 	$managerPhoneNumber = "8159314345";
 	
 	if (isset( $_POST['company-name'], $_POST['quote-type'], $_POST['comments']))
 	{	
-		$result->execute(array($_POST['company-name'], $_POST['quote-type'], $managerEmailAddress, $managerPhoneNumber, $customer_password, $_POST['comments']));
+		$result->execute(array($_POST['company-name'], $_POST['quote-type'], $managerEmailAddress, $managerPhoneNumber, $_POST['username'], $_POST['password'], $_POST['comments']));
     } 
     else {
 		header("Location: ../pages/error.html");
@@ -30,7 +27,7 @@
 		header("Location: ../pages/error.html");
 	}
 
-	if (isset($_POST['shipping']))
+	if (!isset($_POST['shipping']))
 	{
 		//insert shipping address
 		$result = $pdo->prepare("INSERT INTO address (customerID, addressType, street, city, state, zipCode) VALUES ((SELECT MAX(customerID) FROM customer_account), ?, ?, ?, ?, ?);");

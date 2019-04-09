@@ -54,26 +54,20 @@ select {
 	color: #555555;
 }
 
-.addShipping, .removeShipping {
-	width: 75vw;
-	cursor: pointer;
-	text-align: center;
-}
-
 input[type=checkbox] {
-	display: none;
+
 }
 
 input[type=checkbox] ~ .removeShipping {
 	display: none;
 }
 
-input[type=checkbox] ~ .view {
-	display: none;
-}
+/*input[type=checkbox] ~ .view {
+	display: inline-block;
+}*/
 
-input[type=checkbox]:checked ~ .view {
-	display: block;
+input[type=checkbox]:checked ~ div .view {
+	display: none;
 }
 
 input[type=checkbox]:checked ~ .removeShipping {

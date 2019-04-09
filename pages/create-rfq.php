@@ -53,7 +53,7 @@
                             </li>
                             <li><a class="gn-icon gn-icon-download" href="create-customer.html">Create New Customer</a></li>
                             <li><a class="gn-icon gn-icon-cog" href="create-part.php">Create New Part</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="create-rfq.php">Request For Quote</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="create-rfq.php">Create RFQ</a></li>
                             <li><a class="gn-icon gn-icon-help" href="generate-rfq-report.php">Generate RFQ Report</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/customer-accounts.php">Customer Account Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/address.php">Address Database</a></li>
@@ -85,35 +85,43 @@
                 <span class="contact100-form-title">
                     Create Request For Quote
                 </span>
+                <?php
 
-                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                if ($loopUntil > 0) {
+                    echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">RFQ ID</span>
-                    <?php
-						echo '<input class="input100" type="text" name="rfqID" placeholder="'.$rfqID.'" readonly>';
-				    ?>
-                </div>
+                    <input class="input100" type="text" name="rfqID" placeholder="';
 
-                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
-                    <span class="label-input100">Quote Type</span>
-                    <input class="input100" type="text" placeholder="AUTO" readonly>
-                </div>
+                    echo $rfqID;
 
-                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
-                    <span class="label-input100">Customer ID: Company</span>
-                    <div>
-	                    <select class="js-select2" name="customerID">
-							<?php
-								$query = $pdo->query("SELECT companyName, customerID FROM customer_account");
-								echo '<option disabled selected>Select Company</option>';
-					    		while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
-					    		{
-					    			echo '<option value="'.$row['customerID'].'" > ' . $row['customerID'] . ' : ' . $row['companyName'] .'</option>';
-					    		}
-				    		?>
-						</select>
-						<div class="dropDownSelect2"></div>
-					</div>
-                </div>
+                    echo ' " readonly>
+                    </div>
+
+                    <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                        <span class="label-input100">Quote Type</span>
+                        <input class="input100" type="text" placeholder="AUTO" readonly>
+                    </div>
+
+                    <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                        <span class="label-input100">Customer ID: Company</span>
+                        <div>
+                            <select class="js-select2" name="customerID">';
+
+                                $query = $pdo->query("SELECT companyName, customerID FROM customer_account");
+                                echo '<option disabled selected>Select Company</option>';
+                                while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
+                                {
+                                    echo '<option value="'.$row['customerID'].'" > ' . $row['customerID'] . ' : ' . $row['companyName'] .'</option>';
+                                }
+
+                    echo '</select>
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                    </div>';
+
+                }
+
+                ?>
 
                 <div class="line-break">
                     <span class="line-break-label">Part Information</span>
@@ -155,11 +163,7 @@
 
                     if ($loopUntil >= 1) {
                         echo '<div class="container-contact100-form-btn">
-                            <button class="contact100-form-btn">
-                                <span>
-                                    Cancel
-                                </span>
-                            </button>
+                            <input class="contact100-form-btn" onClick="window.location=\'create-rfq.php\'" type="button" value="Cancel">
                             <input type="submit" class="contact100-form-btn" value="Request">
                         </div>';
                     }

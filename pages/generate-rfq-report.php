@@ -111,14 +111,14 @@
                         <span class="line-break-label">Report Type</span>
                     </div>
 
-                    <div class="wrap-input100 bg1">
+                    <div class="contact100-form bg1">
                         
 
                         <div class="line-break center">
                             <span class="line-break-label">Columns to be included</span>
                         </div>
 
-                        <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes">
+                        <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes noBorder">
                             <input type="checkbox" id="part-number" name="part-number">
                             <label class="line-break-label" for="part-number">Part Number</label>
                             <br>
@@ -132,7 +132,7 @@
                             <label class="line-break-label" for="part-quantity">Part Quantity</label>
                         </div>
 
-                        <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes">
+                        <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes noBorder">
                             <input type="checkbox" id="date-required" name="date-required">
                             <label class="line-break-label" for="date-required">Date Required</label>
                             <br>

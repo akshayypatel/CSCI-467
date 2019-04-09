@@ -23,7 +23,10 @@
     <script src="../js/modernizr.custom.js"></script>
     <?php
         require ("../php-actions/connect.php");
-        $query = $pdo->query("SELECT * FROM request_for_quote");
+        $query = $pdo->query("SELECT companyName, CONCAT(addressType, ': ', street, ', ', city, ', ', state, ' ', zipCode) AS address, CONCAT(firstName, ' ', lastName) AS representative, email
+                            FROM `customer_account`
+                            INNER JOIN `customer_representative` ON `customer_account`.customerID = `customer_representative`.customerID
+                            INNER JOIN `address` ON `customer_account`.customerID = `address`.customerID;");
     ?>
 </head>
 
@@ -47,8 +50,6 @@
                             <li><a class="gn-icon gn-icon-help" href="customer-accounts.php">Customer Account Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="address.php">Address Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="inventory-parts.php">Inventory Parts Database</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="request-for-quote.php">RFQ Database</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="rfq-part-list.php">RFQ Parts List Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="view-company-directory.php">View Company Directory</a></li>
                             <li><a class="gn-icon gn-icon-help" href="view-all-rfqs.php">View All RFQs</a></li>
                         </ul>
@@ -62,22 +63,26 @@
     <div class="container-contact100">
         <div class="wrap-contact100 width90">   
             <span class="contact100-form-title">
-                Request For Quote Database
+                Company Directory
             </span>
 
             <div class="wrap-input100 bg1">
                 <table class="table">
                     <tr>
-                        <th>RFQ ID</th>
-                        <th>Customer ID</th>
+                        <th>Company Name</th>
+                        <th>Address</th>
+                        <th>Representative</th>
+                        <th>Email</th>
                     </tr>
                     <?php
                         // Loop through the query results, outputing the options one by one
                         while($row = $query->fetch(PDO::FETCH_ASSOC))
                         {
                             echo '<tr>';
-                            echo '<td>' .$row['rfqID'].'</td>';
-                            echo '<td>' .$row['customerID'].'</td>';
+                            echo '<td>' .$row['companyName'].'</td>';
+                            echo '<td>' .$row['address'].'</td>';
+                            echo '<td>' .$row['representative'].'</td>';
+                            echo '<td>' .$row['email'].'</td>';
                             echo '</tr>';
                         }
                     ?>

@@ -48,8 +48,8 @@
                             <li><a class="gn-icon gn-icon-help" href="../database/customer-accounts.php">Customer Account Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/address.php">Address Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/inventory-parts.php">Inventory Parts Database</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="../database/request-for-quote.php">RFQ Database</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="../database/rfq-part-list.php">RFQ Parts List Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/view-company-directory.php">View Company Directory</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/view-all-rfqs.php">View All RFQs</a></li>
                         </ul>
                     </div><!-- /gn-scroller -->
                 </nav>

@@ -49,6 +49,8 @@
                             <li><a class="gn-icon gn-icon-help" href="inventory-parts.php">Inventory Parts Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="request-for-quote.php">RFQ Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="rfq-part-list.php">RFQ Parts List Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="view-company-directory.php">View Company Directory</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="view-all-rfqs.php">View All RFQs</a></li>
                         </ul>
                     </div><!-- /gn-scroller -->
                 </nav>

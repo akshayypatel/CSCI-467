@@ -69,7 +69,7 @@
 
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 height100">
                     <span class="label-input100">RFQ ID</span>
-                    <select class="js-select2" onchange="yesnoCheck(this);" name="all-or-find">
+                    <select class="js-select2" onchange="checkRFQsearch(this);" name="all-or-find">
                         <option value="all">All</option>
                         <option value="find">Find RFQ</option>
                     </select>
@@ -89,6 +89,7 @@
                     </div>  
 
                     <div id="ifYes" style="display: none;">
+                        <span class="label-input100">Search</span>
                         <select class="js-select2" name="rfqID">
                             <?php
                                 echo '<option disabled selected>Select RFQ ID</option>';
@@ -115,14 +116,10 @@
                     <div class="line-break center">
                         <span class="line-break-label">Report Type</span>
                     </div>
-
                     <div class="contact100-form bg1">
-                        
-
                         <div class="line-break center">
                             <span class="line-break-label">Columns to be included</span>
                         </div>
-
                         <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes noBorder">
                             <input type="checkbox" id="part-name" name="part-name">
                             <label class="line-break-label" for="part-name">Part Name</label>
@@ -162,7 +159,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="container-contact100-form-btn">
                     <button class="contact100-form-btn">
                         <span>
@@ -192,17 +188,17 @@
             });
         })
         // Display find RFQ if option is selected
-        function yesnoCheck(that) {
+        function checkRFQsearch(that) {
             if (that.value == "find") {
                 document.getElementById("ifYes").style.display = "block";
                 document.getElementById("dates").style.display = "none";
-                document.getElementById("dates").required = false;
                 document.getElementById("from-date").required = false;
                 document.getElementById("to-date").required = false;
-                // document.getElementById("replaceMe").innerHTML = "<h5>It works!</h5>";
             } else {
                 document.getElementById("ifYes").style.display = "none";
                 document.getElementById("dates").style.display = "block";
+                document.getElementById("from-date").required = true;
+                document.getElementById("to-date").required = true;
             }
         }
         // Display find Detail report type is selected

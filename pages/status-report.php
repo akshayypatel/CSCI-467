@@ -90,7 +90,7 @@
             <form class="contact100-form validate-form">
                 
                 <span class="contact100-form-title">
-                    Generate RFQ Report
+                    RFQ Status Report
                 </span>
                     <?php 
                         if ( $_POST['all-or-find'] != "all"){

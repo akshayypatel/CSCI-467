@@ -70,7 +70,7 @@
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">RFQ ID</span>
                     <div>
-                        <select class="js-select2" name="rfqID">
+                        <select class="js-select2" name="rfqID" onchange="setCustomerID(value);">
                             <?php
                                 echo '<option disabled selected>Select RFQ ID</option>';
                                 while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
@@ -99,7 +99,7 @@
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">Customer ID</span>
-                    <input class="input100" type="text" name="name" placeholder="50205" readonly>
+                    <input class="input100" type="text" name="customer-id" placeholder="" readonly>
                 </div>
 
                 <div class="line-break center">
@@ -169,6 +169,11 @@
                 dropdownParent: $(this).next('.dropDownSelect2')
             });
         })
+    </script>
+    <script>
+        function setCustomerID(customerID) {
+            document.getElementsByName('customer-id')[0].placeholder=customerID;
+        }
     </script>
     <script src="../js/main.js"></script>
 </body>

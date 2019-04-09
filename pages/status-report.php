@@ -122,9 +122,13 @@
                             echo '<tr>';
                             if ($_POST['report-type'] == "detail")
                             {
-                                if (isset( $_POST['company-name'] ) && $_POST['all-or-find'] != "all") 
+                                if (isset( $_POST['company-name'] ) && $_POST['all-or-find'] == "all") 
                                 {
                                     echo "<th>Company Name</th>";
+                                }
+                                if (isset($_POST['need-rfq']) && $_POST['all-or-find'] == "all")
+                                {
+                                    echo "<th>RFQ ID</th>";
                                 }
                                 if (isset($_POST['part-name']))
                                 {
@@ -167,9 +171,13 @@
                                 echo '<tr>';
                                 if ($_POST['report-type'] == "detail")
                                 {
-                                    if (isset( $_POST['company-name']) && $_POST['all-or-find'] != "all") 
+                                    if (isset( $_POST['company-name']) && $_POST['all-or-find'] == "all") 
                                     {
                                         echo '<td>' .$row['companyName'].'</td>';
+                                    }
+                                    if (isset($_POST['need-rfq']) && $_POST['all-or-find'] == "all")
+                                    {
+                                        echo '<td>' .$row['rfqID'].'</td>';
                                     }
                                     if (isset($_POST['part-name']))
                                     {

@@ -138,14 +138,17 @@
                         </div>
 
                         <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes noBorder">
+                            <input type="checkbox" id="company-name" name="company-name">
+                            <label class="line-break-label" for="company-name">Company Name</label>
+                            <br>
+                            <input type="checkbox" id="need-rfq" name="need-rfq">
+                            <label class="line-break-label" for="need-rfq">RFQ ID</label>
+                            <br>
                             <input type="checkbox" id="date-required" name="date-required">
                             <label class="line-break-label" for="date-required">Date Required</label>
                             <br>
                             <input type="checkbox" id="date-generated" name="date-generated">
                             <label class="line-break-label" for="date-generated">Date Generated</label>
-                            <br>
-                            <input type="checkbox" id="company-name" name="company-name">
-                            <label class="line-break-label" for="company-name">Company Name</label>
                             <br>
                             <div class="sort-by">
                                 <select class="js-select2" name="sort-by">

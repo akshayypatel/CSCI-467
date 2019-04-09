@@ -93,21 +93,31 @@
                     RFQ Status Report
                 </span>
                     <?php 
-                        if ( $_POST['all-or-find'] != "all"){
-                            echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                        if ( $_POST['all-or-find'] != "all")
+                        {
+                            if ( ($_POST['report-type'] == "detail" && $_POST['need-rfq']) || ($_POST['report-type'] != "detail") )
+                            {
+                                echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                         <span class="label-input100">RFQ ID</span> 
                         <input class="input100" type="button" style="cursor: default;" value="'.$_POST['rfqID'].'"> 
                     </div>';
-
-                    echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                            }
+                            
+                            if ( ($_POST['report-type'] == "detail" && $_POST['company-name']) || ($_POST['report-type'] != "detail") )
+                            {
+                                echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                         <span class="label-input100">Company Name</span> 
                         <input class="input100" type="button" style="cursor: default;" value="'.$cName.'"> 
                     </div>';
+                            }
 
-                    echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                            if ( ($_POST['report-type'] == "detail" && $_POST['date-generated']) || ($_POST['report-type'] != "detail") )
+                            {
+                                echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                         <span class="label-input100">Date Generated</span> 
                         <input class="input100" type="button" style="cursor: default;" value="'.$dGenerated.'"> 
                     </div>';
+                            }
 
                         }
                     ?>

@@ -43,7 +43,13 @@
             INNER JOIN inventory_part ip ON pl.partID = ip.partID
             WHERE rfq.rfqID = ?
             ORDER BY rfq.rfqID");
-            $rfqResult->execute(array( $_POST['rfqID'] ));                                    
+            $rfqResult->execute(array( $_POST['rfqID'] ));   
+
+            $query = $pdo->prepare("SELECT companyName, dateGenerated FROM `customer_account` INNER JOIN `request_for_quote` ON `customer_account`.customerID = `request_for_quote`.customerID WHERE rfqID = ?");
+            $query->execute(array($_POST['rfqID']));
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            $cName = $row['companyName'];  
+            $dGenerated =  $row['dateGenerated'];                              
         }
 
     ?>
@@ -86,13 +92,25 @@
                 <span class="contact100-form-title">
                     Generate RFQ Report
                 </span>
-                    <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
-                        <span class="label-input100">RFQ ID</span>  
-                    </div>
+                    <?php 
+                        if ( $_POST['all-or-find'] != "all"){
+                            echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                        <span class="label-input100">RFQ ID</span> 
+                        <input class="input100" type="button" style="cursor: default;" value="'.$_POST['rfqID'].'"> 
+                    </div>';
 
-                    <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
-                        <span class="label-input100">Customer ID</span>
-                    </div>
+                    echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                        <span class="label-input100">Company Name</span> 
+                        <input class="input100" type="button" style="cursor: default;" value="'.$cName.'"> 
+                    </div>';
+
+                    echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                        <span class="label-input100">Date Generated</span> 
+                        <input class="input100" type="button" style="cursor: default;" value="'.$dGenerated.'"> 
+                    </div>';
+
+                        }
+                    ?>
 
                     <div class="line-break center">
                         <span class="line-break-label">Part Information</span>
@@ -104,7 +122,7 @@
                             echo '<tr>';
                             if ($_POST['report-type'] == "detail")
                             {
-                                if (isset( $_POST['company-name'] )) 
+                                if (isset( $_POST['company-name'] ) && $_POST['all-or-find'] != "all") 
                                 {
                                     echo "<th>Company Name</th>";
                                 }
@@ -128,13 +146,15 @@
                                 {
                                     echo "<th>Required Date</th>";
                                 }
-                                if (isset( $_POST['date-generated'] )) 
+                                if (isset( $_POST['date-generated']) && $_POST['all-or-find'] == "all") 
                                 {
                                     echo "<th>Date Generated</th>";
                                 }
                             } else {
+                                if ( $_POST['all-or-find'] == "all") {
+                                    echo '<th>Company Name</th>';
+                                }
                                 // If summary report type is selected
-                                echo '<th>Company Name</th>';
                                 echo '<th>Part Name</th>';
                                 echo '<th>Quantity</th>';
                                 echo '<th>Price</th>';
@@ -147,7 +167,7 @@
                                 echo '<tr>';
                                 if ($_POST['report-type'] == "detail")
                                 {
-                                    if (isset( $_POST['company-name'] )) 
+                                    if (isset( $_POST['company-name']) && $_POST['all-or-find'] != "all") 
                                     {
                                         echo '<td>' .$row['companyName'].'</td>';
                                     }
@@ -171,12 +191,14 @@
                                     {
                                         echo '<td>' .$row['requiredDate'].'</td>';
                                     }
-                                    if (isset( $_POST['date-generated'] )) 
+                                    if (isset( $_POST['date-generated']) && $_POST['all-or-find'] == "all") 
                                     {
                                         echo '<td>' .$row['dateGenerated'].'</td>';
                                     }
                                 } else {
-                                    echo '<td>' .$row['companyName'].'</td>';
+                                    if ( $_POST['all-or-find'] == "all") {
+                                        echo '<td>' .$row['companyName'].'</td>';
+                                    }
                                     echo '<td>' .$row['partName'].'</td>';
                                     echo '<td>' .$row['quantity'].'</td>';
                                     echo '<td>' .$row['listingPrice'].'</td>';

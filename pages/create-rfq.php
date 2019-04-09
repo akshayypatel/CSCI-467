@@ -23,7 +23,12 @@
     <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
     <?php
-        $loopUntil = intval($_GET['numberOfParts']);
+        if ($_GET['numberOfParts'])
+        {
+            $loopUntil = intval($_GET['numberOfParts']);
+        } else {
+            $loopUntil = 0;
+        }
         
 		require ("../php-actions/connect.php");
 		$query = $pdo->query("SELECT rfqID FROM request_for_quote WHERE rfqID = (SELECT MAX(rfqID) FROM request_for_quote)");
@@ -72,9 +77,11 @@
             } else {
                 echo '<div class="wrap-contact100">';
             }
-        ?>
-            <form class="contact100-form validate-form">
+
+            echo '<form class="contact100-form validate-form" method="POST" action="../php-actions/insert-new-rfq.php?loopUntil='; echo $loopUntil; echo '">';
                 
+            ?>
+
                 <span class="contact100-form-title">
                     Create Request For Quote
                 </span>
@@ -82,7 +89,7 @@
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">RFQ ID</span>
                     <?php
-						echo '<input class="input100" type="text" placeholder="'.$rfqID.'" readonly>';
+						echo '<input class="input100" type="text" name="rfqID" placeholder="'.$rfqID.'" readonly>';
 				    ?>
                 </div>
 
@@ -112,19 +119,7 @@
                     <span class="line-break-label">Part Information</span>
                 </div>
 
-                <?php
-                    if ($loopUntil < 1)
-                    {
-                        echo '<form class="contact100-form validate-form" method="POST" action="">
-                            <div class="wrap-input100 bg1">
-                                <span class="label-input100">How many parts do you want to add?</span>
-                                <div class = "flexbox">
-                                    <input class="input100 inputResized" type="number" name="numberOfParts" placeholder="Enter Number">
-                                    <input class="contact100-form-btn noMarginRight" type="submit" value="Insert Parts">
-                                </div>
-                            </div>
-                        </form>';
-                    }      
+                <?php    
 
                     for($i=1; $i<=$loopUntil; $i++) {
                         echo '<div class="wrap-input100 justifyContent">
@@ -165,16 +160,25 @@
                                     Cancel
                                 </span>
                             </button>
-                            <button class="contact100-form-btn">
-                                <span>
-                                    Request
-                                    <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-                                </span>
-                            </button>
+                            <input type="submit" class="contact100-form-btn" value="Request">
                         </div>';
                     }
                 ?>
             </form>
+            <?php
+                if ($loopUntil < 1)
+                {
+                    echo '<form class="contact100-form validate-form" method="GET" action="create-rfq.php">
+                        <div class="wrap-input100 bg1">
+                            <span class="label-input100">How many parts do you want to add?</span>
+                            <div class = "flexbox">
+                                <input class="input100 inputResized" type="number" name="numberOfParts" placeholder="Enter Number">
+                                <button class="contact100-form-btn noMarginRight" onClick="create-rfq.php">Insert Parts</button>
+                            </div>
+                        </div>
+                    </form>';
+                }  
+            ?>
         </div>
     </div>
 

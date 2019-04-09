@@ -123,9 +123,11 @@ CREATE TABLE rfq_part_list (
 	requiredDate DATE NOT NULL,
 	partID INT(12) NOT NULL,
 	rfqID INT(6) NOT NULL,
-	PRIMARY KEY (partListID, partID, rfqID),
+	customerID INT(6) NOT NULL,
+	PRIMARY KEY (partListID, partID, rfqID, customerID),
 	FOREIGN KEY (partID) REFERENCES inventory_part(partID),
-	FOREIGN KEY (rfqID) REFERENCES request_for_quote(rfqID)
+	FOREIGN KEY (rfqID) REFERENCES request_for_quote(rfqID),
+	FOREIGN KEY (customerID) REFERENCES customer_account(customerID)
 );
 
 DESCRIBE rfq_part_list;

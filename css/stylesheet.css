@@ -42,3 +42,14 @@ body {
 .noBorder {
 	border: none;
 }
+
+.height100 {
+	height: 100%;
+}
+
+.dateStyle {
+	width: 90%;
+    margin: auto;
+    background: transparent;
+    text-transform: uppercase
+}

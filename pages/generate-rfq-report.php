@@ -67,7 +67,7 @@
                     Generate RFQ Report
                 </span>
 
-                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 height100">
                     <span class="label-input100">RFQ ID</span>
                     <select class="js-select2" onchange="yesnoCheck(this);">
                         <option value="all">All</option>
@@ -88,23 +88,24 @@
                     </div>
                 </div>
 
-                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 height100">
                     <span class="label-input100">From</span>
                     <div class="form-row show-inputbtns">
-                        <input type="date" required data-date-inline-picker="false" data-date-open-on-focus="true" name="from-date"/>
+                        <input type="date" class="dateStyle" required data-date-inline-picker="false" data-date-open-on-focus="true" name="from-date"/>
                     </div>
                     <span class="label-input100">To</span>
                     <div class="form-row show-inputbtns">
-                        <input type="date" required data-date-inline-picker="false" data-date-open-on-focus="true" name="to-date"/>
+                        <input type="date" class="dateStyle" required data-date-inline-picker="false" data-date-open-on-focus="true" name="to-date"/>
                     </div>
                 </div>
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
+                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 height100">
                     <span class="label-input100">Report Type</span>
                     <select class="js-select2" onchange="reportType(this);">
                         <option value="summary">Summary</option>
                         <option value="detail">Detail</option>
                     </select>
+                    <div class="dropDownSelect2"></div>
                 </div>
 
                 <div id="show-detail" style="display: none;">

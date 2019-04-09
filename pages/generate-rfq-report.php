@@ -69,12 +69,13 @@
 
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">RFQ ID</span>
-                    <select onchange="yesnoCheck(this);">
+                    <select class="js-select2" onchange="yesnoCheck(this);">
                         <option value="all">All</option>
                         <option value="find">Find RFQ</option>
                     </select>
+                    <div class="dropDownSelect2"></div>
                     <div id="ifYes" style="display: none;">
-                        <select class="js-select2" name="rfqID" onchange="setCustomerID(value);">
+                        <select class="js-select2" name="rfqID">
                             <?php
                                 echo '<option disabled selected>Select RFQ ID</option>';
                                 while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
@@ -100,7 +101,7 @@
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">Report Type</span>
-                    <select onchange="reportType(this);">
+                    <select class="js-select2" onchange="reportType(this);">
                         <option value="summary">Summary</option>
                         <option value="detail">Detail</option>
                     </select>
@@ -179,7 +180,7 @@
     <script>
         $(".js-select2").each(function(){
             $(this).select2({
-                minimumResultsForSearch: 20,
+                minimumResultsForSearch: 1,
                 dropdownParent: $(this).next('.dropDownSelect2')
             });
         })
@@ -198,11 +199,6 @@
         } else {
             document.getElementById("show-detail").style.display = "none";
         }
-        }
-    </script>
-    <script>
-        function setCustomerID(customerID) {
-            document.getElementsByName('customer-id')[0].placeholder=customerID;
         }
     </script>
     <script src="../js/main.js"></script>

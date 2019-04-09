@@ -67,14 +67,15 @@
                     Generate RFQ Report
                 </span>
 
-                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 height100">
                     <span class="label-input100">RFQ ID</span>
-                    <select onchange="yesnoCheck(this);" name="all-or-find">
+                    <select class="js-select2" onchange="yesnoCheck(this);" name="all-or-find">
                         <option value="all">All</option>
                         <option value="find">Find RFQ</option>
                     </select>
+                    <div class="dropDownSelect2"></div>
                     <div id="ifYes" style="display: none;">
-                        <select class="js-select2" name="rfqID" onchange="setCustomerID(value);">
+                        <select class="js-select2" name="rfqID">
                             <?php
                                 echo '<option disabled selected>Select RFQ ID</option>';
                                 while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
@@ -87,23 +88,24 @@
                     </div>
                 </div>
 
-                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 height100">
                     <span class="label-input100">From</span>
                     <div class="form-row show-inputbtns">
-                        <input type="date" required data-date-inline-picker="false" data-date-open-on-focus="true" name="from-date"/>
+                        <input type="date" class="dateStyle" required data-date-inline-picker="false" data-date-open-on-focus="true" name="from-date"/>
                     </div>
                     <span class="label-input100">To</span>
                     <div class="form-row show-inputbtns">
-                        <input type="date" required data-date-inline-picker="false" data-date-open-on-focus="true" name="to-date"/>
+                        <input type="date" class="dateStyle" required data-date-inline-picker="false" data-date-open-on-focus="true" name="to-date"/>
                     </div>
                 </div>
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
+                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 height100">
                     <span class="label-input100">Report Type</span>
-                    <select onchange="reportType(this);" name="report-type">
+                    <select class="js-select2" onchange="reportType(this);" name="report-type">
                         <option value="summary">Summary</option>
                         <option value="detail">Detail</option>
                     </select>
+                    <div class="dropDownSelect2"></div>
                 </div>
 
                 <div id="show-detail" style="display: none;">
@@ -179,7 +181,7 @@
     <script>
         $(".js-select2").each(function(){
             $(this).select2({
-                minimumResultsForSearch: 20,
+                minimumResultsForSearch: 1,
                 dropdownParent: $(this).next('.dropDownSelect2')
             });
         })
@@ -198,11 +200,6 @@
         } else {
             document.getElementById("show-detail").style.display = "none";
         }
-        }
-    </script>
-    <script>
-        function setCustomerID(customerID) {
-            document.getElementsByName('customer-id')[0].placeholder=customerID;
         }
     </script>
     <script src="../js/main.js"></script>

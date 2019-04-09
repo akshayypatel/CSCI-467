@@ -71,6 +71,7 @@
                         <th>Quote Type</th>
                         <th>Manager Email Address</th>
                         <th>Manager Phone Number</th>
+                        <th>Username</th>
                         <th>Password</th>
                         <th>Comments</th>
                     </tr>
@@ -84,6 +85,7 @@
                             echo '<td>' .$row['quoteType'].'</td>';
                             echo '<td>' .$row['managerEmailAddress'].'</td>';
                             echo '<td>' .$row['managerPhoneNumber'].'</td>';
+                            echo '<td>' .$row['username'].'</td>';
                             echo '<td>' .$row['password'].'</td>';
                             echo '<td>' .$row['comments'].'</td>';
                             echo '</tr>';

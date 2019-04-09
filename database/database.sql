@@ -5,12 +5,20 @@
     Password: 1995Jan10
 */
 
+DROP TABLE IF EXISTS rfq_part_list;
+DROP TABLE IF EXISTS request_for_quote;
+DROP TABLE IF EXISTS inventory_part;
+DROP TABLE IF EXISTS customer_representative;
+DROP TABLE IF EXISTS address;
+DROP TABLE IF EXISTS customer_account;
+
 CREATE TABLE customer_account(
 	customerID int(6) NOT NULL AUTO_INCREMENT,
 	companyName TEXT(99) NOT NULL,
 	quoteType TEXT(6) NOT NULL,
 	managerEmailAddress TEXT(50) NOT NULL,
 	managerPhoneNumber TEXT(12) NOT NULL,
+	username TEXT(99) NOT NULL,
 	password TEXT(99) NOT NULL,
 	comments TEXT(300),
 	PRIMARY KEY (customerID)
@@ -140,6 +148,6 @@ DESCRIBE rfq_part_list;
 -- | requiredDate | date    | NO   |     | NULL    |                |
 -- | partID       | int(12) | NO   | PRI | NULL    |                |
 -- | rfqID        | int(6)  | NO   | PRI | NULL    |                |
+-- | customerID   | int(6)  | NO   | PRI | NULL    |                |
 -- +--------------+---------+------+-----+---------+----------------+
-
 

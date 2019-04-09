@@ -58,7 +58,7 @@
 
     </div>
     <div class="container-contact100">
-        <div class="wrap-contact100">   
+        <div class="wrap-contact100 width90">   
             <span class="contact100-form-title">
                 Customer Accounts Database
             </span>

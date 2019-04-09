@@ -34,7 +34,9 @@ DESCRIBE customer_account;
 -- | quoteType           | tinytext | NO   |     | NULL    |                |
 -- | managerEmailAddress | tinytext | NO   |     | NULL    |                |
 -- | managerPhoneNumber  | tinytext | NO   |     | NULL    |                |
+-- | username            | tinytext | NO   |     | NULL    |                |
 -- | password            | tinytext | NO   |     | NULL    |                |
+-- | comments            | text     | YES  |     | NULL    |                |
 -- +---------------------+----------+------+-----+---------+----------------+
 
 CREATE TABLE address(
@@ -50,6 +52,7 @@ CREATE TABLE address(
 );
 
 DESCRIBE address;
+
 -- +-------------+----------+------+-----+---------+----------------+
 -- | Field       | Type     | Null | Key | Default | Extra          |
 -- +-------------+----------+------+-----+---------+----------------+
@@ -61,6 +64,7 @@ DESCRIBE address;
 -- | state       | tinytext | NO   |     | NULL    |                |
 -- | zipCode     | tinytext | NO   |     | NULL    |                |
 -- +-------------+----------+------+-----+---------+----------------+
+
 
 CREATE TABLE customer_representative (
 	repID INT(6) NOT NULL AUTO_INCREMENT,
@@ -74,6 +78,7 @@ CREATE TABLE customer_representative (
 );
 
 DESCRIBE customer_representative;
+
 -- +-------------+----------+------+-----+---------+----------------+
 -- | Field       | Type     | Null | Key | Default | Extra          |
 -- +-------------+----------+------+-----+---------+----------------+
@@ -84,6 +89,7 @@ DESCRIBE customer_representative;
 -- | email       | tinytext | NO   |     | NULL    |                |
 -- | customerID  | int(6)   | NO   | PRI | NULL    |                |
 -- +-------------+----------+------+-----+---------+----------------+
+
 
 CREATE TABLE inventory_part (
 	partID INT(12) NOT NULL AUTO_INCREMENT,
@@ -110,21 +116,25 @@ DESCRIBE inventory_part;
 -- | manufacturer_name | tinytext | NO   |     | NULL    |                |
 -- +-------------------+----------+------+-----+---------+----------------+
 
+
 CREATE TABLE request_for_quote (
 	rfqID INT(6) NOT NULL AUTO_INCREMENT,
 	customerID INT(6) NOT NULL,
+	dateGenerated DATE NOT NULL,
 	PRIMARY KEY (rfqID, customerID),
 	FOREIGN KEY (customerID) REFERENCES customer_account(customerID)
 );
 
 DESCRIBE request_for_quote;
 
--- +------------+--------+------+-----+---------+----------------+
--- | Field      | Type   | Null | Key | Default | Extra          |
--- +------------+--------+------+-----+---------+----------------+
--- | rfqID      | int(6) | NO   | PRI | NULL    | auto_increment |
--- | customerID | int(6) | NO   | PRI | NULL    |                |
--- +------------+--------+------+-----+---------+----------------+
+-- +---------------+--------+------+-----+---------+----------------+
+-- | Field         | Type   | Null | Key | Default | Extra          |
+-- +---------------+--------+------+-----+---------+----------------+
+-- | rfqID         | int(6) | NO   | PRI | NULL    | auto_increment |
+-- | customerID    | int(6) | NO   | PRI | NULL    |                |
+-- | dateGenerated | date   | NO   |     | NULL    |                |
+-- +---------------+--------+------+-----+---------+----------------+
+
 
 CREATE TABLE rfq_part_list (
 	partListID INT(6) NOT NULL AUTO_INCREMENT,
@@ -151,4 +161,5 @@ DESCRIBE rfq_part_list;
 -- | rfqID        | int(6)  | NO   | PRI | NULL    |                |
 -- | customerID   | int(6)  | NO   | PRI | NULL    |                |
 -- +--------------+---------+------+-----+---------+----------------+
+
 

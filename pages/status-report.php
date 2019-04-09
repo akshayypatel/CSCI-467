@@ -47,8 +47,8 @@
                             <li><a class="gn-icon gn-icon-help" href="../database/customer-accounts.php">Customer Account Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/address.php">Address Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/inventory-parts.php">Inventory Parts Database</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="../database/view-company-directory.php">View Company Directory</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="../database/view-all-rfqs.php">View All RFQs</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/request-for-quote.php">RFQ Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/rfq-part-list.php">RFQ Parts List Database</a></li>
                         </ul>
                     </div><!-- /gn-scroller -->
                 </nav>
@@ -114,74 +114,90 @@
                     <table class="table">
                         <tr>
                             <?php
-                                // Create an array with columns to display
                                 $partListColumns = array();
                                 $rfqColumns = array();
-                                if (isset($_POST['part-number'])) 
-                                { 
-                                    array_push($partListColumns, "partID"); 
-                                    echo '<th>Part Number</th>';
-                                }
-                                if (isset( $_POST['part-description'] )) 
+                                if ($_POST['report-type'] == "detail")
                                 {
-                                    array_push($partListColumns, "partDescription"); 
-                                    echo '<th>Description</th>';
-                                } 
-                                if (isset( $_POST['part-price'] )) 
-                                {
+                                    // Create an array with columns to display
+                                    if (isset($_POST['part-number'])) 
+                                    { 
+                                        array_push($partListColumns, "partID"); 
+                                        echo '<th>Part Number</th>';
+                                    }
+                                    if (isset($_POST['part-name']))
+                                    {
+                                        array_push($partListColumns, "partName");
+                                        echo '<th>Part Name</th>';
+                                    }
+                                    if (isset( $_POST['part-description'] )) 
+                                    {
+                                        array_push($partListColumns, "partDescription"); 
+                                        echo '<th>Description</th>';
+                                    } 
+                                    if (isset( $_POST['part-price'] )) 
+                                    {
+                                        array_push($partListColumns, "listingPrice"); 
+                                        echo '<th>Price</th>';
+                                    }
+                                    if (isset( $_POST['part-quantity'] )) 
+                                    { 
+                                        array_push($partListColumns, "quantity"); 
+                                        echo '<th>Quantity</th>';
+                                    }
+                                    if (isset( $_POST['date-required'] )) 
+                                    {
+                                        array_push($rfqColumns, "requiredDate");
+                                        echo "<th>Required Date</th>";
+                                    }
+                                } else {
+                                    // If summary report type is selected
+                                    array_push($partListColumns, "partName");
+                                    echo '<th>Part Name</th>';
                                     array_push($partListColumns, "listingPrice"); 
                                     echo '<th>Price</th>';
-                                }
-                                if (isset( $_POST['part-quantity'] )) 
-                                { 
                                     array_push($partListColumns, "quantity"); 
                                     echo '<th>Quantity</th>';
-                                }
-                                if (isset( $_POST['date-required'] )) 
-                                {
                                     array_push($rfqColumns, "requiredDate");
                                     echo "<th>Required Date</th>";
                                 }
-                                // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-                                // No comments in list???
-                                // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-                                // if (isset( $_POST['comments'] ))
-                                // {
-                                //     array_push($rfqColumns, 'comments');
-                                //     echo '<th>comments</th>';
-                                // }
                                 echo '</tr>'; // End of table header
 
                                 // Get RFQ for rfqID
-                                $rfqResult = $pdo->prepare("SELECT * FROM rfq_part_list WHERE rfqID = ? ");
-                                $rfqResult->execute(array( $_POST['rfqID'] ));
+                                if ( $_POST['all-or-find'] == "all") 
+                                {
+                                    $rfqResult = $pdo->query("SELECT * FROM rfq_part_list");
+                                } else {
+                                    // If find
+                                    $rfqResult = $pdo->prepare("SELECT * FROM rfq_part_list WHERE rfqID = ? ");
+                                    $rfqResult->execute(array( $_POST['rfqID'] ));                                    
+                                }
                                 // This will only loop once
                                 // For every RFQ print 
                                 while($row = $rfqResult->fetch(PDO::FETCH_ASSOC))
-                                {
-                                    $values = array();
-                                    for ($i = 0; $i <sizeof($rfqColumns); $i++) 
                                     {
-                                        array_push($values, $row[$rfqColumns[$i]]);
-                                    }
-                                    $result = $pdo->prepare("SELECT * FROM inventory_part WHERE partID = ? ");
-                                    $result->execute(array( $row['partID'] ));
-                                    // Loop through the RFQ part list results, outputing the options one by one
-                                    while($row = $result->fetch(PDO::FETCH_ASSOC))
-                                    {
-                                        echo '<tr>';    // Start of table row
-                                        // Print selected columns
-                                        for ($i = 0; $i < sizeof($partListColumns); $i++) {
-                                            echo '<td>' . $row[$partListColumns[$i]] . '</td>';
-                                        }
-                                        // Print Required date and Comments if option was selected
-                                        for ($i = 0; $i <sizeof($values); $i++) 
+                                        $values = array();
+                                        for ($i = 0; $i <sizeof($rfqColumns); $i++) 
                                         {
-                                            echo '<td>' . $values[$i] . '</td>';
+                                            array_push($values, $row[$rfqColumns[$i]]);
                                         }
+                                        $result = $pdo->prepare("SELECT * FROM inventory_part WHERE partID = ? ");
+                                        $result->execute(array( $row['partID'] ));
+                                        // Loop through the RFQ part list results, outputing the options one by one
+                                        while($row = $result->fetch(PDO::FETCH_ASSOC))
+                                        {
+                                            echo '<tr>';    // Start of table row
+                                            // Print selected columns
+                                            for ($i = 0; $i < sizeof($partListColumns); $i++) {
+                                                echo '<td>' . $row[$partListColumns[$i]] . '</td>';
+                                            }
+                                            // Print Required date and Comments if option was selected
+                                            for ($i = 0; $i <sizeof($values); $i++) 
+                                            {
+                                                echo '<td>' . $values[$i] . '</td>';
+                                            }
+                                        }
+                                            echo '</tr>';   // End of table row
                                     }
-                                        echo '</tr>';   // End of table row
-                                }
                             ?>
                     </table>
                     </div>

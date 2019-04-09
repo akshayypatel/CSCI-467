@@ -69,7 +69,7 @@
 
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">RFQ ID</span>
-                    <select onchange="yesnoCheck(this);">
+                    <select onchange="yesnoCheck(this);" name="all-or-find">
                         <option value="all">All</option>
                         <option value="find">Find RFQ</option>
                     </select>
@@ -100,7 +100,7 @@
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">Report Type</span>
-                    <select onchange="reportType(this);">
+                    <select onchange="reportType(this);" name="report-type">
                         <option value="summary">Summary</option>
                         <option value="detail">Detail</option>
                     </select>

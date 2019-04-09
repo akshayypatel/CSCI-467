@@ -34,3 +34,12 @@ SELECT companyName, CONCAT(addressType, ': ', street, ', ', city, ', ', state, '
 FROM `customer_account`
 INNER JOIN `customer_representative` ON `customer_account`.customerID = `customer_representative`.customerID
 INNER JOIN `address` ON `customer_account`.customerID = `address`.customerID;
+
+-- Query for Generated RFQ Report
+SELECT rfq.rfqID, ca.companyName, ip.partID, ip.partName, ip.partDescription, pl.quantity, ip.listingPrice, pl.requiredDate, rfq.dateGenerated
+FROM rfq_part_list pl
+INNER JOIN request_for_quote rfq ON pl.rfqID = rfq.rfqID
+INNER JOIN customer_account ca ON rfq.customerID = ca.customerID
+INNER JOIN inventory_part ip ON pl.partID = ip.partID
+WHERE rfq.dateGenerated BETWEEN ? AND ?
+ORDER BY rfq.rfqID;

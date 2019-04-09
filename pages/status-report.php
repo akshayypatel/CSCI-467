@@ -116,6 +116,10 @@
                             <?php
                                 $partListColumns = array();
                                 $rfqColumns = array();
+                                if ($_POST['all-or-find'] == "all")
+                                {
+                                    array_push()
+                                } 
                                 if ($_POST['report-type'] == "detail")
                                 {
                                     // Create an array with columns to display
@@ -165,7 +169,14 @@
                                 // Get RFQ for rfqID
                                 if ( $_POST['all-or-find'] == "all") 
                                 {
-                                    $rfqResult = $pdo->query("SELECT * FROM rfq_part_list");
+                                    $rfqResult = $pdo->prepare("SELECT rfq.rfqID, ca.companyName, ip.partID, ip.partName, ip.partDescription, pl.quantity, ip.listingPrice, pl.requiredDate, rfq.dateGenerated
+                                    FROM rfq_part_list pl
+                                    INNER JOIN request_for_quote rfq ON pl.rfqID = rfq.rfqID
+                                    INNER JOIN customer_account ca ON rfq.customerID = ca.customerID
+                                    INNER JOIN inventory_part ip ON pl.partID = ip.partID
+                                    WHERE rfq.dateGenerated BETWEEN ? AND ?
+                                    ORDER BY rfq.rfqID;");
+                                    $rfqResult->execute(array( $_POST['from-date'], $_POST['to-date']));
                                 } else {
                                     // If find
                                     $rfqResult = $pdo->prepare("SELECT * FROM rfq_part_list WHERE rfqID = ? ");

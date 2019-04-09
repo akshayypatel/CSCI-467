@@ -87,27 +87,27 @@
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Part Name</span>
-					<input class="input100" type="text" name="part-name" placeholder="Enter Part Name">
+					<input class="input100" type="text" name="part-name" required placeholder="Enter Part Name">
 				</div>
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Part Quantity</span>
-					<input class="input100" type="number" name="quantity" placeholder="Enter Part Quantity">
+					<input class="input100" type="number" name="quantity" required placeholder="Enter Part Quantity">
 				</div>
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Manufacturer</span>
-					<input class="input100" type="text" name="manufacturer" placeholder="Enter Manufacturer">
+					<input class="input100" type="text" name="manufacturer" required placeholder="Enter Manufacturer">
 				</div>
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
-					<span class="label-input100">Listing Price</span>
-					<input class="input100" type="number" name="listing-price" placeholder="Enter Listing Price">
+					<span class="label-input100">Listing Price ($USD)</span>
+					<input class="input100" type="number" name="listing-price" required placeholder="Enter Listing Price">
 				</div>
 
 				<div class="wrap-input100 bg1">
 					<span class="label-input100">Part Description</span>
-					<textarea class="input100" name="part-description" placeholder="Enter Part Description"></textarea>
+					<textarea class="input100" name="part-description" required placeholder="Enter Part Description"></textarea>
 				</div>
 
 				<div class="container-contact100-form-btn">
@@ -125,11 +125,6 @@
 				</div>
 			</form>
 		</div>
-	</div>
-
-	<div class="buttons">
-		<button type="reset" value="Reset">Reset</button>
-		<button type="submit" value="Submit">Submit</button>
 	</div>
 
 	<script src="../js/classie.js"></script>

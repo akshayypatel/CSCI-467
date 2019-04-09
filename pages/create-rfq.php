@@ -90,7 +90,7 @@
                 if ($loopUntil > 0) {
                     echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">RFQ ID</span>
-                    <input class="input100" type="text" name="rfqID" placeholder="';
+                    <input class="input100" type="button" style="cursor: default;" name="rfqID" value="';
 
                     echo $rfqID;
 
@@ -99,13 +99,13 @@
 
                     <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                         <span class="label-input100">Quote Type</span>
-                        <input class="input100" type="text" placeholder="AUTO" readonly>
+                        <input class="input100" type="button" style="cursor: default;" value="AUTO">
                     </div>
 
                     <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                         <span class="label-input100">Customer ID: Company</span>
                         <div>
-                            <select class="js-select2" name="customerID">';
+                            <select class="js-select2" required name="customerID">';
 
                                 $query = $pdo->query("SELECT companyName, customerID FROM customer_account");
                                 echo '<option disabled selected>Select Company</option>';
@@ -134,7 +134,7 @@
                             <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 inline-block">
                                 <span class="label-input100">Part</span>
                                 <div>
-                                    <select class="js-select2" name="part'; echo $i; echo 'id">';
+                                    <select class="js-select2" required name="part'; echo $i; echo 'id">';
                                         $query = $pdo->query("SELECT partName, partID, manufacturer_name, listingPrice FROM inventory_part");
                                         echo '<option disabled selected>Select Part</option>';
                                         while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
@@ -149,13 +149,13 @@
 
                             <div class="wrap-input100 bg1 rs1-wrap-input100 w250 inline-block">
                                 <span class="label-input100">Quantity</span>
-                                <input class="input100" type="number" name="part'; echo $i; echo 'quantity" placeholder="Enter Quantity">
+                                <input class="input100" required type="number" name="part'; echo $i; echo 'quantity" placeholder="Enter Quantity">
                             </div>
 
                             <div class="wrap-input100 bg1 rs1-wrap-input100 w250 inline-block">
                                 <span class="label-input100">Required Date</span>
                                 <div class="form-row show-inputbtns">
-                                    <input type="date" data-date-inline-picker="false" data-date-open-on-focus="true" name="part'; echo $i; echo 'date"/>
+                                    <input type="date" required data-date-inline-picker="false" data-date-open-on-focus="true" name="part'; echo $i; echo 'date"/>
                                 </div>
                             </div>
                         </div>';

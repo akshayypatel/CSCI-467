@@ -83,7 +83,7 @@
                         <span class="label-input100">Customer ID</span>
                         <?php
                         // Display customer ID
-                            if (isset( $_POST['customerID']))
+                            if (isset( $_POST['customerID'] ))
                             {	
                                 echo '<input class="input100" type="text" name="name" placeholder="'; echo $_POST['customerID']; echo '" readonly>';
                             } 
@@ -91,18 +91,20 @@
                             //     // header("Location: ../pages/error.html");
                             // }
                         ?>
-                        <!-- <input class="input100" type="text" name="name" placeholder="50205" readonly> -->
                     </div>
 
-                    <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
-                        <span class="label-input100">Date Generated</span>
-                        <?php
+                    <?php
+                        if (isset( $_POST['date-generated'] )) {
+                            echo '
+                            <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
+                            <span class="label-input100">Date Generated</span>
+                            ';
                         // Display date
                             $date = date("m/d/y");	
                             echo '<input class="input100" type="text" name="date" placeholder="'; echo $date; echo '" readonly>';
-                        ?>
-                        <!-- <input class="input100" type="text" name="date" placeholder="50205" readonly> -->
-                    </div>
+                            echo '</div>';
+                        }
+                    ?>
 
                     <div class="line-break center">
                         <span class="line-break-label">Part Information</span>
@@ -111,21 +113,76 @@
                     <div class="wrap-input100 bg1">
                     <table class="table">
                         <tr>
-                            <th>Part Number</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Required Date</th>
-                            <th>Comments</th>
-                        </tr>
-                        <tr>
-                            <td>123456</td>
-                            <td>description here</td>
-                            <td>$4.60</td>
-                            <td>90</td>
-                            <td>10/20/19</td>
-                            <td>Comments here</td>
-                        </tr>
+                            <?php
+                                // Create an array with columns to display
+                                $partListColumns = array();
+                                $rfqColumns = array();
+                                if (isset($_POST['part-number'])) 
+                                { 
+                                    array_push($partListColumns, "partID"); 
+                                    echo '<th>Part Number</th>';
+                                }
+                                if (isset( $_POST['part-description'] )) 
+                                {
+                                    array_push($partListColumns, "partDescription"); 
+                                    echo '<th>Description</th>';
+                                } 
+                                if (isset( $_POST['part-price'] )) 
+                                {
+                                    array_push($partListColumns, "listingPrice"); 
+                                    echo '<th>Price</th>';
+                                }
+                                if (isset( $_POST['part-quantity'] )) 
+                                { 
+                                    array_push($partListColumns, "quantity"); 
+                                    echo '<th>Quantity</th>';
+                                }
+                                if (isset( $_POST['date-required'] )) 
+                                {
+                                    array_push($rfqColumns, "requiredDate");
+                                    echo "<th>Required Date</th>";
+                                }
+                                // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                                // No comments in list???
+                                // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                                // if (isset( $_POST['comments'] ))
+                                // {
+                                //     array_push($rfqColumns, 'comments');
+                                //     echo '<th>comments</th>';
+                                // }
+                                echo '</tr>'; // End of table header
+
+                                // Get RFQ for rfqID
+                                $rfqResult = $pdo->prepare("SELECT * FROM rfq_part_list WHERE rfqID = ? ");
+                                $rfqResult->execute(array( $_POST['rfqID'] ));
+                                // This will only loop once
+                                // For every RFQ print 
+                                while($row = $rfqResult->fetch(PDO::FETCH_ASSOC))
+                                {
+                                    $values = array();
+                                    for ($i = 0; $i <sizeof($rfqColumns); $i++) 
+                                    {
+                                        array_push($values, $row[$rfqColumns[$i]]);
+                                    }
+                                    $result = $pdo->prepare("SELECT * FROM inventory_part WHERE partID = ? ");
+                                    $result->execute(array( $row['partID'] ));
+                                    // Loop through the RFQ part list results, outputing the options one by one
+                                    while($row = $result->fetch(PDO::FETCH_ASSOC))
+                                    {
+                                        echo '<tr>';    // Start of table row
+                                        // Print selected columns
+                                        for ($i = 0; $i < sizeof($partListColumns); $i++) {
+                                            echo '<td>' . $row[$partListColumns[$i]] . '</td>';
+                                        }
+                                        // Print Required date and Comments if option was selected
+                                        for ($i = 0; $i <sizeof($values); $i++) 
+                                        {
+                                            echo '<td>' . $values[$i] . '</td>';
+                                        }
+                                    }
+                                        echo '</tr>';   // End of table row
+                                }
+                            ?>
                     </table>
                     </div>
                 </form>

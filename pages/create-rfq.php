@@ -163,11 +163,7 @@
 
                     if ($loopUntil >= 1) {
                         echo '<div class="container-contact100-form-btn">
-                            <button class="contact100-form-btn">
-                                <span>
-                                    Cancel
-                                </span>
-                            </button>
+                            <input class="contact100-form-btn" onClick="window.location=\'create-rfq.php\'" type="button" value="Cancel">
                             <input type="submit" class="contact100-form-btn" value="Request">
                         </div>';
                     }

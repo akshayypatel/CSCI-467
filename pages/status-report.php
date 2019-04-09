@@ -100,88 +100,85 @@
 
                     <div class="wrap-input100 bg1">
                     <table class="table">
-                        <tr>
-                            <?php
-                                $partListColumns = array();
-                                $rfqColumns = array();
-                                if ($_POST['all-or-find'] == "all")
+                        <?php
+                            echo '<tr>';
+                            if ($_POST['report-type'] == "detail")
+                            {
+                                if (isset( $_POST['company-name'] )) 
                                 {
-                                    array_push()
+                                    echo "<th>Company Name</th>";
+                                }
+                                if (isset($_POST['part-name']))
+                                {
+                                    echo '<th>Part Name</th>';
+                                }
+                                if (isset( $_POST['part-description'] )) 
+                                {
+                                    echo '<th>Description</th>';
                                 } 
+                                if (isset( $_POST['part-price'] )) 
+                                {
+                                    echo '<th>Price</th>';
+                                }
+                                if (isset( $_POST['part-quantity'] )) 
+                                { 
+                                    echo '<th>Quantity</th>';
+                                }
+                                if (isset( $_POST['date-required'] )) 
+                                {
+                                    echo "<th>Required Date</th>";
+                                }
+                                if (isset( $_POST['date-generated'] )) 
+                                {
+                                    echo "<th>Date Generated</th>";
+                                }
+                            } else {
+                                // If summary report type is selected
+                                echo '<th>RFQ ID</th>';
+                                echo '<th>Part Name</th>';
+                                echo '<th>Price</th>';
+                                echo '<th>Quantity</th>';
+                                echo "<th>Required Date</th>";
+                            }
+                            echo '</tr>';
+
+                            while($row = $rfqResult->fetch(PDO::FETCH_ASSOC))
+                            {
+                                echo '<tr>';
                                 if ($_POST['report-type'] == "detail")
                                 {
-                                    // Create an array with columns to display
-                                    if (isset($_POST['part-number'])) 
-                                    { 
-                                        array_push($partListColumns, "partID"); 
-                                        echo '<th>Part Number</th>';
+                                    if (isset( $_POST['company-name'] )) 
+                                    {
+                                        echo '<td>' .$row['companyName'].'</td>';
                                     }
                                     if (isset($_POST['part-name']))
                                     {
-                                        array_push($partListColumns, "partName");
-                                        echo '<th>Part Name</th>';
+                                        echo '<td>' .$row['partName'].'</td>';
                                     }
                                     if (isset( $_POST['part-description'] )) 
                                     {
-                                        array_push($partListColumns, "partDescription"); 
-                                        echo '<th>Description</th>';
+                                        echo '<td>' .$row['partDescription'].'</td>';
                                     } 
                                     if (isset( $_POST['part-price'] )) 
                                     {
-                                        array_push($partListColumns, "listingPrice"); 
-                                        echo '<th>Price</th>';
+                                        echo '<td>' .$row['listingPrice'].'</td>';
                                     }
                                     if (isset( $_POST['part-quantity'] )) 
                                     { 
-                                        array_push($partListColumns, "quantity"); 
-                                        echo '<th>Quantity</th>';
+                                        echo '<td>' .$row['quantity'].'</td>';
                                     }
                                     if (isset( $_POST['date-required'] )) 
                                     {
-                                        array_push($rfqColumns, "requiredDate");
-                                        echo "<th>Required Date</th>";
+                                        echo '<td>' .$row['requiredDate'].'</td>';
                                     }
-                                } else {
-                                    // If summary report type is selected
-                                    array_push($partListColumns, "partName");
-                                    echo '<th>Part Name</th>';
-                                    array_push($partListColumns, "listingPrice"); 
-                                    echo '<th>Price</th>';
-                                    array_push($partListColumns, "quantity"); 
-                                    echo '<th>Quantity</th>';
-                                    array_push($rfqColumns, "requiredDate");
-                                    echo "<th>Required Date</th>";
-                                }
-                                echo '</tr>'; // End of table header
-
-                                // This will only loop once
-                                // For every RFQ print 
-                                while($row = $rfqResult->fetch(PDO::FETCH_ASSOC))
+                                    if (isset( $_POST['date-generated'] )) 
                                     {
-                                        $values = array();
-                                        for ($i = 0; $i <sizeof($rfqColumns); $i++) 
-                                        {
-                                            array_push($values, $row[$rfqColumns[$i]]);
-                                        }
-                                        $result = $pdo->prepare("SELECT * FROM inventory_part WHERE partID = ? ");
-                                        $result->execute(array( $row['partID'] ));
-                                        // Loop through the RFQ part list results, outputing the options one by one
-                                        while($row = $result->fetch(PDO::FETCH_ASSOC))
-                                        {
-                                            echo '<tr>';    // Start of table row
-                                            // Print selected columns
-                                            for ($i = 0; $i < sizeof($partListColumns); $i++) {
-                                                echo '<td>' . $row[$partListColumns[$i]] . '</td>';
-                                            }
-                                            // Print Required date and Comments if option was selected
-                                            for ($i = 0; $i <sizeof($values); $i++) 
-                                            {
-                                                echo '<td>' . $values[$i] . '</td>';
-                                            }
-                                        }
-                                            echo '</tr>';   // End of table row
+                                        echo '<td>' .$row['dateGenerated'].'</td>';
                                     }
-                            ?>
+                                }
+                                echo '</tr>';
+                            }
+                        ?>
                     </table>
                     </div>
                 </form>

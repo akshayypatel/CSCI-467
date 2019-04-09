@@ -121,8 +121,8 @@
                         </div>
 
                         <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes noBorder">
-                            <input type="checkbox" id="part-number" name="part-number">
-                            <label class="line-break-label" for="part-number">Part Number</label>
+                            <input type="checkbox" id="part-name" name="part-name">
+                            <label class="line-break-label" for="part-name">Part Name</label>
                             <br>
                             <input type="checkbox" id="part-description" name="part-description">
                             <label class="line-break-label" for="part-description">Part Description</label>
@@ -131,7 +131,7 @@
                             <label class="line-break-label" for="part-price">Part Price</label>
                             <br>
                             <input type="checkbox" id="part-quantity" name="part-quantity">
-                            <label class="line-break-label" for="part-quantity">Part Quantity</label>
+                            <label class="line-break-label" for="part-quantity">Quantity Requested</label>
                         </div>
 
                         <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes noBorder">
@@ -141,8 +141,8 @@
                             <input type="checkbox" id="date-generated" name="date-generated">
                             <label class="line-break-label" for="date-generated">Date Generated</label>
                             <br>
-                            <input type="checkbox" id="comments" name="comments">
-                            <label class="line-break-label" for="comments">Comments</label>
+                            <input type="checkbox" id="company-name" name="company-name">
+                            <label class="line-break-label" for="company-name">Company Name</label>
                             <br>
                             <div class="sort-by">
                                 <select class="js-select2" name="sort-by">

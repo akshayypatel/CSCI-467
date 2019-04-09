@@ -94,11 +94,6 @@
                         <span class="label-input100">Customer ID</span>
                     </div>
 
-                    <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
-                        <span class="label-input100">Date Generated</span>
-                        <input class="input100" type="button" name="date" <?php echo 'value="'..'">' ?>
-                    </div>
-
                     <div class="line-break center">
                         <span class="line-break-label">Part Information</span>
                     </div>

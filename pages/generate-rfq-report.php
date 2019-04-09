@@ -69,7 +69,7 @@
 
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 height100">
                     <span class="label-input100">RFQ ID</span>
-                    <select class="js-select2" onchange="yesnoCheck(this);">
+                    <select class="js-select2" onchange="yesnoCheck(this);" name="all-or-find">
                         <option value="all">All</option>
                         <option value="find">Find RFQ</option>
                     </select>
@@ -101,7 +101,7 @@
 
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 height100">
                     <span class="label-input100">Report Type</span>
-                    <select class="js-select2" onchange="reportType(this);">
+                    <select class="js-select2" onchange="reportType(this);" name="report-type">
                         <option value="summary">Summary</option>
                         <option value="detail">Detail</option>
                     </select>

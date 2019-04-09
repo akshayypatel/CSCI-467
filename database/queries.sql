@@ -16,6 +16,14 @@ INSERT INTO address VALUES (6, 3, "Shipping", "217 Normal Rd", "Dekalv", "IL", "
 INSERT INTO address VALUES (7, 4, "Billing", "1 Infinite Loop", "Cupertino", "CA", "95014");
 INSERT INTO address VALUES (8, 4, "Shipping", "1 Apple Park Way", "Cupertino", "CA", "95014");
 
+-- Insert Representatives
+
+INSERT INTO customer_representative VALUES (1, "714-222-9999", "Mark", "Zuckerberg", "mzuckerberg@fb.com", 1);
+INSERT INTO customer_representative VALUES (2, "830-695-3212", "Bill", "Gates", "bgates@microsoft.com", 2);
+INSERT INTO customer_representative VALUES (3, "815-832-9210", "Roger", "Hockchild", "rhockchild@discover.com", 3);
+INSERT INTO customer_representative VALUES (4, "214-642-0215", "Tim", "Cook", "tcook@apple.com", 4);
+
+
 -- Query to view company reps
 SELECT companyName, CONCAT(firstName, ' ', lastName) AS representative, email, username, password
 FROM `customer_account`
@@ -36,9 +44,9 @@ ORDER BY rfq.rfqID;
 
 -- Query to view company address and contact person
 SELECT companyName, CONCAT(addressType, ': ', street, ', ', city, ', ', state, ' ', zipCode) AS address, CONCAT(firstName, ' ', lastName) AS representative, email
-FROM `customer_account`
-INNER JOIN `customer_representative` ON `customer_account`.customerID = `customer_representative`.customerID
-INNER JOIN `address` ON `customer_account`.customerID = `address`.customerID;
+FROM customer_account
+INNER JOIN customer_representative ON customer_account.customerID = customer_representative.customerID
+INNER JOIN address ON customer_account.customerID = address.customerID;
 
 -- Query for Generated RFQ Report
 SELECT rfq.rfqID, ca.companyName, ip.partID, ip.partName, ip.partDescription, pl.quantity, ip.listingPrice, pl.requiredDate, rfq.dateGenerated

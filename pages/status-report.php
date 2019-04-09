@@ -23,7 +23,29 @@
     <script src="../js/modernizr.custom.js"></script>
     <?php
         require("../php-actions/connect.php");
-        // If connection fail return error
+        
+        if ( $_POST['all-or-find'] == "all") 
+        {
+            $rfqResult = $pdo->prepare("SELECT rfq.rfqID, ca.companyName, ip.partID, ip.partName, ip.partDescription, pl.quantity, ip.listingPrice, pl.requiredDate, rfq.dateGenerated
+            FROM rfq_part_list pl
+            INNER JOIN request_for_quote rfq ON pl.rfqID = rfq.rfqID
+            INNER JOIN customer_account ca ON rfq.customerID = ca.customerID
+            INNER JOIN inventory_part ip ON pl.partID = ip.partID
+            WHERE rfq.dateGenerated BETWEEN ? AND ?
+            ORDER BY rfq.rfqID");
+            $rfqResult->execute(array( $_POST['from-date'], $_POST['to-date']));
+        } else {
+            // If find
+            $rfqResult = $pdo->prepare("SELECT rfq.rfqID, ca.companyName, ip.partID, ip.partName, ip.partDescription, pl.quantity, ip.listingPrice, pl.requiredDate, rfq.dateGenerated
+            FROM rfq_part_list pl
+            INNER JOIN request_for_quote rfq ON pl.rfqID = rfq.rfqID
+            INNER JOIN customer_account ca ON rfq.customerID = ca.customerID
+            INNER JOIN inventory_part ip ON pl.partID = ip.partID
+            WHERE rfq.rfqID = ?
+            ORDER BY rfq.rfqID");
+            $rfqResult->execute(array( $_POST['rfqID'] ));                                    
+        }
+
     ?>
 </head>
 
@@ -65,46 +87,17 @@
                     Generate RFQ Report
                 </span>
                     <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
-                        <span class="label-input100">RFQ ID</span>
-                            <?php
-                            // Display RFQ ID
-                            	if (isset( $_POST['rfqID']))
-                                {	
-                                    echo '<input class="input100" type="text" name="rfqID" placeholder="'; echo $_POST['rfqID']; echo '" readonly>';
-                                } 
-                                // else {
-                                //     // header("Location: ../pages/error.html");
-                                // }
-                            ?>     
+                        <span class="label-input100">RFQ ID</span>  
                     </div>
-
 
                     <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
                         <span class="label-input100">Customer ID</span>
-                        <?php
-                        // Display customer ID
-                            if (isset( $_POST['customerID'] ))
-                            {	
-                                echo '<input class="input100" type="text" name="name" placeholder="'; echo $_POST['customerID']; echo '" readonly>';
-                            } 
-                            // else {
-                            //     // header("Location: ../pages/error.html");
-                            // }
-                        ?>
                     </div>
 
-                    <?php
-                        if (isset( $_POST['date-generated'] )) {
-                            echo '
-                            <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
-                            <span class="label-input100">Date Generated</span>
-                            ';
-                        // Display date
-                            $date = date("m/d/y");	
-                            echo '<input class="input100" type="text" name="date" placeholder="'; echo $date; echo '" readonly>';
-                            echo '</div>';
-                        }
-                    ?>
+                    <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
+                        <span class="label-input100">Date Generated</span>
+                        <input class="input100" type="button" name="date" <?php echo 'value="'..'">' ?>
+                    </div>
 
                     <div class="line-break center">
                         <span class="line-break-label">Part Information</span>
@@ -166,22 +159,6 @@
                                 }
                                 echo '</tr>'; // End of table header
 
-                                // Get RFQ for rfqID
-                                if ( $_POST['all-or-find'] == "all") 
-                                {
-                                    $rfqResult = $pdo->prepare("SELECT rfq.rfqID, ca.companyName, ip.partID, ip.partName, ip.partDescription, pl.quantity, ip.listingPrice, pl.requiredDate, rfq.dateGenerated
-                                    FROM rfq_part_list pl
-                                    INNER JOIN request_for_quote rfq ON pl.rfqID = rfq.rfqID
-                                    INNER JOIN customer_account ca ON rfq.customerID = ca.customerID
-                                    INNER JOIN inventory_part ip ON pl.partID = ip.partID
-                                    WHERE rfq.dateGenerated BETWEEN ? AND ?
-                                    ORDER BY rfq.rfqID;");
-                                    $rfqResult->execute(array( $_POST['from-date'], $_POST['to-date']));
-                                } else {
-                                    // If find
-                                    $rfqResult = $pdo->prepare("SELECT * FROM rfq_part_list WHERE rfqID = ? ");
-                                    $rfqResult->execute(array( $_POST['rfqID'] ));                                    
-                                }
                                 // This will only loop once
                                 // For every RFQ print 
                                 while($row = $rfqResult->fetch(PDO::FETCH_ASSOC))

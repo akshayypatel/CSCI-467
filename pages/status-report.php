@@ -95,7 +95,7 @@
                     <?php 
                         if ( $_POST['all-or-find'] != "all")
                         {
-                            if ( ($_POST['report-type'] == "detail" && $_POST['need-rfq']) || ($_POST['report-type'] != "detail") )
+                            if ( ($_POST['report-type'] == "detail" && isset($_POST['need-rfq']) || ($_POST['report-type'] != "detail") )
                             {
                                 echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                         <span class="label-input100">RFQ ID</span> 
@@ -103,7 +103,7 @@
                     </div>';
                             }
                             
-                            if ( ($_POST['report-type'] == "detail" && $_POST['company-name']) || ($_POST['report-type'] != "detail") )
+                            if ( ($_POST['report-type'] == "detail" && isset($_POST['company-name']) || ($_POST['report-type'] != "detail") )
                             {
                                 echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                         <span class="label-input100">Company Name</span> 
@@ -111,7 +111,7 @@
                     </div>';
                             }
 
-                            if ( ($_POST['report-type'] == "detail" && $_POST['date-generated']) || ($_POST['report-type'] != "detail") )
+                            if ( ($_POST['report-type'] == "detail" && isset($_POST['date-generated']) || ($_POST['report-type'] != "detail") )
                             {
                                 echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                         <span class="label-input100">Date Generated</span> 

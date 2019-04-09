@@ -69,7 +69,11 @@
 
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
                     <span class="label-input100">RFQ ID</span>
-                    <div>
+                    <select onchange="yesnoCheck(this);">
+                        <option value="all">All</option>
+                        <option value="find">Find RFQ</option>
+                    </select>
+                    <div id="ifYes" style="display: none;">
                         <select class="js-select2" name="rfqID" onchange="setCustomerID(value);">
                             <?php
                                 echo '<option disabled selected>Select RFQ ID</option>';
@@ -84,60 +88,70 @@
                 </div>
 
                 <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
-                    <span class="label-input100">Status</span>
-                    <div>
-                        <select class="js-select2" name="rfq-id">
-                            <option disabled selected>Current Status</option>
-                            <option value="Quote Requested">Quote Requested</option>
-                            <option value="Quote Sent">Quote Sent</option>
-                            <option value="Order Received">Order Received</option>
-                            <option value="Order Fulfilled">Order Fulfilled</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
+                    <span class="label-input100">From</span>
+                    <div class="form-row show-inputbtns">
+                        <input type="date" required data-date-inline-picker="false" data-date-open-on-focus="true" name="from-date"/>
+                    </div>
+                    <span class="label-input100">To</span>
+                    <div class="form-row show-inputbtns">
+                        <input type="date" required data-date-inline-picker="false" data-date-open-on-focus="true" name="to-date"/>
                     </div>
                 </div>
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
-                    <span class="label-input100">Customer ID</span>
-                    <input class="input100" type="text" name="customer-id" placeholder="" readonly>
+                    <span class="label-input100">Report Type</span>
+                    <select onchange="reportType(this);">
+                        <option value="summary">Summary</option>
+                        <option value="detail">Detail</option>
+                    </select>
                 </div>
 
-                <div class="line-break center">
-                    <span class="line-break-label">Columns to be included</span>
-                </div>
+                <div id="show-detail" style="display: none;">
+                    <div class="line-break center">
+                        <span class="line-break-label">Report Type</span>
+                    </div>
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes">
-                    <input type="checkbox" id="part-number" name="part-number">
-                    <label class="line-break-label" for="part-number">Part Number</label>
-                    <br>
-                    <input type="checkbox" id="part-description" name="part-description">
-                    <label class="line-break-label" for="part-description">Part Description</label>
-                    <br>
-                    <input type="checkbox" id="part-price" name="part-price">
-                    <label class="line-break-label" for="part-price">Part Price</label>
-                    <br>
-                    <input type="checkbox" id="part-quantity" name="part-quantity">
-                    <label class="line-break-label" for="part-quantity">Part Quantity</label>
-                </div>
+                    <div class="wrap-input100 bg1">
+                        
 
-                <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes">
-                    <input type="checkbox" id="date-required" name="date-required">
-                    <label class="line-break-label" for="date-required">Date Required</label>
-                    <br>
-                    <input type="checkbox" id="date-generated" name="date-generated">
-                    <label class="line-break-label" for="date-generated">Date Generated</label>
-                    <br>
-                    <input type="checkbox" id="comments" name="comments">
-                    <label class="line-break-label" for="comments">Comments</label>
-                    <br>
-                    <div class="sort-by">
-                        <select class="js-select2" name="sort-by">
-                            <option disabled selected>Sort By</option>
-                            <option value="Quote Requested">Part Number</option>
-                            <option value="Quote Sent">Part Name</option>
-                            <option value="Order Received">Manufacturer</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
+                        <div class="line-break center">
+                            <span class="line-break-label">Columns to be included</span>
+                        </div>
+
+                        <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes">
+                            <input type="checkbox" id="part-number" name="part-number">
+                            <label class="line-break-label" for="part-number">Part Number</label>
+                            <br>
+                            <input type="checkbox" id="part-description" name="part-description">
+                            <label class="line-break-label" for="part-description">Part Description</label>
+                            <br>
+                            <input type="checkbox" id="part-price" name="part-price">
+                            <label class="line-break-label" for="part-price">Part Price</label>
+                            <br>
+                            <input type="checkbox" id="part-quantity" name="part-quantity">
+                            <label class="line-break-label" for="part-quantity">Part Quantity</label>
+                        </div>
+
+                        <div class="wrap-input100 bg1 rs1-wrap-input100 checkboxes">
+                            <input type="checkbox" id="date-required" name="date-required">
+                            <label class="line-break-label" for="date-required">Date Required</label>
+                            <br>
+                            <input type="checkbox" id="date-generated" name="date-generated">
+                            <label class="line-break-label" for="date-generated">Date Generated</label>
+                            <br>
+                            <input type="checkbox" id="comments" name="comments">
+                            <label class="line-break-label" for="comments">Comments</label>
+                            <br>
+                            <div class="sort-by">
+                                <select class="js-select2" name="sort-by">
+                                    <option disabled selected>Sort By</option>
+                                    <option value="Quote Requested">Part Number</option>
+                                    <option value="Quote Sent">Part Name</option>
+                                    <option value="Order Received">Manufacturer</option>
+                                </select>
+                                <div class="dropDownSelect2"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -169,6 +183,22 @@
                 dropdownParent: $(this).next('.dropDownSelect2')
             });
         })
+        // Display find RFQ if option is selected
+        function yesnoCheck(that) {
+            if (that.value == "find") {
+                document.getElementById("ifYes").style.display = "block";
+            } else {
+                document.getElementById("ifYes").style.display = "none";
+            }
+        }
+        // Display find Detail report type is selected
+        function reportType(that) {
+        if (that.value == "detail") {
+            document.getElementById("show-detail").style.display = "block";
+        } else {
+            document.getElementById("show-detail").style.display = "none";
+        }
+        }
     </script>
     <script>
         function setCustomerID(customerID) {

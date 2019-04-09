@@ -23,7 +23,35 @@
     <script src="../js/modernizr.custom.js"></script>
     <?php
         require("../php-actions/connect.php");
-        // If connection fail return error
+        
+        if ( $_POST['all-or-find'] == "all") 
+        {
+            $rfqResult = $pdo->prepare("SELECT rfq.rfqID, ca.companyName, ip.partID, ip.partName, ip.partDescription, pl.quantity, ip.listingPrice, pl.requiredDate, rfq.dateGenerated
+            FROM rfq_part_list pl
+            INNER JOIN request_for_quote rfq ON pl.rfqID = rfq.rfqID
+            INNER JOIN customer_account ca ON rfq.customerID = ca.customerID
+            INNER JOIN inventory_part ip ON pl.partID = ip.partID
+            WHERE rfq.dateGenerated BETWEEN ? AND ?
+            ORDER BY rfq.rfqID");
+            $rfqResult->execute(array( $_POST['from-date'], $_POST['to-date']));
+        } else {
+            // If find
+            $rfqResult = $pdo->prepare("SELECT rfq.rfqID, ca.companyName, ip.partID, ip.partName, ip.partDescription, pl.quantity, ip.listingPrice, pl.requiredDate, rfq.dateGenerated
+            FROM rfq_part_list pl
+            INNER JOIN request_for_quote rfq ON pl.rfqID = rfq.rfqID
+            INNER JOIN customer_account ca ON rfq.customerID = ca.customerID
+            INNER JOIN inventory_part ip ON pl.partID = ip.partID
+            WHERE rfq.rfqID = ?
+            ORDER BY rfq.rfqID");
+            $rfqResult->execute(array( $_POST['rfqID'] ));   
+
+            $query = $pdo->prepare("SELECT companyName, dateGenerated FROM `customer_account` INNER JOIN `request_for_quote` ON `customer_account`.customerID = `request_for_quote`.customerID WHERE rfqID = ?");
+            $query->execute(array($_POST['rfqID']));
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            $cName = $row['companyName'];  
+            $dGenerated =  $row['dateGenerated'];                              
+        }
+
     ?>
 </head>
 
@@ -64,45 +92,23 @@
                 <span class="contact100-form-title">
                     Generate RFQ Report
                 </span>
-                    <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
-                        <span class="label-input100">RFQ ID</span>
-                            <?php
-                            // Display RFQ ID
-                            	if (isset( $_POST['rfqID']))
-                                {	
-                                    echo '<input class="input100" type="text" name="rfqID" placeholder="'; echo $_POST['rfqID']; echo '" readonly>';
-                                } 
-                                // else {
-                                //     // header("Location: ../pages/error.html");
-                                // }
-                            ?>     
-                    </div>
+                    <?php 
+                        if ( $_POST['all-or-find'] != "all"){
+                            echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                        <span class="label-input100">RFQ ID</span> 
+                        <input class="input100" type="button" style="cursor: default;" value="'.$_POST['rfqID'].'"> 
+                    </div>';
 
+                    echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                        <span class="label-input100">Company Name</span> 
+                        <input class="input100" type="button" style="cursor: default;" value="'.$cName.'"> 
+                    </div>';
 
-                    <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
-                        <span class="label-input100">Customer ID</span>
-                        <?php
-                        // Display customer ID
-                            if (isset( $_POST['customerID'] ))
-                            {	
-                                echo '<input class="input100" type="text" name="name" placeholder="'; echo $_POST['customerID']; echo '" readonly>';
-                            } 
-                            // else {
-                            //     // header("Location: ../pages/error.html");
-                            // }
-                        ?>
-                    </div>
+                    echo '<div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250">
+                        <span class="label-input100">Date Generated</span> 
+                        <input class="input100" type="button" style="cursor: default;" value="'.$dGenerated.'"> 
+                    </div>';
 
-                    <?php
-                        if (isset( $_POST['date-generated'] )) {
-                            echo '
-                            <div class="wrap-input100 bg1 rs1-wrap-input100 w250">
-                            <span class="label-input100">Date Generated</span>
-                            ';
-                        // Display date
-                            $date = date("m/d/y");	
-                            echo '<input class="input100" type="text" name="date" placeholder="'; echo $date; echo '" readonly>';
-                            echo '</div>';
                         }
                     ?>
 
@@ -112,93 +118,95 @@
 
                     <div class="wrap-input100 bg1">
                     <table class="table">
-                        <tr>
-                            <?php
-                                $partListColumns = array();
-                                $rfqColumns = array();
+                        <?php
+                            echo '<tr>';
+                            if ($_POST['report-type'] == "detail")
+                            {
+                                if (isset( $_POST['company-name'] ) && $_POST['all-or-find'] != "all") 
+                                {
+                                    echo "<th>Company Name</th>";
+                                }
+                                if (isset($_POST['part-name']))
+                                {
+                                    echo '<th>Part Name</th>';
+                                }
+                                if (isset( $_POST['part-description'] )) 
+                                {
+                                    echo '<th>Description</th>';
+                                } 
+                                if (isset( $_POST['part-price'] )) 
+                                {
+                                    echo '<th>Price</th>';
+                                }
+                                if (isset( $_POST['part-quantity'] )) 
+                                { 
+                                    echo '<th>Quantity</th>';
+                                }
+                                if (isset( $_POST['date-required'] )) 
+                                {
+                                    echo "<th>Required Date</th>";
+                                }
+                                if (isset( $_POST['date-generated']) && $_POST['all-or-find'] == "all") 
+                                {
+                                    echo "<th>Date Generated</th>";
+                                }
+                            } else {
+                                if ( $_POST['all-or-find'] == "all") {
+                                    echo '<th>Company Name</th>';
+                                }
+                                // If summary report type is selected
+                                echo '<th>Part Name</th>';
+                                echo '<th>Quantity</th>';
+                                echo '<th>Price</th>';
+                                echo "<th>Required Date</th>";
+                            }
+                            echo '</tr>';
+
+                            while($row = $rfqResult->fetch(PDO::FETCH_ASSOC))
+                            {
+                                echo '<tr>';
                                 if ($_POST['report-type'] == "detail")
                                 {
-                                    // Create an array with columns to display
-                                    if (isset($_POST['part-number'])) 
-                                    { 
-                                        array_push($partListColumns, "partID"); 
-                                        echo '<th>Part Number</th>';
+                                    if (isset( $_POST['company-name']) && $_POST['all-or-find'] != "all") 
+                                    {
+                                        echo '<td>' .$row['companyName'].'</td>';
                                     }
                                     if (isset($_POST['part-name']))
                                     {
-                                        array_push($partListColumns, "partName");
-                                        echo '<th>Part Name</th>';
+                                        echo '<td>' .$row['partName'].'</td>';
                                     }
                                     if (isset( $_POST['part-description'] )) 
                                     {
-                                        array_push($partListColumns, "partDescription"); 
-                                        echo '<th>Description</th>';
+                                        echo '<td>' .$row['partDescription'].'</td>';
                                     } 
                                     if (isset( $_POST['part-price'] )) 
                                     {
-                                        array_push($partListColumns, "listingPrice"); 
-                                        echo '<th>Price</th>';
+                                        echo '<td>' .$row['listingPrice'].'</td>';
                                     }
                                     if (isset( $_POST['part-quantity'] )) 
                                     { 
-                                        array_push($partListColumns, "quantity"); 
-                                        echo '<th>Quantity</th>';
+                                        echo '<td>' .$row['quantity'].'</td>';
                                     }
                                     if (isset( $_POST['date-required'] )) 
                                     {
-                                        array_push($rfqColumns, "requiredDate");
-                                        echo "<th>Required Date</th>";
+                                        echo '<td>' .$row['requiredDate'].'</td>';
                                     }
-                                } else {
-                                    // If summary report type is selected
-                                    array_push($partListColumns, "partName");
-                                    echo '<th>Part Name</th>';
-                                    array_push($partListColumns, "listingPrice"); 
-                                    echo '<th>Price</th>';
-                                    array_push($partListColumns, "quantity"); 
-                                    echo '<th>Quantity</th>';
-                                    array_push($rfqColumns, "requiredDate");
-                                    echo "<th>Required Date</th>";
-                                }
-                                echo '</tr>'; // End of table header
-
-                                // Get RFQ for rfqID
-                                if ( $_POST['all-or-find'] == "all") 
-                                {
-                                    $rfqResult = $pdo->query("SELECT * FROM rfq_part_list");
-                                } else {
-                                    // If find
-                                    $rfqResult = $pdo->prepare("SELECT * FROM rfq_part_list WHERE rfqID = ? ");
-                                    $rfqResult->execute(array( $_POST['rfqID'] ));                                    
-                                }
-                                // This will only loop once
-                                // For every RFQ print 
-                                while($row = $rfqResult->fetch(PDO::FETCH_ASSOC))
+                                    if (isset( $_POST['date-generated']) && $_POST['all-or-find'] == "all") 
                                     {
-                                        $values = array();
-                                        for ($i = 0; $i <sizeof($rfqColumns); $i++) 
-                                        {
-                                            array_push($values, $row[$rfqColumns[$i]]);
-                                        }
-                                        $result = $pdo->prepare("SELECT * FROM inventory_part WHERE partID = ? ");
-                                        $result->execute(array( $row['partID'] ));
-                                        // Loop through the RFQ part list results, outputing the options one by one
-                                        while($row = $result->fetch(PDO::FETCH_ASSOC))
-                                        {
-                                            echo '<tr>';    // Start of table row
-                                            // Print selected columns
-                                            for ($i = 0; $i < sizeof($partListColumns); $i++) {
-                                                echo '<td>' . $row[$partListColumns[$i]] . '</td>';
-                                            }
-                                            // Print Required date and Comments if option was selected
-                                            for ($i = 0; $i <sizeof($values); $i++) 
-                                            {
-                                                echo '<td>' . $values[$i] . '</td>';
-                                            }
-                                        }
-                                            echo '</tr>';   // End of table row
+                                        echo '<td>' .$row['dateGenerated'].'</td>';
                                     }
-                            ?>
+                                } else {
+                                    if ( $_POST['all-or-find'] == "all") {
+                                        echo '<td>' .$row['companyName'].'</td>';
+                                    }
+                                    echo '<td>' .$row['partName'].'</td>';
+                                    echo '<td>' .$row['quantity'].'</td>';
+                                    echo '<td>' .$row['listingPrice'].'</td>';
+                                    echo '<td>' .$row['requiredDate'].'</td>';
+                                }
+                                echo '</tr>';
+                            }
+                        ?>
                     </table>
                     </div>
                 </form>

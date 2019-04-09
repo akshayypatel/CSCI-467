@@ -162,7 +162,6 @@
                                 echo '<th>Part Name</th>';
                                 echo '<th>Quantity</th>';
                                 echo '<th>Price</th>';
-                                echo "<th>Required Date</th>";
                             }
                             echo '</tr>';
 
@@ -210,7 +209,6 @@
                                     echo '<td>' .$row['partName'].'</td>';
                                     echo '<td>' .$row['quantity'].'</td>';
                                     echo '<td>' .$row['listingPrice'].'</td>';
-                                    echo '<td>' .$row['requiredDate'].'</td>';
                                 }
                                 echo '</tr>';
                             }

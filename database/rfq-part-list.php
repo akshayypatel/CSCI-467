@@ -23,7 +23,7 @@
     <script src="../js/modernizr.custom.js"></script>
     <?php
         require ("../php-actions/connect.php");
-        $query = $pdo->query("SELECT * FROM inventory_part");
+        $query = $pdo->query("SELECT * FROM rfq_part_list");
     ?>
 </head>
 
@@ -60,30 +60,28 @@
     <div class="container-contact100">
         <div class="wrap-contact100">   
             <span class="contact100-form-title">
-                Inventory Parts Database
+                RFQ Parts List Database
             </span>
 
             <div class="wrap-input100 bg1">
                 <table class="table">
                     <tr>
-                        <th>Part ID</th>
-                        <th>Name</th>
-                        <th>Manufacturer</th>
+                        <th>Part List ID</th>
                         <th>Quantity</th>
-                        <th>Listing Price</th>
-                        <th>Description</th>
+                        <th>Required Date</th>
+                        <th>Part ID</th>
+                        <th>RFQ ID</th>
                     </tr>
                     <?php
                         // Loop through the query results, outputing the options one by one
                         while($row = $query->fetch(PDO::FETCH_ASSOC))
                         {
                             echo '<tr>';
-                            echo '<td>' .$row['partID'].'</td>';
-                            echo '<td>' .$row['partName'].'</td>';
-                            echo '<td>' .$row['manufacturer_name'].'</td>';
+                            echo '<td>' .$row['partListID'].'</td>';
                             echo '<td>' .$row['quantity'].'</td>';
-                            echo '<td>' .$row['listingPrice'].'</td>';
-                            echo '<td>' .$row['partDescription'].'</td>';
+                            echo '<td>' .$row['requiredDate'].'</td>';
+                            echo '<td>' .$row['partID'].'</td>';
+                            echo '<td>' .$row['rfqID'].'</td>';
                             echo '</tr>';
                         }
                     ?>

@@ -2,14 +2,12 @@
 	$loopUntil = $_GET['loopUntil'];
 
 	require("connect.php");
-
-	$date = date("Y-m-d");
 				
-	$results = $pdo->prepare("INSERT INTO request_for_quote (customerID, dateGenerated) VALUES (?, ?);");
+	$results = $pdo->prepare("INSERT INTO request_for_quote (customerID, dateGenerated) VALUES (?, now());");
 	if (isset($_POST['customerID']))
 	{	
 		$customerID = $_POST['customerID'];
-		$results->execute(array($_POST['customerID'], $date));
+		$results->execute(array($_POST['customerID']));
     } else {
     	header("Location: ../pages/error.html");
     }

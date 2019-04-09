@@ -89,6 +89,7 @@
                     </div>  
 
                     <div id="ifYes" style="display: none;">
+                        <span class="label-input100">Search</span>
                         <select class="js-select2" name="rfqID">
                             <?php
                                 echo '<option disabled selected>Select RFQ ID</option>';

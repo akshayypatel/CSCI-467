@@ -74,6 +74,20 @@
                         <option value="find">Find RFQ</option>
                     </select>
                     <div class="dropDownSelect2"></div>
+                </div>
+
+                <div id="replaceMe" class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 height100">
+                    <div id="dates">
+                        <span class="label-input100">From</span>
+                        <div class="form-row show-inputbtns">
+                            <input type="date" class="dateStyle" required data-date-inline-picker="false" data-date-open-on-focus="true" name="from-date" id="from-date"/>
+                        </div>
+                        <span class="label-input100">To</span>
+                        <div class="form-row show-inputbtns">
+                            <input type="date" class="dateStyle" required data-date-inline-picker="false" data-date-open-on-focus="true" name="to-date" id="to-date"/>
+                        </div>
+                    </div>  
+
                     <div id="ifYes" style="display: none;">
                         <select class="js-select2" name="rfqID">
                             <?php
@@ -85,17 +99,6 @@
                             ?>
                         </select>
                         <div class="dropDownSelect2"></div>
-                    </div>
-                </div>
-
-                <div class="wrap-input100 input100-select bg1 rs1-wrap-input100 w250 height100">
-                    <span class="label-input100">From</span>
-                    <div class="form-row show-inputbtns">
-                        <input type="date" class="dateStyle" required data-date-inline-picker="false" data-date-open-on-focus="true" name="from-date"/>
-                    </div>
-                    <span class="label-input100">To</span>
-                    <div class="form-row show-inputbtns">
-                        <input type="date" class="dateStyle" required data-date-inline-picker="false" data-date-open-on-focus="true" name="to-date"/>
                     </div>
                 </div>
 
@@ -189,8 +192,14 @@
         function yesnoCheck(that) {
             if (that.value == "find") {
                 document.getElementById("ifYes").style.display = "block";
+                document.getElementById("dates").style.display = "none";
+                document.getElementById("dates").required = false;
+                document.getElementById("from-date").required = false;
+                document.getElementById("to-date").required = false;
+                // document.getElementById("replaceMe").innerHTML = "<h5>It works!</h5>";
             } else {
                 document.getElementById("ifYes").style.display = "none";
+                document.getElementById("dates").style.display = "block";
             }
         }
         // Display find Detail report type is selected

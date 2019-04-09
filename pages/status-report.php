@@ -162,6 +162,7 @@
                                 }
                             } else {
                                 if ( $_POST['all-or-find'] == "all") {
+                                    echo '<th>RFQ ID</th>';
                                     echo '<th>Company Name</th>';
                                 }
                                 // If summary report type is selected
@@ -210,6 +211,7 @@
                                     }
                                 } else {
                                     if ( $_POST['all-or-find'] == "all") {
+                                        echo '<td>' .$row['rfqID'].'</td>';
                                         echo '<td>' .$row['companyName'].'</td>';
                                     }
                                     echo '<td>' .$row['partName'].'</td>';

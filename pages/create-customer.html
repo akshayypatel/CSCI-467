@@ -10,7 +10,8 @@
     <meta name="author-2" content="Gonzalo Pantoja">
     <meta name="description" content="RFQ System for CSCI 467 at NIU">
     <meta name="keywords" content="CSCI467, NIU, RFQ-System">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../fonts/iconic/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
@@ -41,10 +42,13 @@
                             <li><a class="gn-icon gn-icon-cog" href="create-part.php">Create New Part</a></li>
                             <li><a class="gn-icon gn-icon-help" href="create-rfq.php">Create RFQ</a></li>
                             <li><a class="gn-icon gn-icon-help" href="generate-rfq-report.php">Generate RFQ Report</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="../database/customer-accounts.php">Customer Account Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/customer-accounts.php">Customer
+                                    Account Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/address.php">Address Database</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="../database/inventory-parts.php">Inventory Parts Database</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="../database/view-company-directory.php">View Company Directory</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/inventory-parts.php">Inventory Parts
+                                    Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/view-company-directory.php">View
+                                    Company Directory</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/view-all-rfqs.php">View All RFQs</a></li>
                         </ul>
                     </div><!-- /gn-scroller -->
@@ -70,13 +74,15 @@
                 <div class="w-full js-show-service rs1-wrap-input100">
                     <div class="wrap-contact100-form-radio">
                         <div class="contact100-form-radio m-t-15">
-                            <input class="input-radio100" id="radio1" type="radio" name="quote-type" value="auto" required checked="checked">
+                            <input class="input-radio100" id="radio1" type="radio" name="quote-type" value="auto"
+                                required checked="checked">
                             <label class="label-radio100" for="radio1" name="label" value="auto">
                                 Auto Quote
                             </label>
                         </div>
                         <div class="contact100-form-radio m-t-15">
-                            <input class="input-radio100" id="radio2" type="radio" name="quote-type" value="manual" required>
+                            <input class="input-radio100" id="radio2" type="radio" name="quote-type" value="manual"
+                                required>
                             <label class="label-radio100" for="radio2" name="label" value="manual">
                                 Manual Quote
                             </label>
@@ -90,12 +96,12 @@
 
                 <div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
                     <span class="label-input100">Username</span>
-                    <input class="input100" type="text" name="username" required placeholder="Enter Username">
+                    <input class="input100" type="text" name="username" maxlength="100" required placeholder="Enter Username">
                 </div>
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100">
                     <span class="label-input100">Password</span>
-                    <input class="input100" type="password" required name="password" placeholder="Enter Password">
+                    <input class="input100" type="password" maxlength="100" required name="password" placeholder="Enter Password">
                 </div>
 
                 <div class="line-break">
@@ -175,7 +181,7 @@
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100">
                     <span class="label-input100">Zip Code</span>
-                    <input class="input100" required type="number" name="billing-zip" placeholder="Enter Zip Code">
+                    <input class="input100" required type="number" pattern="[0-9]*" name="billing-zip" placeholder="Enter Zip Code">
                 </div>
 
                 <div class="line-break"></div>
@@ -289,7 +295,8 @@
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100">
                     <span class="label-input100">Phone (###-###-####)</span>
-                    <input class="input100" required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="phone" placeholder="Enter Phone Number">
+                    <input class="input100" required type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="phone"
+                        placeholder="Enter Phone Number">
                 </div>
 
                 <div class="wrap-input100 bg1">

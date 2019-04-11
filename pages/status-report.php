@@ -115,12 +115,12 @@
                                 <span class="label-input100">Date Generated</span> 
                                 <input class="input100" type="button" style="cursor: default;" value="'.$dGenerated.'"></div>';
                             }
+
+                            echo '<div class="line-break center">
+                                <span class="line-break-label">Part Information</span>
+                                </div>';
                         }
                     ?>
-
-                    <div class="line-break center">
-                        <span class="line-break-label">Part Information</span>
-                    </div>
 
                     <div class="wrap-input100 bg1">
                     <table class="table">
@@ -162,6 +162,7 @@
                                 }
                             } else {
                                 if ( $_POST['all-or-find'] == "all") {
+                                    echo '<th>RFQ ID</th>';
                                     echo '<th>Company Name</th>';
                                 }
                                 // If summary report type is selected
@@ -210,6 +211,7 @@
                                     }
                                 } else {
                                     if ( $_POST['all-or-find'] == "all") {
+                                        echo '<td>' .$row['rfqID'].'</td>';
                                         echo '<td>' .$row['companyName'].'</td>';
                                     }
                                     echo '<td>' .$row['partName'].'</td>';

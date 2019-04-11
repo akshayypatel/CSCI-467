@@ -26,7 +26,7 @@
         $query = $pdo->query("SELECT companyName, CONCAT(addressType, ': ', street, ', ', city, ', ', state, ' ', zipCode) AS address, CONCAT(firstName, ' ', lastName) AS representative, email
                             FROM `customer_account`
                             INNER JOIN `customer_representative` ON `customer_account`.customerID = `customer_representative`.customerID
-                            INNER JOIN `address` ON `customer_account`.customerID = `address`.customerID;");
+                            INNER JOIN `address` ON `customer_account`.customerID = `address`.customerID");
     ?>
 </head>
 

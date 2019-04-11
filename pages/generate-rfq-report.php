@@ -90,9 +90,9 @@
 
                     <div id="ifYes" style="display: none;">
                         <span class="label-input100">Search</span>
-                        <select class="js-select2" name="rfqID">
+                        <select class="js-select2" name="rfqID" id="rfqID" >
                             <?php
-                                echo '<option disabled selected>Select RFQ ID</option>';
+                                echo '<option disabled selected value="">Select RFQ ID</option>';
                                 while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
                                 {
                                     echo '<option value="'.$row['rfqID'].'" > ' . $row['rfqID'] . '</option>';
@@ -112,7 +112,7 @@
                     <div class="dropDownSelect2"></div>
                 </div>
 
-                <div id="show-detail" style="display: none;">
+                <div id="show-detail" style="display: none;" class="contact100-form">
                     <div class="line-break center">
                         <span class="line-break-label">Report Type</span>
                     </div>
@@ -148,8 +148,8 @@
                             <label class="line-break-label" for="date-generated">Date Generated</label>
                             <br>
                             <div class="sort-by">
-                                <select class="js-select2" name="sort-by">
-                                    <option disabled selected>Sort By</option>
+                                <select class="js-select2" name="sort-by" id="sort-by">
+                                    <option disabled selected value="">Sort By</option>
                                     <option value="Quote Requested">Part Number</option>
                                     <option value="Quote Sent">Part Name</option>
                                     <option value="Order Received">Manufacturer</option>
@@ -160,11 +160,7 @@
                     </div>
                 </div>
                 <div class="container-contact100-form-btn">
-                    <button class="contact100-form-btn">
-                        <span>
-                            Clear
-                        </span>
-                    </button>
+                    <input class="contact100-form-btn" onClick="window.location='generate-rfq-report.php'" type="button" value="Clear">
                     <input type="submit" value="Generate" class="contact100-form-btn">
                 </div>
             </form>
@@ -191,11 +187,13 @@
         function checkRFQsearch(that) {
             if (that.value == "find") {
                 document.getElementById("ifYes").style.display = "block";
+                document.getElementById("rfqID").setAttribute("required", "");
                 document.getElementById("dates").style.display = "none";
                 document.getElementById("from-date").required = false;
                 document.getElementById("to-date").required = false;
             } else {
                 document.getElementById("ifYes").style.display = "none";
+                document.getElementById("rfqID").removeAttribute("required");
                 document.getElementById("dates").style.display = "block";
                 document.getElementById("from-date").required = true;
                 document.getElementById("to-date").required = true;
@@ -205,8 +203,10 @@
         function reportType(that) {
         if (that.value == "detail") {
             document.getElementById("show-detail").style.display = "block";
+            document.getElementById("sort-by").setAttribute("required", "");
         } else {
             document.getElementById("show-detail").style.display = "none";
+            document.getElementById("sort-by").removeAttribute("required");
         }
         }
     </script>

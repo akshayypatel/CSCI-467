@@ -16,12 +16,20 @@ INSERT INTO address VALUES (6, 3, "Shipping", "217 Normal Rd", "Dekalv", "IL", "
 INSERT INTO address VALUES (7, 4, "Billing", "1 Infinite Loop", "Cupertino", "CA", "95014");
 INSERT INTO address VALUES (8, 4, "Shipping", "1 Apple Park Way", "Cupertino", "CA", "95014");
 
+
+-- Insert Part
+INSERT INTO inventory_part (partName, partDescription, quantity, listingPrice, manufacturer_name) VALUES ("i7 6700k CPU", "Core i7-6700K is a quad-core 64-bit x86 high-end performance desktop microprocessor. This processor is based on the Skylake microarchitecture and is fabricated on a 14 nm process. It has a base frequency of 4 GHz and a turbo boost of up to 4.2 GHz", 400, 400, "Intel");
+INSERT INTO inventory_part (partName, partDescription, quantity, listingPrice, manufacturer_name) VALUES ("16GB DDR4 Ram", "G.SKILL Ripjaws V Series 16GB (2 x 8GB) 288-Pin DDR4 SDRAM DDR4 2400 (PC4 19200) Desktop Memory Model F4-2400C15D-16GVR", 100, 90, "G.SKILL");
+INSERT INTO inventory_part (partName, partDescription, quantity, listingPrice, manufacturer_name) VALUES ("GTX 1080 Ti", "The GeForce® GTX 1080 Ti is our flagship 10-series gaming GPU. This card is packed with extreme gaming horsepower, next-gen 11 Gbps GDDR5X memory, and a massive 11 GB frame buffer.", 50, 700, "Nvidia");
+INSERT INTO inventory_part (partName, partDescription, quantity, listingPrice, manufacturer_name) VALUES ("Radeon RX Vega 64 GPU", "AMD Radeon RX Vega 64 is a high-end desktop graphics card. It uses the Vega 10 chip and is the top model of the AMD desktop graphics cards (through 2018). It offers 64 CUs clocked at 1247 - 1546 MHz (Boost) and 8 GB HBM2 graphics memory.", 20, 659, "AMD");
+
 -- Insert Representatives
 
 INSERT INTO customer_representative VALUES (1, "714-222-9999", "Mark", "Zuckerberg", "mzuckerberg@fb.com", 1);
 INSERT INTO customer_representative VALUES (2, "830-695-3212", "Bill", "Gates", "bgates@microsoft.com", 2);
 INSERT INTO customer_representative VALUES (3, "815-832-9210", "Roger", "Hockchild", "rhockchild@discover.com", 3);
 INSERT INTO customer_representative VALUES (4, "214-642-0215", "Tim", "Cook", "tcook@apple.com", 4);
+
 
 
 -- Query to view company reps

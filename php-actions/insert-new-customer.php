@@ -1,4 +1,7 @@
 <?php
+	// Start the session
+	session_start();
+	// Connect to database
 	require("connect.php");
 
     // Insert new account
@@ -12,7 +15,10 @@
 		$result->execute(array($_POST['company-name'], $_POST['quote-type'], $managerEmailAddress, $managerPhoneNumber, $_POST['username'], $_POST['password'], $_POST['comments']));
     } 
     else {
-		header("Location: ../pages/error.html");
+			$_SESSION["TITLE"] = "New account creation failed";
+			$_SESSION["REDIRECT-NAME"] = "Create New Customer Page";
+			$_SESSION["REDIRECT"] = "create-customer";
+			header("Location: ../pages/error.php");
 	}
 
 	//insert billing address
@@ -24,7 +30,10 @@
 
     } 
     else {
-		header("Location: ../pages/error.html");
+			$_SESSION["TITLE"] = "Billing address creation failed";
+			$_SESSION["REDIRECT-NAME"] = "Create New Customer Page";
+			$_SESSION["REDIRECT"] = "create-customer";
+			header("Location: ../pages/error.php");
 	}
 
 	if (!isset($_POST['shipping']))
@@ -37,7 +46,10 @@
 			$result->execute(array("Shipping", $_POST['shipping-street'], $_POST['shipping-city'], $_POST['shipping-state'], $_POST['shipping-zip'] ));
 	    } 
 	    else {
-			header("Location: ../pages/error.html");
+				$_SESSION["TITLE"] = "Shipping address creation failed";
+				$_SESSION["REDIRECT-NAME"] = "Create New Customer Page";
+				$_SESSION["REDIRECT"] = "create-customer";
+				header("Location: ../pages/error.php");
 		}
 	
 	} else {
@@ -50,7 +62,10 @@
 
 	    } 
 	    else {
-			header("Location: ../pages/error.html");
+				$_SESSION["TITLE"] = "Address creation failed";
+				$_SESSION["REDIRECT-NAME"] = "Create New Customer Page";
+				$_SESSION["REDIRECT"] = "create-customer";
+				header("Location: ../pages/error.php");
 		}
 
 	}
@@ -61,10 +76,16 @@
 	if (isset( $_POST['phone'], $_POST['representative-first-name'], $_POST['representative-last-name'], $_POST['email'] ))
 	{	
 		$result->execute(array( $_POST['phone'], $_POST['representative-first-name'], $_POST['representative-last-name'], $_POST['email'] ));
-		header("Location: ../pages/create-customer.html");
+		$_SESSION["TITLE"] = "New account created";
+		$_SESSION["REDIRECT-NAME"] = "Create New Customer Page";
+		$_SESSION["REDIRECT"] = "create-customer";
+		header("Location: ../pages/successful.php");
     } 
     else {
-		header("Location: ../pages/error.html");
+			$_SESSION["TITLE"] = "Representative creation failed";
+			$_SESSION["REDIRECT-NAME"] = "Create New Customer Page";
+			$_SESSION["REDIRECT"] = "create-customer";
+			header("Location: ../pages/error.php");
 	}
 
 ?>

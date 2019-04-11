@@ -72,7 +72,7 @@
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Part Number:</span>
 					<?php
-						echo '<input class="input100" type="text" name="name" placeholder="'.$partID.'" readonly>';
+						echo '<input class="input100" type="text" style="cursor: default;" name="name" value="'.$partID.'" readonly>';
 				    ?>
 					
 				</div>
@@ -87,22 +87,22 @@
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Part Name</span>
-					<input class="input100" type="text" name="part-name" required placeholder="Enter Part Name">
+					<input class="input100" type="text" maxlength="50" name="part-name" required placeholder="Enter Part Name">
 				</div>
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Part Quantity</span>
-					<input class="input100" type="number" name="quantity" required placeholder="Enter Part Quantity">
+					<input class="input100" type="number" pattern="[0-9]{*}" name="quantity" required placeholder="Enter Part Quantity">
 				</div>
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Manufacturer</span>
-					<input class="input100" type="text" name="manufacturer" required placeholder="Enter Manufacturer">
+					<input class="input100" type="text" name="manufacturer" maxlength="50" required placeholder="Enter Manufacturer">
 				</div>
 
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Listing Price ($USD)</span>
-					<input class="input100" type="number" name="listing-price" required placeholder="Enter Listing Price">
+					<input class="input100" type="number" name="listing-price" pattern="[0-9]{6}" required placeholder="Enter Listing Price">
 				</div>
 
 				<div class="wrap-input100 bg1">
@@ -111,17 +111,9 @@
 				</div>
 
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn">
-						<span>
-							Cancel
-						</span>
-					</button>
-					<button class="contact100-form-btn">
-						<span>
-							Create
-							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-						</span>
-					</button>
+					<input type="reset" value="Cancel" class="contact100-form-btn">
+					<input type="submit" value="Create" class="contact100-form-btn">
+			
 				</div>
 			</form>
 		</div>

@@ -12,9 +12,9 @@
 		$customerID = $_POST['customerID'];
 		$results->execute(array($_POST['customerID']));
     } else {
-		$_SESSION["TITLE"] = "RFQ creation failed";
-		$_SESSION["REDIRECT-NAME"] = "Create RFQ Page";
-		$_SESSION["REDIRECT"] = "create-rfq";
+			$_SESSION["TITLE"] = "RFQ creation failed";
+			$_SESSION["REDIRECT-NAME"] = "Create RFQ Page";
+			$_SESSION["REDIRECT"] = "create-rfq";
     	header("Location: ../pages/error.php");
     }
 

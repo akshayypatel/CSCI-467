@@ -72,7 +72,7 @@
 				<div class="wrap-input100 bg1 rs1-wrap-input100">
 					<span class="label-input100">Part Number:</span>
 					<?php
-						echo '<input class="input100" type="text" name="name" placeholder="'.$partID.'" readonly>';
+						echo '<input class="input100" type="text" style="cursor: default;" name="name" value="'.$partID.'" readonly>';
 				    ?>
 					
 				</div>
@@ -111,11 +111,7 @@
 				</div>
 
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn">
-						<span>
-							Cancel
-						</span>
-					</button>
+					<input type="reset" value="Cancel" class="contact100-form-btn">
 					<input type="submit" value="Create" class="contact100-form-btn">
 			
 				</div>

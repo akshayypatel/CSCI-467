@@ -19,10 +19,15 @@
     <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="../css/component.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
     <script src="../js/modernizr.custom.js"></script>
     <?php
         require("../php-actions/connect.php");
         
+        if ( !isset($_POST['all-or-find']) ) {
+            header("Location: generate-rfq-report.php");
+        }
         if ( $_POST['all-or-find'] == "all") 
         {
             $rfqResult = $pdo->prepare("SELECT rfq.rfqID, ca.companyName, ip.partID, ip.partName, ip.partDescription, pl.quantity, ip.listingPrice, pl.requiredDate, rfq.dateGenerated
@@ -84,7 +89,7 @@
         </ul>
 
     </div>
-    <div class="container-contact100">
+    <div class="container-contact100" id="divToPrint">
         <div class="wrap-contact100">
             <form class="contact100-form validate-form">
                 
@@ -219,13 +224,18 @@
                                 }
                                 echo '</tr>';
                             }
+                            
                         ?>
                     </table>
+                    <div class="container-contact100-form-btn">
+                        <button class="contact100-form-btn" onclick="printFunction()">Print this page</button>
+                    </div>
                     </div>
                 </form>
             </div>
         </div>
-    ?>
+    
+
 
     
     <!-- Scripts -->
@@ -243,6 +253,11 @@
                 dropdownParent: $(this).next('.dropDownSelect2')
             });
         })
+
+        function printFunction() {
+            window.print(); 
+        }
+
     </script>
     <script src="../js/main.js"></script>
 </body>

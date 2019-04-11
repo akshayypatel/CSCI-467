@@ -19,7 +19,6 @@
     <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="../css/create-rfq.css" />
     <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="../css/demo.css" />
     <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
     <?php

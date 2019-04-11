@@ -19,7 +19,6 @@
 	<link rel="stylesheet" type="text/css" href="../stylesheet.css" />
 	<link rel="stylesheet" type="text/css" href="../css/create-customer.css" />
 	<link rel="stylesheet" type="text/css" href="../css/normalize.css" />
-	<link rel="stylesheet" type="text/css" href="../css/demo.css" />
 	<link rel="stylesheet" type="text/css" href="../css/component.css" />
 	<link rel="stylesheet" type="text/css" href="../css/create-part.css" />
 	<script src="../js/modernizr.custom.js"></script>

@@ -63,19 +63,19 @@
                 <nav class="gn-menu-wrapper">
                     <div class="gn-scroller">
                         <ul class="gn-menu">
-                            <li class="gn-search-item">
+                            <!-- <li class="gn-search-item">
                                 <input placeholder="Search" type="search" class="gn-search">
                                 <a class="gn-icon gn-icon-search"><span>Search</span></a>
-                            </li>
+                            </li> -->
                             <li><a class="gn-icon gn-icon-download" href="create-customer.html">Create New Customer</a></li>
                             <li><a class="gn-icon gn-icon-cog" href="create-part.php">Create New Part</a></li>
                             <li><a class="gn-icon gn-icon-help" href="create-rfq.php">Create RFQ</a></li>
                             <li><a class="gn-icon gn-icon-help" href="generate-rfq-report.php">Generate RFQ Report</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="../database/customer-accounts.php">Customer Account Database</a></li>
+                            <!-- <li><a class="gn-icon gn-icon-help" href="../database/customer-accounts.php">Customer Account Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/address.php">Address Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/inventory-parts.php">Inventory Parts Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/request-for-quote.php">RFQ Database</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="../database/rfq-part-list.php">RFQ Parts List Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/rfq-part-list.php">RFQ Parts List Database</a></li> -->
                         </ul>
                     </div><!-- /gn-scroller -->
                 </nav>

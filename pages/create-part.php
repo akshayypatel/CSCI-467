@@ -116,12 +116,8 @@
 							Cancel
 						</span>
 					</button>
-					<button class="contact100-form-btn">
-						<span>
-							Create
-							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-						</span>
-					</button>
+					<input type="submit" value="Create" class="contact100-form-btn">
+			
 				</div>
 			</form>
 		</div>

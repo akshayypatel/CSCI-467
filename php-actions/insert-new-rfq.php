@@ -1,6 +1,9 @@
 <?php
-	$loopUntil = $_GET['loopUntil'];
+	// Start the session
+	session_start();
 
+	$loopUntil = $_GET['loopUntil'];
+	// Connect to database
 	require("connect.php");
 				
 	$results = $pdo->prepare("INSERT INTO request_for_quote (customerID, dateGenerated) VALUES (?, now());");
@@ -9,7 +12,10 @@
 		$customerID = $_POST['customerID'];
 		$results->execute(array($_POST['customerID']));
     } else {
-    	header("Location: ../pages/error.html");
+		$_SESSION["TITLE"] = "RFQ creation failed";
+		$_SESSION["REDIRECT-NAME"] = "Create RFQ Page";
+		$_SESSION["REDIRECT"] = "create-rfq";
+    	header("Location: ../pages/error.php");
     }
 
     if(isset($_POST['part1id'], $_POST['part1quantity'], $_POST['part1date']))
@@ -26,9 +32,11 @@
 				$results->execute(array($_POST['part'.$i.'id'], $_POST['part'.$i.'quantity'], $_POST['part'.$i.'date'], $customerID, $rfqID));
 				header("Location: ../pages/create-rfq.php");
 		    } else {
-		    	header("Location: ../pages/error.html");
+				$_SESSION["TITLE"] = "RFQ creation failed";
+				$_SESSION["REDIRECT-NAME"] = "Create RFQ Page";
+				$_SESSION["REDIRECT"] = "create-rfq";
+				header("Location: ../pages/error.php");
 		    }
     	}
-    }
-
+	}
 ?>

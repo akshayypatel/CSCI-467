@@ -149,7 +149,7 @@
 
                             <div class="wrap-input100 bg1 rs1-wrap-input100 w250 inline-block">
                                 <span class="label-input100">Quantity</span>
-                                <input class="input100" required type="number" name="part'; echo $i; echo 'quantity" placeholder="Enter Quantity">
+                                <input class="input100" required type="number" pattern="[0-9]{6}" title="Must be numeric" name="part'; echo $i; echo 'quantity" placeholder="Enter Quantity">
                             </div>
 
                             <div class="wrap-input100 bg1 rs1-wrap-input100 w250 inline-block">
@@ -176,7 +176,7 @@
                         <div class="wrap-input100 bg1">
                             <span class="label-input100">How many parts do you want to add?</span>
                             <div class = "flexbox">
-                                <input class="input100 inputResized" type="number" name="numberOfParts" placeholder="Enter Number">
+                                <input class="input100 inputResized" type="number" pattern="[0-9]{*}" name="numberOfParts" placeholder="Enter Number">
                                 <button class="contact100-form-btn noMarginRight" onClick="create-rfq.php">Insert Parts</button>
                             </div>
                         </div>

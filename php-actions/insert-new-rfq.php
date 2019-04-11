@@ -39,4 +39,8 @@
 		    }
     	}
 	}
+	$_SESSION["TITLE"] = "RFQ created";
+	$_SESSION["REDIRECT-NAME"] = "Create RFQ Page";
+	$_SESSION["REDIRECT"] = "create-rfq";
+	header("Location: ../pages/successful.php");
 ?>

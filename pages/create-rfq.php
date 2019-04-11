@@ -108,7 +108,7 @@
                             <select class="js-select2" required name="customerID">';
 
                                 $query = $pdo->query("SELECT companyName, customerID FROM customer_account");
-                                echo '<option disabled selected>Select Company</option>';
+                                echo '<option disabled selected value="">Select Company</option>';
                                 while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
                                 {
                                     echo '<option value="'.$row['customerID'].'" > ' . $row['customerID'] . ' : ' . $row['companyName'] .'</option>';
@@ -136,7 +136,7 @@
                                 <div>
                                     <select class="js-select2" required name="part'; echo $i; echo 'id">';
                                         $query = $pdo->query("SELECT partName, partID, manufacturer_name, listingPrice FROM inventory_part");
-                                        echo '<option disabled selected>Select Part</option>';
+                                        echo '<option disabled selected value="">Select Part</option>';
                                         while ($row = $query->fetch(PDO::FETCH_ASSOC)) 
                                         {
                                             echo '<option value="'.$row['partID'].'" > ' . $row['manufacturer_name'] . ' : ' . $row['partName'] .' : $' . $row['listingPrice'] .'</option>';

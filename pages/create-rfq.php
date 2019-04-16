@@ -22,9 +22,13 @@
     <link rel="stylesheet" type="text/css" href="../css/component.css" />
     <script src="../js/modernizr.custom.js"></script>
     <?php
-        if ($_GET['numberOfParts'])
-        {
-            $loopUntil = intval($_GET['numberOfParts']);
+        if (isset($_GET['numberOfParts'])) {
+            if ($_GET['numberOfParts'])
+            {
+                $loopUntil = intval($_GET['numberOfParts']);
+            } else {
+                $loopUntil = 0;
+            }
         } else {
             $loopUntil = 0;
         }

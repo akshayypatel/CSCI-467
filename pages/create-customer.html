@@ -10,8 +10,8 @@
     <meta name="author-2" content="Gonzalo Pantoja">
     <meta name="description" content="RFQ System for CSCI 467 at NIU">
     <meta name="keywords" content="CSCI467, NIU, RFQ-System">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../fonts/iconic/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
@@ -37,18 +37,21 @@
                                 <input placeholder="Search" type="search" class="gn-search">
                                 <a class="gn-icon gn-icon-search"><span>Search</span></a>
                             </li> -->
-                            <li><a class="gn-icon gn-icon-download" href="create-customer.html">Create New Customer</a></li>
+                            <li><a class="gn-icon gn-icon-download" href="create-customer.html">Create New Customer</a>
+                            </li>
                             <li><a class="gn-icon gn-icon-cog" href="create-part.php">Create New Part</a></li>
                             <li><a class="gn-icon gn-icon-help" href="create-rfq.php">Create RFQ</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="generate-rfq-report.php">Generate RFQ Report</a></li>
-                            <!-- <li><a class="gn-icon gn-icon-help" href="../database/customer-accounts.php">Customer
+                            <li><a class="gn-icon gn-icon-help" href="generate-rfq-report.php">Generate RFQ Report</a>
+                            </li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/customer-accounts.php">Customer
                                     Account Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/address.php">Address Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/inventory-parts.php">Inventory Parts
                                     Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/view-company-directory.php">View
                                     Company Directory</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="../database/view-all-rfqs.php">View All RFQs</a></li> -->
+                            <li><a class="gn-icon gn-icon-help" href="../database/view-all-rfqs.php">View All RFQs</a>
+                            </li>
                         </ul>
                     </div><!-- /gn-scroller -->
                 </nav>
@@ -95,12 +98,14 @@
 
                 <div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
                     <span class="label-input100">Username</span>
-                    <input class="input100" type="text" name="username" maxlength="100" required placeholder="Enter Username">
+                    <input class="input100" type="text" name="username" maxlength="100" required
+                        placeholder="Enter Username">
                 </div>
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100">
                     <span class="label-input100">Password</span>
-                    <input class="input100" type="password" maxlength="100" required name="password" placeholder="Enter Password">
+                    <input class="input100" type="password" maxlength="100" required name="password"
+                        placeholder="Enter Password">
                 </div>
 
                 <div class="line-break">
@@ -109,7 +114,8 @@
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100">
                     <span class="label-input100">Street</span>
-                    <input class="input100" required type="text" name="billing-street" placeholder="Enter Street Address">
+                    <input class="input100" required type="text" name="billing-street"
+                        placeholder="Enter Street Address">
                 </div>
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100">
@@ -180,7 +186,8 @@
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100">
                     <span class="label-input100">Zip Code</span>
-                    <input class="input100" required type="number" pattern="[0-9]*" name="billing-zip" placeholder="Enter Zip Code">
+                    <input class="input100" required type="number" pattern="[0-9]*" name="billing-zip"
+                        placeholder="Enter Zip Code">
                 </div>
 
                 <div class="line-break"></div>
@@ -197,7 +204,8 @@
 
                         <div class="wrap-input100 bg1 rs1-wrap-input100 view">
                             <span class="label-input100">Street</span>
-                            <input class="input100" type="text" name="shipping-street" placeholder="Enter Street Address">
+                            <input class="input100" type="text" name="shipping-street"
+                                placeholder="Enter Street Address">
                         </div>
 
                         <div class="wrap-input100 bg1 rs1-wrap-input100 view">
@@ -279,15 +287,18 @@
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100">
                     <span class="label-input100">First Name</span>
-                    <input class="input100" required type="text" name="representative-first-name" placeholder="Enter First Name">
+                    <input class="input100" required type="text" name="representative-first-name"
+                        placeholder="Enter First Name">
                 </div>
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100">
                     <span class="label-input100">Last Name</span>
-                    <input class="input100" required type="text" name="representative-last-name" placeholder="Enter Last Name">
+                    <input class="input100" required type="text" name="representative-last-name"
+                        placeholder="Enter Last Name">
                 </div>
 
-                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate="Enter Your Email (e@a.x)">
+                <div class="wrap-input100 validate-input bg1 rs1-wrap-input100"
+                    data-validate="Enter Your Email (e@a.x)">
                     <span class="label-input100">Email</span>
                     <input class="input100" required type="text" name="email" placeholder="Enter Email ">
                 </div>

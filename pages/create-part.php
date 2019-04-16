@@ -48,11 +48,11 @@
 							<li><a class="gn-icon gn-icon-cog" href="create-part.php">Create New Part</a></li>
 							<li><a class="gn-icon gn-icon-help" href="create-rfq.php">Create RFQ</a></li>
 							<li><a class="gn-icon gn-icon-help" href="generate-rfq-report.php">Generate RFQ Report</a></li>
-                            <!-- <li><a class="gn-icon gn-icon-help" href="../database/customer-accounts.php">Customer Account Database</a></li>
+                            <li><a class="gn-icon gn-icon-help" href="../database/customer-accounts.php">Customer Account Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/address.php">Address Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/inventory-parts.php">Inventory Parts Database</a></li>
                             <li><a class="gn-icon gn-icon-help" href="../database/view-company-directory.php">View Company Directory</a></li>
-                            <li><a class="gn-icon gn-icon-help" href="../database/view-all-rfqs.php">View All RFQs</a></li> -->
+                            <li><a class="gn-icon gn-icon-help" href="../database/view-all-rfqs.php">View All RFQs</a></li>
                         </ul>
                     </div><!-- /gn-scroller -->
                 </nav>
